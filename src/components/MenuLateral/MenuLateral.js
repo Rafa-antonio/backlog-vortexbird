@@ -6,19 +6,18 @@ const MenuLateral = () => (
   <div className={styles.MenuLateral}>
 
     <div className={styles.Perfil}>
-      <img />
-      <p></p>
-      <p></p>
+        <img className={styles.UsuarioAnalista} src="usuario-analista-crop.png" />
+        <p className={styles.ParrafoBienvenida}>Bienvenida, Ingrid</p>
+        <button className={styles.BotonCerrarSesion}>Cerrar sesión</button>      
     </div>
 
     <div className={styles.Submenu}>
       <ul>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
+        <li><a href="">Inicio</a></li>
+        <li><a href="">Épicas</a></li>
+        <li><a href="">Historias de usuario</a></li>
+        <li><a href="">Criterios de aceptactión</a></li>
+        <li><a href="">Proyectos</a></li>
       </ul>
     </div>
   </div>

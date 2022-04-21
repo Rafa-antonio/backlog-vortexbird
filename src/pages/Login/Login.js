@@ -8,7 +8,7 @@ const Login = () => (
     <Header></Header>
     <div className={styles.Section}>
       <form className={styles.Formulario}>
-        <label>Correo electrónico o usuario</label>
+        <label>Correo electrónico o nombre de usuario</label>
         <input type="text" name="email" id="email" />
         <label>Contraseña</label>
         <input type="password" name="password" id="password" />

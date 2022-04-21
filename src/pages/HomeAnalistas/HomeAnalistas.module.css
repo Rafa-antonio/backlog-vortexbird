@@ -1,1 +1,18 @@
-.HomeAnalistas {}
+.HomeAnalistas {
+    display: grid;
+    grid-template-columns: 15% 85%;
+}
+
+.Header {
+    font-family: 'Barlow-Thin';
+    font-size: 1.75rem;
+    color: white;
+    background-color: #023E8A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    height: 15%;
+    border-left: 2px solid white;
+}

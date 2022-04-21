@@ -22,6 +22,20 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Barlow-Thin';
+  src: url('../public/fonts/Barlow/Barlow-Thin/Barlow-Thin.eot');
+  src: url('../public/fonts/Barlow/Barlow-Thin/Barlow-Thin.eot?#iefix') format('embedded-opentype'),
+      url('../public/fonts/Barlow/Barlow-Thin/Barlow-Thin.woff2') format('woff2'),
+      url('../public/fonts/Barlow/Barlow-Thin/Barlow-Thin.woff') format('woff'),
+      url('../public/fonts/Barlow/Barlow-Thin/Barlow-Thin.svg#Barlow-Thin') format('svg');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

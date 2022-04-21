@@ -2,13 +2,13 @@
 .Login {
     min-height: 100%;
     min-width: 100%;
-    background-color: #FFB703;
+    background-color: #0096C7;
 }
 
 .Section {
     min-height: calc(85vh);
     min-width: 100%;
-    background-color: #FFB703;
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,9 +28,8 @@
     align-self: center;
     text-align: left;
     font-family: 'Barlow-Regular';
-    font-size: 1.5rem;
-    text-decoration: underline;
-    color: white;
+    font-size: 1.5rem;    
+    color: black;
 
 }
 
@@ -54,7 +53,7 @@
     justify-self: center;
     align-self: center;
     color: white;
-    background-color: #FB8500;
+    background-color: #023E8A;
     text-align: center;
     border: none;
     font-family: 'Barlow-SemiBold';
@@ -64,6 +63,5 @@
 
 .Formulario button:hover {
     cursor: pointer;
-    background-color: rgb(201, 135, 0);
 }
 

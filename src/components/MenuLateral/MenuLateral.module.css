@@ -1,7 +1,7 @@
 .MenuLateral {
     min-height: 100vh;
-    width: 25%;
-    background-color: #023047;
+    width: 100%;
+    background-color: #023E8A;
     display: grid;
     grid-template-rows: 22% 78%;
 }
@@ -9,5 +9,76 @@
 .Perfil {
     height: 100%;
     display: grid;
-    grid-template-rows: 50% 25% 25%;
+    grid-template-rows: 75% 15% 10%;
+}
+
+.UsuarioAnalista{
+    justify-self: center;
+    align-self: center;
+    width: 50%;
+}
+
+.ParrafoBienvenida {
+    color: white;
+    text-align: center;
+    width: 100%;
+    align-self: center;
+    font-family: 'Barlow-Regular';
+    font-size: 1rem;
+}
+
+.BotonCerrarSesion {
+    color: white;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    font-family: 'Barlow-SemiBold';
+    align-self: center;
+    font-size: 1rem;
+    background: none;
+    border: 0;
+}
+
+.BotonCerrarSesion:hover {
+    cursor: pointer;
+}
+
+.Submenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.Submenu ul {
+    list-style-type: none;
+    width: 100%;
+    height: 80%;
+    display: grid;
+    grid-template-rows: 17% 17% 17% 17% 17% 15%;
+    padding: 0;
+}
+
+.Submenu li {
+    width: 100%;
+    display: flex;
+}
+
+.Submenu ul li a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-family: 'Barlow-Thin';
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 0 5%;
+    font-weight: 100;
+}
+
+.Submenu ul li a:hover {
+    background-color: rgba(0, 36, 74);
 }

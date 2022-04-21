@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Barlow';
+    src: url('Barlow-Thin.eot');
+    src: url('Barlow-Thin.eot?#iefix') format('embedded-opentype'),
+        url('Barlow-Thin.woff2') format('woff2'),
+        url('Barlow-Thin.woff') format('woff'),
+        url('Barlow-Thin.svg#Barlow-Thin') format('svg');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
