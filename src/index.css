@@ -1,3 +1,27 @@
+@font-face {
+  font-family: 'Barlow-Regular';
+  src: url('../public/fonts/Barlow/Barlow-Regular/Barlow-Regular.eot');
+  src: url('../public/fonts/Barlow/Barlow-Regular/Barlow-Regular.eot?#iefix') format('embedded-opentype'),
+      url('../public/fonts/Barlow/Barlow-Regular/Barlow-Regular.woff2') format('woff2'),
+      url('../public/fonts/Barlow/Barlow-Regular/Barlow-Regular.woff') format('woff'),
+      url('../public/fonts/Barlow/Barlow-Regular/Barlow-Regular.svg#Barlow-SemiBold') format('svg');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow-SemiBold';
+  src: url('../public/fonts/Barlow/Barlow-SemiBold/Barlow-SemiBold.eot');
+  src: url('../public/fonts/Barlow/Barlow-SemiBold/Barlow-SemiBold.eot?#iefix') format('embedded-opentype'),
+      url('../public/fonts/Barlow/Barlow-SemiBold/Barlow-SemiBold.woff2') format('woff2'),
+      url('../public/fonts/Barlow/Barlow-SemiBold/Barlow-SemiBold.woff') format('woff'),
+      url('../public/fonts/Barlow/Barlow-SemiBold/Barlow-SemiBold.svg#Barlow-SemiBold') format('svg');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

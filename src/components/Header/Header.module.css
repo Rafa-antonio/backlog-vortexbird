@@ -1,0 +1,17 @@
+.Header {
+    background-color: #023047;
+    color: white;
+    font-family: 'Barlow-SemiBold';
+    font-size: 2rem;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    min-height: 15vh;
+}
+
+.Header img {
+    display: block;
+    width: 5%;
+    margin-right: 2%;
+}
