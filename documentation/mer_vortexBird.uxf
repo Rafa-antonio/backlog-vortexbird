@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>104</x>
+      <y>240</y>
+      <w>168</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>Usuario
+--
+&lt;&lt;Pk&gt;&gt; correo: texto
+usuario: texto [0..1]
+contrasena: texto
+nombre: texto
+tipo: entero
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>368</x>
+      <y>240</y>
+      <w>168</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>Epica
+--
+&lt;&lt;Pk&gt;&gt; id: entero
+resumen: texto
+tipoIncidencia: texto
+estimacionOriginal: texto
+
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>760</x>
+      <y>240</y>
+      <w>168</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>HU
+--
+&lt;&lt;Pk&gt;&gt; id: entero
+usuario: texto
+neceisidad: texto
+objetivo: texto
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>368</x>
+      <y>48</y>
+      <w>168</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>Proyecto
+--
+&lt;&lt;Pk&gt;&gt; id: entero
+nombre: texto
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>760</x>
+      <y>456</y>
+      <w>168</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>CriterioAceptacion
+--
+&lt;&lt;Pk&gt;&gt; id: entero
+usuario: texto
+objetivo: texto
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>32</x>
+      <y>384</y>
+      <w>384</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>Notas
+bg=white
+fg=black
+
+- Usuario es una entidad que gestionará los 
+usuarios: Analista, Gerente y Arquitecto. Con el atributo tipo 
+se diferencian el tipo de usuario (1-&gt;Gerente, 2-&gt;Analista, 3-&gt;Arquitecto).
+
+- El ciclo entre las entidades Proyecto, Plantilla y HU, no se debe romper
+ya que no puedo conocer los estados de una HU por medio del Proyecto.
+
+- Los atributos booleanos de la entidad Plantilla determinarán si
+el Proyecto o HU está en un estado DoD, DoR o DoUI.
+
+- Los atributos opcionales de la entidad Version buscan
+almacenar versiones en caso tal sea una Eplica o un HU.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>264</x>
+      <y>272</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+crea
+m1=*
+m2=1</panel_attributes>
+    <additional_attributes>130.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>528</x>
+      <y>288</y>
+      <w>248</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+almacena
+m1=0..*
+m2=1</panel_attributes>
+    <additional_attributes>290.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>432</x>
+      <y>152</y>
+      <w>72</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+se asgina
+m1=1
+m2=0..*</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>824</x>
+      <y>344</y>
+      <w>80</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+es evaluado
+m1=0..*
+m2=1</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>752</x>
+      <y>32</y>
+      <w>200</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>Plantilla
+--
+&lt;&lt;PK&gt;&gt; id: entero
+pruebasUnitarias: booleano
+pruebasCalidadCodigo: booleano
+pruebasFuncionales: booleano
+requisitosNFuncionales: booleano
+documentacion: booleano
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>840</x>
+      <y>160</y>
+      <w>56</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+evalua
+m1=0..*
+m2=1</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>528</x>
+      <y>88</y>
+      <w>240</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..*
+m2=1
+evalua</panel_attributes>
+    <additional_attributes>10.0;20.0;280.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>528</x>
+      <y>400</y>
+      <w>168</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>Version
+--
+&lt;&lt;Pk&gt;&gt; id: entero
+lineaBase: booleano
+resumen: texto [0..1]
+tipoIncidencia: texto [0..1]
+estimacionOriginal: texto [0..1]
+usuario: texto [0..1]
+neceisidad: texto [0..1]
+objetivo: texto [0..1]
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>448</x>
+      <y>336</y>
+      <w>96</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+atraviesa
+m1=1
+m2=0..*</panel_attributes>
+    <additional_attributes>100.0;120.0;10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>688</x>
+      <y>344</y>
+      <w>136</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+atraviesa
+m1=1
+m2=0..*</panel_attributes>
+    <additional_attributes>10.0;110.0;130.0;110.0;130.0;10.0</additional_attributes>
+  </element>
+</diagram>
