@@ -2,17 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './HomeAnalistas.module.css';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
+import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
 
-const HomeAnalistas = () => (
+const HomeAnalistas = () => {
+
+  return (
   <div className={styles.HomeAnalistas}>
     <MenuLateral />
 
-    {/* Header */}
-    <h1 className={styles.Header}>
-      Inicio - Analistas
-    </h1>
+    <div className={styles.ContenedorPagina}>
+      <HeaderSesiones titulo='Inicio - Analistas' />
+    </div>
   </div>
-);
+  )};
 
 HomeAnalistas.propTypes = {};
 

@@ -1,0 +1,11 @@
+.HeaderSesiones {
+    background-color: #023E8A;
+    color: white;
+    font-family: 'Barlow-Regular';
+    font-size: 2rem;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    min-height: 15vh;
+}
