@@ -21,7 +21,20 @@ function Login() {
   let navigate = useNavigate();
   function IniciarSesion(e) {
     e.preventDefault();
-    UsuariosService.login(usuario, contrasena);
+    UsuariosService.login(usuario, contrasena)
+    
+      .then(val => {
+        if (val.data.name != false) {
+          navigate('/home-analistas');
+        } else {
+          alert('Correo/Usuario o contraseña incorrectos.');
+        }
+      })
+
+      .catch(err => {
+        console.log(err);
+        alert('Ocurrió un error');
+      })
   }
 
   return (
