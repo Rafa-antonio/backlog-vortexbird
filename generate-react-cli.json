@@ -20,7 +20,7 @@
     },
     "service": {
       "path": "src/services",
-      "withStyle": true,
+      "withStyle": false,
       "withTest": false,
       "withStory": false,
       "withLazy": false

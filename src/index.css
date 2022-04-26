@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Barlow-Regular';
-  src: url('../public/fonts/Barlow/Barlow-Regular/Barlow-Regular.eot');
-  src: url('../public/fonts/Barlow/Barlow-Regular/Barlow-Regular.eot?#iefix') format('embedded-opentype'),
-      url('../public/fonts/Barlow/Barlow-Regular/Barlow-Regular.woff2') format('woff2'),
-      url('../public/fonts/Barlow/Barlow-Regular/Barlow-Regular.woff') format('woff'),
-      url('../public/fonts/Barlow/Barlow-Regular/Barlow-Regular.svg#Barlow-SemiBold') format('svg');
+  src: url('/fonts/Barlow/Barlow-Regular/Barlow-Regular.eot');
+  src: url('/fonts/Barlow/Barlow-Regular/Barlow-Regular.eot?#iefix') format('embedded-opentype'),
+      url('/fonts/Barlow/Barlow-Regular/Barlow-Regular.woff2') format('woff2'),
+      url('/fonts/Barlow/Barlow-Regular/Barlow-Regular.woff') format('woff'),
+      url('/fonts/Barlow/Barlow-Regular/Barlow-Regular.svg#Barlow-SemiBold') format('svg');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -12,11 +12,11 @@
 
 @font-face {
   font-family: 'Barlow-SemiBold';
-  src: url('../public/fonts/Barlow/Barlow-SemiBold/Barlow-SemiBold.eot');
-  src: url('../public/fonts/Barlow/Barlow-SemiBold/Barlow-SemiBold.eot?#iefix') format('embedded-opentype'),
-      url('../public/fonts/Barlow/Barlow-SemiBold/Barlow-SemiBold.woff2') format('woff2'),
-      url('../public/fonts/Barlow/Barlow-SemiBold/Barlow-SemiBold.woff') format('woff'),
-      url('../public/fonts/Barlow/Barlow-SemiBold/Barlow-SemiBold.svg#Barlow-SemiBold') format('svg');
+  src: url('/fonts/Barlow/Barlow-SemiBold/Barlow-SemiBold.eot');
+  src: url('/fonts/Barlow/Barlow-SemiBold/Barlow-SemiBold.eot?#iefix') format('embedded-opentype'),
+      url('/fonts/Barlow/Barlow-SemiBold/Barlow-SemiBold.woff2') format('woff2'),
+      url('/fonts/Barlow/Barlow-SemiBold/Barlow-SemiBold.woff') format('woff'),
+      url('/fonts/Barlow/Barlow-SemiBold/Barlow-SemiBold.svg#Barlow-SemiBold') format('svg');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -24,11 +24,11 @@
 
 @font-face {
   font-family: 'Barlow-Thin';
-  src: url('../public/fonts/Barlow/Barlow-Thin/Barlow-Thin.eot');
-  src: url('../public/fonts/Barlow/Barlow-Thin/Barlow-Thin.eot?#iefix') format('embedded-opentype'),
-      url('../public/fonts/Barlow/Barlow-Thin/Barlow-Thin.woff2') format('woff2'),
-      url('../public/fonts/Barlow/Barlow-Thin/Barlow-Thin.woff') format('woff'),
-      url('../public/fonts/Barlow/Barlow-Thin/Barlow-Thin.svg#Barlow-Thin') format('svg');
+  src: url('/fonts/Barlow/Barlow-Thin/Barlow-Thin.eot');
+  src: url('/fonts/Barlow/Barlow-Thin/Barlow-Thin.eot?#iefix') format('embedded-opentype'),
+      url('/fonts/Barlow/Barlow-Thin/Barlow-Thin.woff2') format('woff2'),
+      url('/fonts/Barlow/Barlow-Thin/Barlow-Thin.woff') format('woff'),
+      url('/fonts/Barlow/Barlow-Thin/Barlow-Thin.svg#Barlow-Thin') format('svg');
   font-weight: 100;
   font-style: normal;
   font-display: swap;

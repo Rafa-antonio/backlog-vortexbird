@@ -4,7 +4,7 @@ import styles from './Header.module.css';
 
 const Header = () => (
   <div className={styles.Header}>
-    <img src='./logo.png' />
+    <img src='/logo.png' />
     VORTEXBIRD
   </div>
 );
