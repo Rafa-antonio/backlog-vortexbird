@@ -32,11 +32,15 @@ const MenuLateral = (props) => {
     navigate('/proyectos-analistas');
   }
 
+  function irPlantillas() {
+    navigate('/plantillas-analistas');
+  }
+
   return (
   <div className={styles.MenuLateral}>
 
     <div className={styles.Perfil}>
-        <img className={styles.UsuarioAnalista} src="usuario-analista-crop.png" />
+        <img className={styles.UsuarioAnalista} src={props.urlImagen} />
         <p className={styles.ParrafoBienvenida}>Bienvenid@, {props.nombre}</p>
         <button className={styles.BotonCerrarSesion} onClick={cerrarSesion}>Cerrar sesión</button>      
     </div>
@@ -46,6 +50,7 @@ const MenuLateral = (props) => {
         <li><a onClick={irInicio}>Inicio</a></li>
         <li><a onClick={irEpicas}>Épicas</a></li>
         <li><a onClick={irHistorias}>Historias de usuario</a></li>
+        <li><a onClick={irPlantillas}>Plantillas</a></li>
         <li><a onClick={irCriterios}>Criterios de aceptactión</a></li>
         <li><a onClick={irProyectos}>Proyectos</a></li>
       </ul>
@@ -54,11 +59,13 @@ const MenuLateral = (props) => {
   )};
 
 MenuLateral.propTypes = {
-  nombre: PropTypes.string
+  nombre: PropTypes.string,
+  urlImagen: PropTypes.string
 };
 
 MenuLateral.defaultProps = {
-  nombre: 'Usuario'
+  nombre: 'Usuario',
+  urlImagen: 'usuario-analista-crop.png'
 };
 
 export default MenuLateral;

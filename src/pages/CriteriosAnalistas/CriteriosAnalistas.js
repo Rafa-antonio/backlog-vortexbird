@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './CriteriosAnalistas.module.css';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
+import Boton from '../../components/Boton/Boton';
 
 const CriteriosAnalistas = (props) => (
   <div className={styles.CriteriosAnalistas}>
@@ -10,8 +11,8 @@ const CriteriosAnalistas = (props) => (
     
     <div className={styles.ContenedorPagina}>
       <HeaderSesiones titulo={props.titulo} />
-      <div>
-
+      <div className={styles.SegundoContenedorPagina}>
+        <Boton texto={props.texto}/>
       </div>
     </div>
   </div>
@@ -20,7 +21,8 @@ const CriteriosAnalistas = (props) => (
 CriteriosAnalistas.propTypes = {
   nombre: PropTypes.string,
   tipo: PropTypes.number,
-  titulo: PropTypes.string
+  titulo: PropTypes.string,
+  texto: PropTypes.string
 };
 
 CriteriosAnalistas.defaultProps = {
@@ -28,7 +30,8 @@ CriteriosAnalistas.defaultProps = {
 
   // Por defecto es un Analista
   tipo: 2,
-  titulo: 'Criterios de aceptación'
+  titulo: 'Criterios de aceptación',
+  texto: 'Crear criterio'
 };
 
 export default CriteriosAnalistas;

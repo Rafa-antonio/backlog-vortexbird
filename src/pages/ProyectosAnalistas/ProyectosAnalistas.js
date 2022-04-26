@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styles from './ProyectosAnalistas.module.css';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
+import Boton from '../../components/Boton/Boton';
+import { faFileExport } from '@fortawesome/free-solid-svg-icons';
 
 const ProyectosAnalistas = (props) => (
   <div className={styles.ProyectosAnalistas}>
@@ -10,8 +12,9 @@ const ProyectosAnalistas = (props) => (
     
     <div className={styles.ContenedorPagina}>
       <HeaderSesiones titulo={props.titulo} />
-      <div>
-
+      <div className={styles.SegundoContenedorPagina}>
+        <Boton texto={props.texto[0]}/>
+        <Boton texto={props.texto[1]} icono={faFileExport} />
       </div>
     </div>
   </div>
@@ -20,7 +23,8 @@ const ProyectosAnalistas = (props) => (
 ProyectosAnalistas.propTypes = {
   nombre: PropTypes.string,
   tipo: PropTypes.number,
-  titulo: PropTypes.string
+  titulo: PropTypes.string,
+  texto:  PropTypes.array
 };
 
 ProyectosAnalistas.defaultProps = {
@@ -28,7 +32,11 @@ ProyectosAnalistas.defaultProps = {
 
   // Por defecto es un Analista
   tipo: 2,
-  titulo: 'Proyectos'
+  titulo: 'Proyectos',
+  texto: [
+    'Crear proyecto', 
+    'Asignar HU'
+    ]
 };
 
 export default ProyectosAnalistas;
