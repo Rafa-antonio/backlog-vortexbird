@@ -1,0 +1,19 @@
+.BotonCrearElemento {
+    background-color: #023E8A;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Barlow-SemiBold';
+    font-size: 1.5rem;
+    width: 25%;
+    justify-self: center;
+    height: 30%;
+    border-radius: .5rem;
+}
+
+.BotonCrearElemento:hover {
+    cursor: pointer;
+    background-color: #013980;
+}
