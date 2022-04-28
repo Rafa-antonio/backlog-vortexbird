@@ -5,6 +5,7 @@ import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
 import Boton from '../../components/Boton/Boton';
 import { faFileExport } from '@fortawesome/free-solid-svg-icons';
+import { faFolder } from '@fortawesome/free-solid-svg-icons';
 
 const ProyectosAnalistas = (props) => (
   <div className={styles.ProyectosAnalistas}>
@@ -15,6 +16,8 @@ const ProyectosAnalistas = (props) => (
       <div className={styles.SegundoContenedorPagina}>
         <Boton texto={props.texto[0]}/>
         <Boton texto={props.texto[1]} icono={faFileExport} />
+        <Boton texto={props.texto[2]} icono={faFileExport} />
+        <Boton texto={props.texto[3]} icono={faFolder} />
       </div>
     </div>
   </div>
@@ -35,7 +38,9 @@ ProyectosAnalistas.defaultProps = {
   titulo: 'Proyectos',
   texto: [
     'Crear proyecto', 
-    'Asignar HU'
+    'Asignar HU',
+    'Asignar épica',
+    'Proyectos'
     ]
 };
 

@@ -27,7 +27,7 @@
 
 .SegundoContenedorPagina label {
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-family: 'Barlow-Regular';
     align-self: center;
 }
@@ -37,7 +37,7 @@
     align-self: center;
     border: 1px solid rgba(0,0,0,.2);
     padding-left: 1rem;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     width: 80%;
     height: 70%;
 }

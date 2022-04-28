@@ -16,7 +16,8 @@ const PlantillasAnalistas = (props) => (
       <div className={styles.SegundoContenedorPagina}>
         <Boton texto={props.texto[0]} />
         <Boton texto={props.texto[1]} icono={faFileArrowDown} />
-        <Boton texto={props.texto[2]} icono={faFolder} />
+        <Boton texto={props.texto[2]} icono={faFileArrowDown} />
+        <Boton texto={props.texto[3]} icono={faFolder} />
       </div>
     </div>
   </div>
@@ -37,7 +38,8 @@ PlantillasAnalistas.defaultProps = {
   titulo: 'Plantillas',
   texto: [
     'Crear plantilla',
-    'Plantilla a épica o HU',
+    'Plantilla a épica',
+    'Plantilla a HU',
     'Plantillas'
   ]
 };
