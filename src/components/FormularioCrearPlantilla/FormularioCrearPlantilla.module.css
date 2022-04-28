@@ -1,18 +1,19 @@
-.FormularioCrear {
+.FormularioCrearPlantilla {
     width: 100%;
     height: 80%;
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 40% 30%;
+    justify-content: center;
 }
 
-.FormularioCrear label {
-    text-align: center;
+.FormularioCrearPlantilla label {
+    text-align: left;
     font-size: 1.5rem;
     font-family: 'Barlow-Regular';
     align-self: center;
 }
 
-.FormularioCrear input {
+.FormularioCrearPlantilla select {
     font-family: 'Barlow-Regular';
     align-self: center;
     border: 1px solid rgba(0,0,0,.2);
@@ -22,6 +23,6 @@
     height: 70%;
 }
 
-.FormularioCrear input:focus {
+.FormularioCrearPlantilla select:focus {
     outline: none;
 }

@@ -9,8 +9,9 @@
     font-size: 1.5rem;
     width: 25%;
     justify-self: center;
-    height: 30%;
+    height: 50%;
     border-radius: .5rem;
+    align-self: flex-start;
 }
 
 .BotonCrearElemento:hover {

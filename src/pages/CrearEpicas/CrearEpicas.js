@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './CrearEpicas.module.css';
-import MenuLateral from '../../components/MenuLateral/MenuLateral';
-import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
-import BotonCrearElemento from '../../components/BotonCrearElemento/BotonCrearElemento';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import MenuLateral from '../../components/MenuLateral/MenuLateral';
+import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
+import FormularioCrear from '../../components/FormularioCrear/FormularioCrear';
+import BotonCrearElemento from '../../components/BotonCrearElemento/BotonCrearElemento';
 
 const CrearEpicas = (props) => {
 
@@ -40,14 +41,7 @@ const CrearEpicas = (props) => {
       <div className={styles.ContenedorPagina}>
         <HeaderSesiones titulo={props.titulo} />
         <div className={styles.SegundoContenedorPagina}>
-          <form>
-            <label forHTML="resumen">Resumen</label>
-            <input name="resumen" id="resumen" type="text" placeholder="De manera resumida..." onChange={handleResumen} />
-            <label forHTML="tipoIncidencia">Tipo de incidencia</label>
-            <input name="tipoIncidencia" id="tipoIncidencia" type="text" placeholder="El tipo de incidencia de esta épica es..." onChange={handleTipo} />
-            <label forHTML="estimacionOriginal">Estimación original</label>
-            <input name="estimacionOriginal" id="estimacionOriginal" type="text" placeholder="La estimación original..." onChange={handleEstimacion} />
-          </form>
+          <FormularioCrear />
 
           <BotonCrearElemento onClick={clickCrear} />
         </div>

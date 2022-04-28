@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="15.0.0">
-  <zoom_level>9</zoom_level>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>8</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>315</x>
-      <y>342</y>
-      <w>189</w>
-      <h>126</h>
+      <x>80</x>
+      <y>240</y>
+      <w>168</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>Usuario
 --
@@ -22,10 +22,10 @@ tipo: entero
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>612</x>
-      <y>342</y>
-      <w>189</w>
-      <h>117</h>
+      <x>344</x>
+      <y>240</y>
+      <w>168</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>Epica
 --
@@ -40,10 +40,10 @@ estimacionOriginal: texto
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1053</x>
-      <y>342</y>
-      <w>189</w>
-      <h>126</h>
+      <x>736</x>
+      <y>240</y>
+      <w>168</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>HU
 --
@@ -57,25 +57,26 @@ objetivo: texto
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>612</x>
-      <y>126</y>
-      <w>189</w>
-      <h>126</h>
+      <x>344</x>
+      <y>48</y>
+      <w>168</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>Proyecto
 --
 &lt;&lt;Pk&gt;&gt; id: entero
 nombre: texto
+descripcion: texto
 --</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1053</x>
-      <y>585</y>
-      <w>189</w>
-      <h>126</h>
+      <x>736</x>
+      <y>456</y>
+      <w>168</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>CriterioAceptacion
 --
@@ -88,10 +89,10 @@ objetivo: texto
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>234</x>
-      <y>504</y>
-      <w>432</w>
-      <h>225</h>
+      <x>8</x>
+      <y>384</y>
+      <w>384</w>
+      <h>200</h>
     </coordinates>
     <panel_attributes>Notas
 bg=white
@@ -114,10 +115,10 @@ almacenar versiones en caso tal sea una Eplica o un HU.</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>495</x>
-      <y>378</y>
-      <w>135</w>
-      <h>45</h>
+      <x>240</x>
+      <y>272</y>
+      <w>120</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 crea
@@ -128,10 +129,10 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>792</x>
-      <y>396</y>
-      <w>279</w>
-      <h>45</h>
+      <x>504</x>
+      <y>288</y>
+      <w>248</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 almacena
@@ -142,10 +143,10 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>684</x>
-      <y>243</y>
-      <w>81</w>
-      <h>117</h>
+      <x>408</x>
+      <y>152</y>
+      <w>72</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 se asgina
@@ -156,10 +157,10 @@ m2=0..*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1125</x>
-      <y>459</y>
-      <w>90</w>
-      <h>144</h>
+      <x>800</x>
+      <y>344</y>
+      <w>80</w>
+      <h>128</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 es evaluado
@@ -170,10 +171,10 @@ m2=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1044</x>
-      <y>108</y>
-      <w>225</w>
-      <h>153</h>
+      <x>728</x>
+      <y>32</y>
+      <w>200</w>
+      <h>136</h>
     </coordinates>
     <panel_attributes>Plantilla
 --
@@ -189,10 +190,10 @@ documentacion: booleano
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1143</x>
-      <y>252</y>
-      <w>63</w>
-      <h>108</h>
+      <x>816</x>
+      <y>160</y>
+      <w>56</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 evalua
@@ -203,10 +204,10 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>792</x>
-      <y>171</y>
-      <w>270</w>
-      <h>45</h>
+      <x>504</x>
+      <y>88</y>
+      <w>240</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..*
@@ -217,10 +218,10 @@ evalua</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>792</x>
-      <y>522</y>
-      <w>189</w>
-      <h>162</h>
+      <x>504</x>
+      <y>400</y>
+      <w>168</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>Version
 --
@@ -238,10 +239,10 @@ objetivo: texto [0..1]
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>702</x>
-      <y>450</y>
-      <w>108</w>
-      <h>135</h>
+      <x>424</x>
+      <y>336</y>
+      <w>96</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 atraviesa
@@ -252,10 +253,10 @@ m2=0..*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>972</x>
-      <y>459</y>
-      <w>153</w>
-      <h>126</h>
+      <x>664</x>
+      <y>344</y>
+      <w>136</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 atraviesa

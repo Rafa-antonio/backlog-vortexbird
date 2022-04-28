@@ -9,6 +9,8 @@ import ProyectosAnalistas from './pages/ProyectosAnalistas/ProyectosAnalistas';
 import CrearEpicas from './pages/CrearEpicas/CrearEpicas';
 import CrearHistorias from './pages/CrearHistorias/CrearHistorias';
 import CrearPlantillas from './pages/CrearPlantillas/CrearPlantillas';
+import CrearCriterios from './pages/CrearCriterios/CrearCriterios';
+import CrearProyectos from './pages/CrearProyectos/CrearProyectos';
 
 import './App.css';
 import {
@@ -35,6 +37,8 @@ function App() {
         <Route path="/epicas-analistas/crear-epicas" element={<CrearEpicas />} />
         <Route path="/historias-analistas/crear-historias" element={<CrearHistorias />} />
         <Route path="/plantillas-analistas/crear-plantillas" element={<CrearPlantillas />} />
+        <Route path="/criterios-analistas/crear-criterios" element={<CrearCriterios />} />
+        <Route path="/proyectos-analistas/crear-proyectos" element={<CrearProyectos />} />
       </Routes>
     </Router>
   );

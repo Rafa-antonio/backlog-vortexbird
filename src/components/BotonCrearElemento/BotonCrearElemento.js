@@ -4,8 +4,6 @@ import styles from './BotonCrearElemento.module.css';
 
 const BotonCrearElemento = (props) => {
 
-
-
   return (
   <div className={styles.BotonCrearElemento} onClick={props.onClick}>
     Crear

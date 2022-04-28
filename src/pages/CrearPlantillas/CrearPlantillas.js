@@ -1,15 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './CrearPlantillas.module.css';
+import { useNavigate } from 'react-router-dom';
+import FormularioCrearPlantilla from '../../components/FormularioCrearPlantilla/FormularioCrearPlantilla';
+import MenuLateral from '../../components/MenuLateral/MenuLateral';
+import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
+import BotonCrearElemento from '../../components/BotonCrearElemento/BotonCrearElemento';
 
-const CrearPlantillas = () => (
+const CrearPlantillas = (props) => {
+
+  let navigate = useNavigate();
+  function clickCrear(){ 
+    navigate('/plantillas-analistas/crear-plantillas');
+  }
+
+  return (
   <div className={styles.CrearPlantillas}>
-    CrearPlantillas Component
+    <MenuLateral urlImagen={props.urlImagen} />
+
+    <div className={styles.ContenedorPagina}>
+      <HeaderSesiones titulo={props.titulo} />
+      <div className={styles.SegundoContenedorPagina}>
+        <FormularioCrearPlantilla />
+        <BotonCrearElemento onClick={clickCrear} />
+      </div>
+    </div>
   </div>
-);
+  )};
 
-CrearPlantillas.propTypes = {};
+CrearPlantillas.propTypes = {
+  nombre: PropTypes.string,
+  tipo: PropTypes.number,
+  titulo: PropTypes.string,
+  urlImagen: PropTypes.string
+};
 
-CrearPlantillas.defaultProps = {};
+CrearPlantillas.defaultProps = {
+  nombre: 'Usuario',
+
+  // Por defecto es un Analista
+  tipo: 2,
+  titulo: 'Plantillas/Crear plantillas',
+  urlImagen: '../usuario-analista-crop.png'
+};
 
 export default CrearPlantillas;

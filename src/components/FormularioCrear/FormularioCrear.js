@@ -4,36 +4,28 @@ import styles from './FormularioCrear.module.css';
 
 const FormularioCrear = (props) => {
 
-  const labelsInputs = [...Array(props.labels.length)].map((i) =>
-    
+  const maplabelsInputs = props.labelsInputs.map((x, i) => (
       <>
-      {console.log(props.labels[0].length)}
-        <label forHTML={props.labels[0][0]}>{props.labels[0][1]}</label>
-        <input name={props.inputs[0][0]} id={props.inputs[0][0]} placeholder={props.inputs[0][1]} />
+        <label forHTML={props.labelsInputs[i][0]}>{props.labelsInputs[i][1]}</label>
+        <input name={props.labelsInputs[i][0]} id={props.labelsInputs[i][0]} placeholder={props.labelsInputs[i][2]} />
       </>
-    );
+  ));
 
   return (
     <form className={styles.FormularioCrear} >
-      {labelsInputs}
+      {maplabelsInputs}
     </form>
   )};
 
 FormularioCrear.propTypes = {
-  labels: PropTypes.array,
-  inputs: PropTypes.array
+  labelsInputs: PropTypes.array
 };
 
 FormularioCrear.defaultProps = {
-  labels: [
-    ['resumen', 'Resumen'],
-    ['tipoIncidencia', 'Tipo de incidencia'],
-    ['estimacionOriginal', 'Estimación original']
-  ],
-  inputs: [
-    ['resumen', 'De manera resumida...'],
-    ['tipoIncidencia', 'El tipo de incidencia de esta épica es...'],
-    ['estimacionOriginal', 'La estimación original...']
+  labelsInputs: [
+    ['resumen', 'Resumen', 'De manera resumida...'],
+    ['tipoIncidencia', 'Tipo de incidencia', 'El tipo de incidencia de esta épica es...'],
+    ['estimacionOriginal', 'Estimación original', 'La estimación original...']
   ]
 };
 

@@ -1,26 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './CriteriosAnalistas.module.css';
+import { useNavigate } from 'react-router-dom';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
 import Boton from '../../components/Boton/Boton';
 import { faFileArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { faFolder } from '@fortawesome/free-solid-svg-icons';
 
-const CriteriosAnalistas = (props) => (
-  <div className={styles.CriteriosAnalistas}>
-    <MenuLateral nombre={props.nombre} />
-    
-    <div className={styles.ContenedorPagina}>
-      <HeaderSesiones titulo={props.titulo} />
-      <div className={styles.SegundoContenedorPagina}>
-        <Boton texto={props.texto[0]} />
-        <Boton texto={props.texto[1]} icono={faFileArrowDown} />
-        <Boton texto={props.texto[2]} icono={faFolder} />
+const CriteriosAnalistas = (props) => {
+
+  let navigate = useNavigate();
+  function irCrear() {
+    navigate('/criterios-analistas/crear-criterios');
+  }
+
+  return (
+    <div className={styles.CriteriosAnalistas}>
+      <MenuLateral nombre={props.nombre} />
+
+      <div className={styles.ContenedorPagina}>
+        <HeaderSesiones titulo={props.titulo} />
+        <div className={styles.SegundoContenedorPagina}>
+          <Boton texto={props.texto[0]} onClick={irCrear}/>
+          <Boton texto={props.texto[1]} icono={faFileArrowDown} />
+          <Boton texto={props.texto[2]} icono={faFolder} />
+        </div>
       </div>
     </div>
-  </div>
-);
+  )};
 
 CriteriosAnalistas.propTypes = {
   nombre: PropTypes.string,

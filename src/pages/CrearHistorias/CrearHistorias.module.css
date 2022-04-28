@@ -1,1 +1,18 @@
-.CrearHistorias {}
+.CrearHistorias {
+    display: grid;
+    grid-template-columns: 15% 85%;
+}
+
+.ContenedorPagina {
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 15% 85%;
+}
+
+.SegundoContenedorPagina {
+    display: grid;
+    grid-template-rows: 80% 20%;    
+    align-items: center;
+    height: 80%;
+}
