@@ -1,7 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql');
+
+// Rutas
 const rUsuarios = require('./routes/usuarios.routes');
+const rEpicas = require('./routes/epicas.routes');
+const rVersiones = require('./routes/versiones.routes');
 
 const connection = mysql.createConnection(
     {
@@ -24,6 +28,8 @@ app.use(express.json());
 
 // Se establece el uso de las rutas
 rUsuarios(app, connection);
+rEpicas(app, connection);
+rVersiones(app, connection);
 
 app.listen(3001, () => {
   console.log('Server on port 3001');

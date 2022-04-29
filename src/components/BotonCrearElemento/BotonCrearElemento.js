@@ -11,7 +11,7 @@ const BotonCrearElemento = (props) => {
   )};
 
 BotonCrearElemento.propTypes = {
-  onClick: PropTypes.string
+  onClick: PropTypes.func
 };
 
 BotonCrearElemento.defaultProps = {

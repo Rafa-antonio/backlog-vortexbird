@@ -6,8 +6,8 @@ const FormularioCrear = (props) => {
 
   const maplabelsInputs = props.labelsInputs.map((x, i) => (
       <>
-        <label forHTML={props.labelsInputs[i][0]}>{props.labelsInputs[i][1]}</label>
-        <input name={props.labelsInputs[i][0]} id={props.labelsInputs[i][0]} placeholder={props.labelsInputs[i][2]} />
+        <label forhtml={props.labelsInputs[i][0]}>{props.labelsInputs[i][1]}</label>
+        <input name={props.labelsInputs[i][0]} id={props.labelsInputs[i][0]} placeholder={props.labelsInputs[i][2]} onChange={props.funcionesHandle[i]} />
       </>
   ));
 
@@ -18,7 +18,8 @@ const FormularioCrear = (props) => {
   )};
 
 FormularioCrear.propTypes = {
-  labelsInputs: PropTypes.array
+  labelsInputs: PropTypes.array,
+  funcionesHandle: PropTypes.array
 };
 
 FormularioCrear.defaultProps = {
@@ -26,6 +27,11 @@ FormularioCrear.defaultProps = {
     ['resumen', 'Resumen', 'De manera resumida...'],
     ['tipoIncidencia', 'Tipo de incidencia', 'El tipo de incidencia de esta épica es...'],
     ['estimacionOriginal', 'Estimación original', 'La estimación original...']
+  ],
+  funcionesHandle: [
+    'handleResumen',
+    'handleTipo',
+    'handleEstimacion',
   ]
 };
 

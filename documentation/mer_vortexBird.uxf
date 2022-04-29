@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="14.3.0">
+<diagram program="umlet" version="15.0.0">
   <zoom_level>8</zoom_level>
   <element>
     <id>UMLClass</id>
@@ -73,8 +73,8 @@ descripcion: texto
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>736</x>
-      <y>456</y>
+      <x>840</x>
+      <y>432</y>
       <w>168</w>
       <h>112</h>
     </coordinates>
@@ -92,7 +92,7 @@ objetivo: texto
       <x>8</x>
       <y>384</y>
       <w>384</w>
-      <h>200</h>
+      <h>224</h>
     </coordinates>
     <panel_attributes>Notas
 bg=white
@@ -109,7 +109,10 @@ ya que no puedo conocer los estados de una HU por medio del Proyecto.
 el Proyecto o HU está en un estado DoD, DoR o DoUI.
 
 - Los atributos opcionales de la entidad Version buscan
-almacenar versiones en caso tal sea una Eplica o un HU.</panel_attributes>
+almacenar versiones en caso tal sea una Eplica o un HU.
+
+- El atributo lineaBase es un entero para representar booleanos en mysql.
+1 --&gt; Verdadero, 2 --&gt; Falso.</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -157,16 +160,16 @@ m2=0..*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>800</x>
+      <x>872</x>
       <y>344</y>
       <w>80</w>
-      <h>128</h>
+      <h>104</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 es evaluado
 m1=0..*
 m2=1</panel_attributes>
-    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -218,50 +221,61 @@ evalua</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>504</x>
-      <y>400</y>
+      <x>424</x>
+      <y>432</y>
       <w>168</w>
-      <h>144</h>
+      <h>80</h>
     </coordinates>
-    <panel_attributes>Version
+    <panel_attributes>VersionEpica
 --
 &lt;&lt;Pk&gt;&gt; id: entero
-lineaBase: booleano
-resumen: texto [0..1]
-tipoIncidencia: texto [0..1]
-estimacionOriginal: texto [0..1]
-usuario: texto [0..1]
-neceisidad: texto [0..1]
-objetivo: texto [0..1]
+numVersion: entero
+lineaBase: entero
 --</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>424</x>
+      <x>448</x>
       <y>336</y>
-      <w>96</w>
-      <h>120</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-atraviesa
-m1=1
-m2=0..*</panel_attributes>
-    <additional_attributes>100.0;120.0;10.0;120.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>664</x>
-      <y>344</y>
-      <w>136</w>
+      <w>72</w>
       <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 atraviesa
-m1=1
-m2=0..*</panel_attributes>
-    <additional_attributes>10.0;110.0;130.0;110.0;130.0;10.0</additional_attributes>
+m2=1
+m1=0..*</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>648</x>
+      <y>432</y>
+      <w>168</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>VersionHU
+--
+&lt;&lt;Pk&gt;&gt; id: entero
+numVersion
+lineaBase: booleano
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>744</x>
+      <y>344</y>
+      <w>72</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+atraviesa
+m2=1
+m1=0..*</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

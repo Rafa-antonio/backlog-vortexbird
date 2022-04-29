@@ -2,9 +2,9 @@
 
 module.exports = function (app, connection) {    
 
-    // Para iniciar sesión
-    app.route('/login')
+    app.route('/usuarios')
 
+        // Para iniciar sesión
         .get((req, res) => {
             connection.query('SELECT nombre FROM USUARIOS', (err, result, fields) => {
                 if (result[0] != undefined) {

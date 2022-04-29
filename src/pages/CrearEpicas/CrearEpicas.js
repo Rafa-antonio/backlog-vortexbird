@@ -8,8 +8,11 @@ import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
 import FormularioCrear from '../../components/FormularioCrear/FormularioCrear';
 import BotonCrearElemento from '../../components/BotonCrearElemento/BotonCrearElemento';
 
-const CrearEpicas = (props) => {
+// Service
+import EpicasService from '../../services/Epicas.Service/Epicas.Service';
 
+const CrearEpicas = (props) => {
+  
   const [resumen, setResumen] = useState();
   const [tipoIncidencia, setTipoIncidencia] = useState();
   const [estimacionOriginal, setEstimacionOriginal] = useState();
@@ -28,10 +31,23 @@ const CrearEpicas = (props) => {
 
   let navigate = useNavigate();
   function clickCrear() {
-    alert('Se presionó click en crear!');
-    alert(resumen);
-    alert(tipoIncidencia);
-    alert(estimacionOriginal);
+    let respuesta = EpicasService.crearEpicas(props.correo_usuario, resumen, tipoIncidencia, estimacionOriginal);
+
+    respuesta
+      .then((datos) => {
+        let seCreoEpica = datos.data.epica;
+        let seCreoVersionEpica = datos.data.version_epica;
+
+        if (seCreoEpica && seCreoVersionEpica) {
+          alert('¡Se ha creado con éxito la épica!');
+        } else {
+          alert('¡Se ha creado con éxito la épica (Sin su versión inicial)!');
+        }
+      })
+      .catch((err) => {
+        alert('Ocurrió un error al momento de intentar crear la épica.');
+      })
+        
   }
 
   return (
@@ -41,7 +57,7 @@ const CrearEpicas = (props) => {
       <div className={styles.ContenedorPagina}>
         <HeaderSesiones titulo={props.titulo} />
         <div className={styles.SegundoContenedorPagina}>
-          <FormularioCrear />
+          <FormularioCrear funcionesHandle={[handleResumen, handleTipo, handleEstimacion]} />
 
           <BotonCrearElemento onClick={clickCrear} />
         </div>
@@ -50,13 +66,16 @@ const CrearEpicas = (props) => {
   )};
 
 CrearEpicas.propTypes = {
+  correo_usuario: PropTypes.string,
   nombre: PropTypes.string,
   tipo: PropTypes.number,
   titulo: PropTypes.string,
-  urlImagen: PropTypes.string
+  urlImagen: PropTypes.string,
+  funcionesHandle: PropTypes.array
 };
 
 CrearEpicas.defaultProps = {
+  correo_usuario: 'rafael_antonio.gomez@uao.edu.co',
   nombre: 'Usuario',
 
   // Por defecto es un Analista

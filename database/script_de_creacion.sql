@@ -13,6 +13,34 @@ CREATE TABLE USUARIOS(
     tipo INT NOT NULL
 );
 
+-- Creación de la tabla Épicas
+CREATE TABLE EPICAS(
+    id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    correo_usuario VARCHAR(255) NOT NULL,
+    resumen VARCHAR(80) NOT NULL,
+    tipoIncidencia VARCHAR(40) NOT NULL,
+    estimacionOriginal VARCHAR(60) NOT NULL,
+    CONSTRAINT fk_usuarios_1 FOREIGN KEY (correo_usuario) REFERENCES USUARIOS(correo)
+);
+
+-- Creación de la tabla VersionesEpicas
+CREATE TABLE VERSIONES_EPICAS(
+    id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_epica INTEGER NOT NULL,
+    numVersion INTEGER NOT NULL,
+    lineaBase INTEGER NOT NULL,
+    CONSTRAINT fk_epicas_1 FOREIGN KEY (id_epica) REFERENCES EPICAS(id)
+);
+
+-- Creación de la tabla VersionesHU
+CREATE TABLE VERSIONES_HUS(
+    id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_hu INTEGER NOT NULL,
+    numVersion INTEGER NOT NULL,
+    lineaBase INTEGER NOT NULL,
+    CONSTRAINT fk_hus_1 FOREIGN KEY (id_hu) REFERENCES HUS(id)
+);
+
 -- Inserción de un usuario
 -- Al insertar un usuario, el tipo corresponde a:
 -- 1 --> Gerente
