@@ -11,6 +11,7 @@ import CrearHistorias from './pages/CrearHistorias/CrearHistorias';
 import CrearPlantillas from './pages/CrearPlantillas/CrearPlantillas';
 import CrearCriterios from './pages/CrearCriterios/CrearCriterios';
 import CrearProyectos from './pages/CrearProyectos/CrearProyectos';
+import VerEpicas from './pages/VerEpicas/VerEpicas';
 
 import './App.css';
 import {
@@ -39,6 +40,9 @@ function App() {
         <Route path="/plantillas-analistas/crear-plantillas" element={<CrearPlantillas />} />
         <Route path="/criterios-analistas/crear-criterios" element={<CrearCriterios />} />
         <Route path="/proyectos-analistas/crear-proyectos" element={<CrearProyectos />} />
+
+        {/* Ver */}
+        <Route path="/epicas-analistas/ver-epicas" element={<VerEpicas />} />
       </Routes>
     </Router>
   );

@@ -15,6 +15,10 @@ const EpicasAnalistas = (props) => {
     navigate('/epicas-analistas/crear-epicas');
   }
 
+  function irVerEpicas() {
+    navigate('/epicas-analistas/ver-epicas');
+  }
+
   return (
     <div className={styles.EpicasAnalistas}>
       <MenuLateral nombre={props.nombre} />
@@ -24,7 +28,7 @@ const EpicasAnalistas = (props) => {
         <div className={styles.SegundoContenedorPagina}>
           <Boton onClick={irCrear} texto={props.texto[0]} />
           <Boton texto={props.texto[1]} icono={faFileArrowDown} />
-          <Boton texto={props.texto[2]} icono={faFolder} />
+          <Boton onClick={irVerEpicas} texto={props.texto[2]} icono={faFolder} />
         </div>
       </div>
     </div>
@@ -34,7 +38,7 @@ EpicasAnalistas.propTypes = {
   nombre: PropTypes.string,
   tipo: PropTypes.number,
   titulo: PropTypes.string,
-  texto: PropTypes.array,
+  texto: PropTypes.array
 };
 
 EpicasAnalistas.defaultProps = {
