@@ -9,7 +9,7 @@ module.exports = function(app, connection) {
     app.route('/epicas')
 
         .get((req, res) => {
-            
+            cEpicas.getEpicas(connection, req, res);
         })
 
         .post((req, res) => {

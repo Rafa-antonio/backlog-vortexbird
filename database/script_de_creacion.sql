@@ -53,3 +53,10 @@ INSERT INTO USUARIOS VALUES('rafael_antonio.gomez@uao.edu.co', 'rafa_antonio.gom
 SELECT nombre FROM USUARIOS WHERE (correo = 'rafael_antonio.gomez@uao.edu.co' 
     OR usuario = 'rafa_antonio.gomez') AND contrasena = '123456';
 
+-- Inserción de Epica
+INSERT INTO EPICAS(correo_usuario, resumen, tipoIncidencia, estimacionOriginal) 
+    VALUES('rafael_antonio.gomez@uao.edu.co', 'Prueba resumen', 'Prueba tipo' , 'Prueba estimación');
+
+    INSERT INTO EPICAS(correo_usuario, resumen, tipoIncidencia, estimacionOriginal) 
+    VALUES('rafael_antonio.gomez@uao.edu.co', 'Prueba resumen2', 'Prueba tipo2' , 'Prueba estimación2');
+

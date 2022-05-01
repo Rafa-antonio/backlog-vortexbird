@@ -1,10 +1,11 @@
 const cVersiones = require('./versiones.controller');
 
-// Listar épicas
+// Obtener épicas
 exports.getEpicas =  (connection, req, res) => {
     connection.query('SELECT * FROM EPICAS', (err, results, fields) => {
         if (err) res.status(500).send('Ocurrió un error');
-        console.log(results);
+
+        res.send(results);
     })
 }
 

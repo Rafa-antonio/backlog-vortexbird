@@ -14,7 +14,7 @@ class EpicasService {
 
     // Obtener épicas
     async obtenerEpicas() {
-        return axios.get('http://localhost:3001/epicas')
+        return await axios.get('http://localhost:3001/epicas');
     }
 }
 
