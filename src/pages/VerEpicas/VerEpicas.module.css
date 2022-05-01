@@ -1,7 +1,7 @@
 .VerEpicas {
     display: grid;
     grid-template-columns: 15% 85%;
-    min-height: 100vh;
+    height: 100vh;
 }
 
 .ContenedorPagina {
@@ -25,8 +25,9 @@ table th {
 
 table th, table td{    
     text-align: center;
-    border: 1px solid rgba(0,0,0,.1);
+    border: 1px solid rgba(0,0,0,.3);
     font-family: 'Barlow-Regular';
+    padding: 1rem;
 }
 
 table td {

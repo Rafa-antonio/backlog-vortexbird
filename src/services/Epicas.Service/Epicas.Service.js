@@ -11,6 +11,11 @@ class EpicasService {
             estimacionOriginal: estimacionOriginal
         })
     }
+
+    // Obtener épicas
+    async obtenerEpicas() {
+        return axios.get('http://localhost:3001/epicas')
+    }
 }
 
 export default new EpicasService();

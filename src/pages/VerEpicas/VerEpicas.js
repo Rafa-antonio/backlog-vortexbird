@@ -1,10 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './VerEpicas.module.css';
+import { useEffect } from 'react';
 import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
+import EpicasService from '../../services/Epicas.Service/Epicas.Service';
 
 const VerEpicas = (props) => {
+
+  useEffect(() => {
+    let promesaResultados = EpicasService.obtenerEpicas();
+
+    promesaResultados
+      .then((datos) => {
+        let id = datos.data.id;
+        let correo_usuario = datos.data.correo_usuario;
+        let resumen = datos.data.resumen;
+        let tipoIncidencia = datos.data.tipoIncidencia;
+        let estimacionOriginal = datos.data.estimacionOriginal;
+
+        props.epicas = [id, correo_usuario, resumen, tipoIncidencia, estimacionOriginal];
+      })
+      .catch((err) => {
+        alert('Ocurrió un error al intentar obtener todas las épicas creadas.');
+        console.log(err);
+      })
+  }, [])
 
   return (
     <div className={styles.VerEpicas}>
@@ -24,96 +45,6 @@ const VerEpicas = (props) => {
               })
             }
           </tr>
-          <tr>
-            <td>Prueba1</td>
-            <td>Prueba2</td>
-            <td>Prueba3</td>
-          </tr>
-          <tr>
-            <td>Prueba4</td>
-            <td>Prueba5</td>
-            <td>Prueba6</td>
-          </tr>
-          <tr>
-            <td>Prueba7</td>
-            <td>Prueba8</td>
-            <td>Prueba9</td>
-          </tr>
-          <tr>
-            <td>Prueba7</td>
-            <td>Prueba8</td>
-            <td>Prueba9</td>
-          </tr>
-          <tr>
-            <td>Prueba7</td>
-            <td>Prueba8</td>
-            <td>Prueba9</td>
-          </tr>
-          <tr>
-            <td>Prueba7</td>
-            <td>Prueba8</td>
-            <td>Prueba9</td>
-          </tr>
-          <tr>
-            <td>Prueba7</td>
-            <td>Prueba8</td>
-            <td>Prueba9</td>
-          </tr>
-          <tr>
-            <td>Prueba7</td>
-            <td>Prueba8</td>
-            <td>Prueba9</td>
-          </tr>
-          <tr>
-            <td>Prueba7</td>
-            <td>Prueba8</td>
-            <td>Prueba9</td>
-          </tr>
-          <tr>
-            <td>Prueba7</td>
-            <td>Prueba8</td>
-            <td>Prueba9</td>
-          </tr>
-          <tr>
-            <td>Prueba7</td>
-            <td>Prueba8</td>
-            <td>Prueba9</td>
-          </tr>
-          <tr>
-            <td>Prueba7</td>
-            <td>Prueba8</td>
-            <td>Prueba9</td>
-          </tr>
-          <tr>
-            <td>Prueba7</td>
-            <td>Prueba8</td>
-            <td>Prueba9</td>
-          </tr>
-          <tr>
-            <td>Prueba7</td>
-            <td>Prueba8</td>
-            <td>Prueba9</td>
-          </tr>
-          <tr>
-            <td>Prueba7</td>
-            <td>Prueba8</td>
-            <td>Prueba9</td>
-          </tr>
-          <tr>
-            <td>Prueba7</td>
-            <td>Prueba8</td>
-            <td>Prueba9</td>
-          </tr>
-          <tr>
-            <td>Prueba7</td>
-            <td>Prueba8</td>
-            <td>Prueba9</td>
-          </tr>
-          <tr>
-            <td>Prueba7</td>
-            <td>Prueba8</td>
-            <td>Prueba9</td>
-          </tr>
         </table>
       </div>
     </div>
@@ -124,7 +55,8 @@ VerEpicas.propTypes = {
   tipo: PropTypes.number,
   titulo: PropTypes.string,
   urlImagen: PropTypes.string,
-  columnasTabla: PropTypes.array
+  columnasTabla: PropTypes.array,
+  epicas: PropTypes.array
 };
 
 VerEpicas.defaultProps = {
@@ -136,6 +68,9 @@ VerEpicas.defaultProps = {
   urlImagen: '../usuario-analista-crop.png',
   columnasTabla: [
     'Id', 'Correo del usuario', 'Resumen', 'Tipo incidencia', 'Estimación original'
+  ],
+  epicas: [
+    ['1', 'Prueba', 'Es una prueba', "It's a prove", 'Probando']
   ]
 };
 
