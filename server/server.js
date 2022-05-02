@@ -6,6 +6,7 @@ const mysql = require('mysql');
 const rUsuarios = require('./routes/usuarios.routes');
 const rEpicas = require('./routes/epicas.routes');
 const rVersiones = require('./routes/versiones.routes');
+const rHistorias = require('./routes/historias.routes');
 
 const connection = mysql.createConnection(
     {
@@ -30,6 +31,7 @@ app.use(express.json());
 rUsuarios(app, connection);
 rEpicas(app, connection);
 rVersiones(app, connection);
+rHistorias(app, connection);
 
 app.listen(3001, () => {
   console.log('Server on port 3001');

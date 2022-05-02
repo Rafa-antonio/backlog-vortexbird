@@ -13,14 +13,44 @@ CREATE TABLE USUARIOS(
     tipo INT NOT NULL
 );
 
+-- Creación de la tabla Plantillas
+CREATE TABLE PLANTILLAS(
+    id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    pruebasUnitarias INTEGER NOT NULL,
+    pruebasCalidadCodigo INTEGER NOT NULL,
+    pruebasFuncionales INTEGER NOT NULL,
+    requisitosNFuncionales INTEGER NOT NULL,
+    documentacion INTEGER NOT NULL,
+    tipo VARCHAR(5) NOT NULL
+);
+
+-- Creación de proyectos
+CREATE TABLE PROYECTOS(
+    id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(60) NOT NULL,
+    descripcion VARCHAR(100) NOT NULL,
+    id_plantillas INTEGER NULL
+);
+
 -- Creación de la tabla Épicas
 CREATE TABLE EPICAS(
     id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
     correo_usuario VARCHAR(255) NOT NULL,
+    id_proyecto INTEGER NULL,
     resumen VARCHAR(80) NOT NULL,
     tipoIncidencia VARCHAR(40) NOT NULL,
     estimacionOriginal VARCHAR(60) NOT NULL,
     CONSTRAINT fk_usuarios_1 FOREIGN KEY (correo_usuario) REFERENCES USUARIOS(correo)
+);
+
+-- Creación de las historias de usuario
+CREATE TABLE HUS(
+    id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_epica INTEGER NULL,
+    id_plantilla INTEGER NULL,
+    usuario VARCHAR(100) NOT NULL,
+    necesidad VARCHAR(100) NOT NULL,
+    objetivo VARCHAR(100) NOT NULL
 );
 
 -- Creación de la tabla VersionesEpicas
@@ -57,6 +87,9 @@ SELECT nombre FROM USUARIOS WHERE (correo = 'rafael_antonio.gomez@uao.edu.co'
 INSERT INTO EPICAS(correo_usuario, resumen, tipoIncidencia, estimacionOriginal) 
     VALUES('rafael_antonio.gomez@uao.edu.co', 'Prueba resumen', 'Prueba tipo' , 'Prueba estimación');
 
-    INSERT INTO EPICAS(correo_usuario, resumen, tipoIncidencia, estimacionOriginal) 
+INSERT INTO EPICAS(correo_usuario, resumen, tipoIncidencia, estimacionOriginal) 
     VALUES('rafael_antonio.gomez@uao.edu.co', 'Prueba resumen2', 'Prueba tipo2' , 'Prueba estimación2');
+
+-- Inserción de versiones_hus
+INSERT INTO VERSIONES_HUS(id_hu, numVersion, lineaBase) VALUES(1, 1, 1);
 

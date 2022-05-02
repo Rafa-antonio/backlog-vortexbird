@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './CrearEpicas.module.css';
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
 import FormularioCrear from '../../components/FormularioCrear/FormularioCrear';
@@ -12,7 +11,8 @@ import BotonCrearElemento from '../../components/BotonCrearElemento/BotonCrearEl
 import EpicasService from '../../services/Epicas.Service/Epicas.Service';
 
 const CrearEpicas = (props) => {
-  
+
+  const location = useLocation();
   const [resumen, setResumen] = useState();
   const [tipoIncidencia, setTipoIncidencia] = useState();
   const [estimacionOriginal, setEstimacionOriginal] = useState();

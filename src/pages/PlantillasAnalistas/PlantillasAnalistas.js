@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './PlantillasAnalistas.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
 import Boton from '../../components/Boton/Boton';
@@ -10,14 +10,20 @@ import { faFileArrowDown } from '@fortawesome/free-solid-svg-icons';
 
 const PlantillasAnalistas = (props) => {
 
+  const location = useLocation();
+
   let navigate = useNavigate();
   function irCrear() {
-    navigate('/plantillas-analistas/crear-plantillas');
+    if (location.state) {
+      navigate('/plantillas-analistas/crear-plantillas', {state: { nombre: location.state.nombre }} );
+    } else {
+      navigate('/plantillas-analistas/crear-plantillas', {state: { nombre: props.nombre }} );
+    }
   }
 
   return (
     <div className={styles.PlantillasAnalistas}>
-      <MenuLateral nombre={props.nombre} />
+      <MenuLateral nombre={location.state ? location.state.nombre : 'Usuario'} />
 
       <div className={styles.ContenedorPagina}>
         <HeaderSesiones titulo={props.titulo} />

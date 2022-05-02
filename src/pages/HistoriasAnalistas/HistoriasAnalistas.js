@@ -4,20 +4,26 @@ import styles from './HistoriasAnalistas.module.css';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
 import Boton from '../../components/Boton/Boton';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { faFileArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { faFolder } from '@fortawesome/free-solid-svg-icons';
 
 const HistoriasAnalistas = (props) => {
 
-  let navigate = useNavigate();
+  const location = useLocation();
+
+  let navigate = useNavigate(); 
   function clickCrear() {
-    navigate('/historias-analistas/crear-historias');
+    if (location.state) {
+      navigate('/historias-analistas/crear-historias', { state: { nombre: location.state.nombre }});
+    } else {
+      navigate('/historias-analistas/crear-historias', { state: { nombre: props.nombre }});
+    }
   }
 
   return (
   <div className={styles.HistoriasAnalistas}>
-    <MenuLateral nombre={props.nombre} />
+    <MenuLateral nombre={location.state ? location.state.nombre : props.nombre } />
     
     <div className={styles.ContenedorPagina}>
       <HeaderSesiones titulo={props.titulo} />

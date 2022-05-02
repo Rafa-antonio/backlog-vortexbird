@@ -5,35 +5,33 @@ import { useNavigate } from 'react-router-dom';
 
 const MenuLateral = (props) => {
 
-  const [nombre, setNombre] = React.useState();
-
   let navigate = useNavigate();
   function cerrarSesion() {
-    navigate('/');
+    navigate('/', { state: { nombre: props.nombre } });
   }
 
   function irInicio() {
-    navigate('/home-analistas');
+    navigate('/home-analistas', { state: { nombre: props.nombre } });
   }
 
   function irEpicas(){
-    navigate('/epicas-analistas');
+    navigate('/epicas-analistas', { state: { nombre: props.nombre } });
   }
 
   function irHistorias() {
-    navigate('/historias-analistas');
+    navigate('/historias-analistas', { state: { nombre: props.nombre } });
   }
 
   function irCriterios() {
-    navigate('/criterios-analistas');
+    navigate('/criterios-analistas', { state: { nombre: props.nombre } });
   }
 
   function irProyectos() {
-    navigate('/proyectos-analistas');
+    navigate('/proyectos-analistas', { state: { nombre: props.nombre } });
   }
 
   function irPlantillas() {
-    navigate('/plantillas-analistas');
+    navigate('/plantillas-analistas', { state: { nombre: props.nombre } });
   }
 
   return (

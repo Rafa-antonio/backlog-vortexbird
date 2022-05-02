@@ -4,6 +4,7 @@ import styles from './Login.module.css';
 import Header from '../../components/Header/Header';
 import { useNavigate } from "react-router-dom";
 import UsuariosService from '../../services/Usuarios.Service/Usuarios.Service';
+import { Component } from 'react';
 
 function Login() {
   
@@ -22,10 +23,9 @@ function Login() {
   function IniciarSesion(e) {
     e.preventDefault();
     UsuariosService.login(usuario, contrasena)
-    
       .then(val => {
         if (val.data.name != false) {
-          navigate('/home-analistas');
+          navigate('/home-analistas', {state: {nombre: "Rafa antonio"}});
         } else {
           alert('Correo/Usuario o contraseña incorrectos.');
         }

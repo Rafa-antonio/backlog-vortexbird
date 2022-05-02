@@ -16,20 +16,3 @@
     justify-self: center;
     width: 85%;
 }
-
-table th {
-    background-color: #023E8A;
-    color: white;
-    font-size: 1.5rem;
-}
-
-table th, table td{    
-    text-align: center;
-    border: 1px solid rgba(0,0,0,.3);
-    font-family: 'Barlow-Regular';
-    padding: 1rem;
-}
-
-table td {
-    font-size: 1.3rem;
-}

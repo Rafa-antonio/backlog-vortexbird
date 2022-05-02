@@ -4,24 +4,35 @@ import styles from './EpicasAnalistas.module.css';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
 import Boton from '../../components/Boton/Boton';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { faFolder } from '@fortawesome/free-solid-svg-icons';
 import { faFileArrowDown } from '@fortawesome/free-solid-svg-icons';
 
 const EpicasAnalistas = (props) => {
 
+  const location = useLocation();
+
   let navigate = useNavigate();
   function irCrear() {
-    navigate('/epicas-analistas/crear-epicas');
+    if (location.state) {
+      navigate('/epicas-analistas/crear-epicas', { state: { nombre: location.state.nombre }});
+    } else {
+      navigate('/epicas-analistas/crear-epicas', { state: { nombre: props.nombre }});
+    }
   }
 
   function irVerEpicas() {
     navigate('/epicas-analistas/ver-epicas');
+    if (location.state) {
+      navigate('/epicas-analistas/ver-epicas', { state: { nombre: location.state.nombre }});
+    } else {
+      navigate('/epicas-analistas/ver-epicas', { state: { nombre: props.nombre }});
+    }
   }
 
   return (
     <div className={styles.EpicasAnalistas}>
-      <MenuLateral nombre={props.nombre} />
+      <MenuLateral nombre={location.state ? location.state.nombre : props.nombre } />
 
       <div className={styles.ContenedorPagina}>
         <HeaderSesiones titulo={props.titulo} />

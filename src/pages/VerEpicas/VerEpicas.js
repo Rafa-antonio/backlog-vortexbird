@@ -1,46 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './VerEpicas.module.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import EpicasService from '../../services/Epicas.Service/Epicas.Service';
+import TablaVer from '../../components/TablaVer/TablaVer';
 
 const VerEpicas = (props) => {
 
-  let epicas = [];
+  const [epicas, setEpicas] = useState([]);
+
   useEffect(() => {
-    let promesaResultados = EpicasService.obtenerEpicas();
-
-    promesaResultados
-      .then((datos) => {
-
-        let datosData = datos.data;
-        let lengthData = datosData.length;
-
-        if (lengthData > 0) {
-          for (let i = 0; i < lengthData; i++) {
-            let id = datosData[i].id;
-            let correo_usuario = datosData[i].correo_usuario;
-            let resumen = datosData[i].resumen;
-            let tipoIncidencia = datosData[i].tipoIncidencia;
-            let estimacionOriginal = datosData[i].estimacionOriginal; 
-
-            epicas.push([id, correo_usuario, resumen, tipoIncidencia, estimacionOriginal]);
-          }
-
-          alert('Se obtuvieron los datos');
-  
-
-          console.log(epicas);
-        }
-
-
-      })
-      .catch((err) => {
-        alert('Ocurrió un error al intentar obtener todas las épicas creadas.');
+    EpicasService.obtenerEpicas()
+      .then(datos => {
+          setEpicas(datos.data);
+        })
+      .catch(err => {
+        alert('Ocurrió un error');
         console.log(err);
-      })
+    })  
   }, [])
 
   return (
@@ -50,34 +29,7 @@ const VerEpicas = (props) => {
       <div className={styles.ContenedorPagina}>
         <HeaderSesiones titulo={props.titulo} />
 
-        <table>
-          <thead>
-            <tr>
-            {
-              props.columnasTabla.map((x, i) => {
-
-                return (
-                  <th>{x}</th>
-                );
-              })
-            }
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              {
-                epicas.length == 0 
-                  ? alert('No existen épicas en la base de datos.')
-                  :  epicas.map((x, i) => {
-
-                      return(
-                        <td>${x}</td>
-                      )
-                    })
-              }
-            </tr>
-          </tbody>
-        </table>
+        <TablaVer columnasTabla={props.columnasTabla} filas={epicas} />
       </div>
     </div>
   )};
@@ -87,7 +39,8 @@ VerEpicas.propTypes = {
   tipo: PropTypes.number,
   titulo: PropTypes.string,
   urlImagen: PropTypes.string,
-  columnasTabla: PropTypes.array
+  columnasTabla: PropTypes.array,
+  epicas: PropTypes.array
 };
 
 VerEpicas.defaultProps = {
@@ -99,7 +52,8 @@ VerEpicas.defaultProps = {
   urlImagen: '../usuario-analista-crop.png',
   columnasTabla: [
     'Id', 'Correo del usuario', 'Resumen', 'Tipo incidencia', 'Estimación original'
-  ]
+  ],
+  epicas: []
 };
 
 export default VerEpicas;

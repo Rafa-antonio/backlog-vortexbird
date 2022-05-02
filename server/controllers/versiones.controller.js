@@ -25,6 +25,29 @@ exports.versionParaEpica = async (connection, id_epica, res) => {
     })
 }
 
+exports.versionParaHistorias = async (connection, id_historia, res) => {
+    return await connection.query('INSERT INTO VERSIONES_HUS(??, ??, ??) VALUES(?, ?, ?)', 
+        [
+            'id_hu', 'numVersion', 'lineaBase',
+            id_historia, 1, 1
+        ], 
+        (err, result, fields) => {
+        if (err) {
+            // No se logro crear la version_hu
+            res.status(200).send({
+                hu: true,
+                version_hu: false
+            })
+        } else {
+            // Se logro crear la versión epica
+            res.status(200).send({
+                hu: true,
+                version_hu: true
+            })
+        }
+    })
+}
+
 exports.getVersiones =  (connection, req, res) => {
     connection.query('SELECT * FROM VERSIONES', (err, results, fields) => {
         if (err) res.status(500).send({error: 'Ocurrió un error'});

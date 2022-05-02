@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ProyectosAnalistas.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
 import Boton from '../../components/Boton/Boton';
@@ -10,14 +10,22 @@ import { faFolder } from '@fortawesome/free-solid-svg-icons';
 
 const ProyectosAnalistas = (props) => {
 
+  const location = useLocation();
+
   let navigate = useNavigate();
   function irCrear() {
-    navigate('/proyectos-analistas/crear-proyectos');
+
+    if (location.state) {
+      navigate('/proyectos-analistas/crear-proyectos', { state: { nombre: location.state.nombre }});
+    } else {
+      navigate('/proyectos-analistas/crear-proyectos', { state: { nombre: props.nombre }});
+    }
+
   }
 
   return (
     <div className={styles.ProyectosAnalistas}>
-      <MenuLateral nombre={props.nombre} />
+      <MenuLateral nombre={location.state ? location.state.nombre : 'Usuario'} />
 
       <div className={styles.ContenedorPagina}>
         <HeaderSesiones titulo={props.titulo} />

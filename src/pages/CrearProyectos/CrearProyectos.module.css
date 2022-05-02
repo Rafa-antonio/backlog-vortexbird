@@ -8,6 +8,7 @@
     width: 100%;
     display: grid;
     grid-template-rows: 15% 85%;
+    grid-column: 2;
 }
 
 .SegundoContenedorPagina {
