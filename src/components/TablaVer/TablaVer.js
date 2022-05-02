@@ -21,14 +21,15 @@ const TablaVer = (props) => {
       <tbody>
         {
           props.filas.map((x, i) => {
-            console.log(x);
             return (
               <tr>
-                <td>{x.id}</td>
-                <td>{x.correo_usuario}</td>
-                <td>{x.resumen}</td>
-                <td>{x.tipoIncidencia}</td>
-                <td>{x.estimacionOriginal}</td>
+                {
+                  props.keys.map((y, n) => {
+                    return (
+                      <td>{x[y]}</td>
+                    )
+                  })
+                }
               </tr>
             )
           })  
@@ -39,14 +40,16 @@ const TablaVer = (props) => {
 
 TablaVer.propTypes = {
   columnasTabla: PropTypes.array,
-  filas: PropTypes.array
+  filas: PropTypes.array,
+  keys: PropTypes.array
 };
 
 TablaVer.defaultProps = {
   columnasTabla: [
     'Id', 'Correo del usuario', 'Resumen', 'Tipo incidencia', 'Estimación original'
   ],
-  filas: []
+  filas: [],
+  keys: []
 };
 
 export default TablaVer;

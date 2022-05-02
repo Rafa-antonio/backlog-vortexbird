@@ -52,7 +52,7 @@ const CrearEpicas = (props) => {
 
   return (
     <div className={styles.CrearEpicas}>
-      <MenuLateral urlImagen={props.urlImagen} nombre={props.nombre} />
+      <MenuLateral urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre } />
 
       <div className={styles.ContenedorPagina}>
         <HeaderSesiones titulo={props.titulo} />

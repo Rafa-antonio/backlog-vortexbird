@@ -11,9 +11,8 @@ import { faFileArrowDown } from '@fortawesome/free-solid-svg-icons';
 const EpicasAnalistas = (props) => {
 
   const location = useLocation();
-
   let navigate = useNavigate();
-  function irCrear() {
+  function irCrear() {    
     if (location.state) {
       navigate('/epicas-analistas/crear-epicas', { state: { nombre: location.state.nombre }});
     } else {

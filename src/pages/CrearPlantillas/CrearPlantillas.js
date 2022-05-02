@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './CrearPlantillas.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import FormularioCrearPlantilla from '../../components/FormularioCrearPlantilla/FormularioCrearPlantilla';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
 import BotonCrearElemento from '../../components/BotonCrearElemento/BotonCrearElemento';
 
 const CrearPlantillas = (props) => {
+
+  const location = useLocation();
 
   let navigate = useNavigate();
   function clickCrear(){ 
@@ -16,7 +18,7 @@ const CrearPlantillas = (props) => {
 
   return (
   <div className={styles.CrearPlantillas}>
-    <MenuLateral urlImagen={props.urlImagen} />
+    <MenuLateral urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre } />
 
     <div className={styles.ContenedorPagina}>
       <HeaderSesiones titulo={props.titulo} />

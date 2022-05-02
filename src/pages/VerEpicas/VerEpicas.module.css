@@ -11,8 +11,3 @@
     display: grid;
     grid-template-rows: 15% 85%;
 }
-
-.ContenedorPagina table {
-    justify-self: center;
-    width: 85%;
-}

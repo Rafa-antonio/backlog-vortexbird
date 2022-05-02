@@ -21,6 +21,14 @@ const HistoriasAnalistas = (props) => {
     }
   }
 
+  function irVerHistorias() {
+    if (location.state) {
+      navigate('/historias-analistas/ver-historias', { state: { nombre: location.state.nombre }});
+    } else {
+      navigate('/historias-analistas/ver-historias', { state: { nombre: props.nombre }});
+    }
+  }
+
   return (
   <div className={styles.HistoriasAnalistas}>
     <MenuLateral nombre={location.state ? location.state.nombre : props.nombre } />
@@ -30,7 +38,7 @@ const HistoriasAnalistas = (props) => {
       <div className={styles.SegundoContenedorPagina}>
         <Boton texto={props.texto[0]} onClick={clickCrear} />
         <Boton texto={props.texto[1]} icono={faFileArrowDown} />
-        <Boton texto={props.texto[2]} icono={faFolder} />
+        <Boton texto={props.texto[2]} onClick={irVerHistorias} icono={faFolder} />
       </div>
     </div>
   </div>
