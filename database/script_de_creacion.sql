@@ -93,3 +93,19 @@ INSERT INTO EPICAS(correo_usuario, resumen, tipoIncidencia, estimacionOriginal)
 -- Inserción de versiones_hus
 INSERT INTO VERSIONES_HUS(id_hu, numVersion, lineaBase) VALUES(1, 1, 1);
 
+-- Inserción de plantilla
+INSERT INTO PLANTILLAS(pruebasUnitarias, pruebasCalidadCodigo, pruebasFuncionales, 
+    requisitosNFuncionales, documentacion, tipo) VALUES(1, 1, 1, 1, 1, 'DoD');
+
+-- Inserción de usuario con contraseña encriptada
+INSERT INTO USUARIOS(correo, usuario, contrasena, nombre, tipo) VALUES('prueba1@hotmail.com', 'prueba1',
+    AES_ENCRYPT('Prueba1', 'masterkey', 16), 'Prueba1', 2);
+
+-- Prueba de seguridad
+SELECT AES_ENCRYPT('123456', UNHEX(SHA2('masterkey', 512)), 16);
+
+-- Prueba de desencriptación
+SELECT AES_DECRYPT(0xDEC0200DCD02161732B7F8BB4C9B7D31, 'masterkey', 16);
+
+-- Traducción final
+SELECT CONVERT(0x50727565626131 USING utf8mb4);

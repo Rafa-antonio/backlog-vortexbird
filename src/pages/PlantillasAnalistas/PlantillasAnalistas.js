@@ -21,6 +21,14 @@ const PlantillasAnalistas = (props) => {
     }
   }
 
+  function irVerPlantillas() {
+    if (location.state) {
+      navigate('/plantillas-analistas/ver-plantillas', {state: { nombre: location.state.nombre }} );
+    } else {
+      navigate('/plantillas-analistas/ver-plantillas', {state: { nombre: props.nombre }} );
+    }
+  }
+
   return (
     <div className={styles.PlantillasAnalistas}>
       <MenuLateral nombre={location.state ? location.state.nombre : 'Usuario'} />
@@ -31,7 +39,7 @@ const PlantillasAnalistas = (props) => {
           <Boton texto={props.texto[0]} onClick={irCrear}/>
           <Boton texto={props.texto[1]} icono={faFileArrowDown} />
           <Boton texto={props.texto[2]} icono={faFileArrowDown} />
-          <Boton texto={props.texto[3]} icono={faFolder} />
+          <Boton texto={props.texto[3]} onClick={irVerPlantillas}  icono={faFolder} />
         </div>
       </div>
     </div>

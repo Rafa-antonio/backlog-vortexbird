@@ -6,9 +6,9 @@ const FormularioCrearPlantilla = (props) => {
 
   const maplabelsSelects = props.labelsSelects.map((x, i) => (
     <>
-      <label forHTML={props.labelsSelects[i][0]}>{props.labelsSelects[i][1]}</label>
-      <select name={props.labelsSelects[i][0]}>
-        <option value="Sí" selected>Sí</option>
+      <label forhtml={props.labelsSelects[i][0]}>{props.labelsSelects[i][1]}</label>
+      <select name={props.labelsSelects[i][0]} onChange={props.funcionesHandle[i]}>
+        <option value="Sí" defaultValue>Sí</option>
         <option value="No">No</option>
       </select>
     </>
@@ -17,9 +17,9 @@ const FormularioCrearPlantilla = (props) => {
   return (
     <div className={styles.FormularioCrearPlantilla}>
       {maplabelsSelects}
-      <label forHTML='tipo'>Tipo</label>
-      <select>
-        <option value='DoD'>DoD</option>
+      <label forhtml='tipo'>Tipo</label>
+      <select onChange={props.funcionesHandle[props.funcionesHandle.length - 1]}>
+        <option value='DoD' defaultValue>DoD</option>
         <option value='DoR'>DoR</option>
         <option value='DoUI'>DoUI</option>
       </select>
@@ -27,7 +27,8 @@ const FormularioCrearPlantilla = (props) => {
   )};
 
 FormularioCrearPlantilla.propTypes = {
-  labelsSelects: PropTypes.array  
+  labelsSelects: PropTypes.array  ,
+  funcionesHandle: PropTypes.array
 };
 
 FormularioCrearPlantilla.defaultProps = {

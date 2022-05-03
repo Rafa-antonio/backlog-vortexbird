@@ -7,12 +7,13 @@ const rUsuarios = require('./routes/usuarios.routes');
 const rEpicas = require('./routes/epicas.routes');
 const rVersiones = require('./routes/versiones.routes');
 const rHistorias = require('./routes/historias.routes');
+const rPlantillas = require('./routes/plantillas.routes');
 
 const connection = mysql.createConnection(
     {
         host     : 'localhost',
         user     : 'root',
-        password : 'masterkey',
+        password : 'root',
         database: 'vortex_bird_db'
     }
 );
@@ -32,6 +33,7 @@ rUsuarios(app, connection);
 rEpicas(app, connection);
 rVersiones(app, connection);
 rHistorias(app, connection);
+rPlantillas(app, connection);
 
 app.listen(3001, () => {
   console.log('Server on port 3001');

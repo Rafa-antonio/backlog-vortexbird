@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './CrearPlantillas.module.css';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -7,13 +7,57 @@ import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
 import BotonCrearElemento from '../../components/BotonCrearElemento/BotonCrearElemento';
 
+// Service
+import PlantillasService from '../../services/Plantillas.Service/Plantillas.Service';
+
 const CrearPlantillas = (props) => {
 
   const location = useLocation();
 
+  const [pruebasUnitarias, setPruebasUnitarias] = useState('Sí');
+  const [pruebasCalidadCodigo, setPruebasCalidadCodigo] = useState('Sí');
+  const [pruebasFuncionales, setPruebasFuncionales] = useState('Sí');
+  const [requisitosNFuncionales, setRequisitosNFuncionales] = useState('Sí');
+  const [documentacion, setDocumentacion] = useState('Sí');
+  const [tipo, setTipo] = useState('DoD');
+
+  function handlePruebasUnitarias(e) {
+    setPruebasUnitarias(e.target.value);
+  }
+
+  function handlePruebasCalidadCodigo(e) {
+    setPruebasCalidadCodigo(e.target.value);
+  }
+
+  function handlePruebasFuncionales(e) {
+    setPruebasFuncionales(e.target.value);
+  }
+
+  function handleRequisitosNFuncionales(e) {
+    setRequisitosNFuncionales(e.target.value);
+  }
+
+  function handleDocumentacion(e) {
+    setDocumentacion(e.target.value);
+  }
+
+  function handleTipo(e) {
+    setTipo(e.target.value);
+  }
+
   let navigate = useNavigate();
   function clickCrear(){ 
-    navigate('/plantillas-analistas/crear-plantillas');
+    PlantillasService.crearPlantillas(pruebasUnitarias, pruebasCalidadCodigo, pruebasFuncionales, 
+      requisitosNFuncionales, documentacion, tipo)
+        .then(datos => {
+          if (datos.data.plantillas) {
+            alert('¡Se ha creado la plantilla con éxito!');
+          }
+        })
+        .catch(err => {
+          alert('Ocurrió un error al intentar crear la plantilla.');
+          console.log(err);
+        })
   }
 
   return (
@@ -23,7 +67,7 @@ const CrearPlantillas = (props) => {
     <div className={styles.ContenedorPagina}>
       <HeaderSesiones titulo={props.titulo} />
       <div className={styles.SegundoContenedorPagina}>
-        <FormularioCrearPlantilla />
+        <FormularioCrearPlantilla funcionesHandle={[handlePruebasUnitarias, handlePruebasCalidadCodigo, handlePruebasFuncionales, handleRequisitosNFuncionales, handleDocumentacion, handleTipo]} />
         <BotonCrearElemento onClick={clickCrear} />
       </div>
     </div>
