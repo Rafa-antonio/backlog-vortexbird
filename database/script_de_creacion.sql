@@ -8,7 +8,7 @@ use vortex_bird_db;
 CREATE TABLE USUARIOS(
     correo VARCHAR(255) NOT NULL PRIMARY KEY,
     usuario VARCHAR(255) NULL,
-    contrasena VARCHAR(255) NOT NULL,
+    contrasena BLOB NOT NULL,
     nombre VARCHAR(255) NOT NULL,
     tipo INT NOT NULL
 );
@@ -98,14 +98,22 @@ INSERT INTO PLANTILLAS(pruebasUnitarias, pruebasCalidadCodigo, pruebasFuncionale
     requisitosNFuncionales, documentacion, tipo) VALUES(1, 1, 1, 1, 1, 'DoD');
 
 -- Inserción de usuario con contraseña encriptada
+-- Aquí se evidencia que masterkey es la palabra secreta
 INSERT INTO USUARIOS(correo, usuario, contrasena, nombre, tipo) VALUES('prueba1@hotmail.com', 'prueba1',
-    AES_ENCRYPT('Prueba1', 'masterkey', 16), 'Prueba1', 2);
+    AES_ENCRYPT('Prueba1', 'masterkey'), 'Prueba1', 2);
 
--- Prueba de seguridad
-SELECT AES_ENCRYPT('123456', UNHEX(SHA2('masterkey', 512)), 16);
+-- Prueba de encriptación
+SELECT AES_ENCRYPT('Prueba1', 'masterkey');
 
+-- Resultados exitosos:
+SELECT nombre FROM USUARIOS WHERE (correo = 'prueba' OR usuario = 'prueba1') AND contrasena = 0xDEC0200DCD02161732B7F8BB4C9B7D31;
+
+-- Modificar la columna contrasena de la tabla de usuarios
+ALTER TABLE USUARIOS MODIFY COLUMN contrasena BLOB NOT NULL;
+
+-- Adicionales
 -- Prueba de desencriptación
-SELECT AES_DECRYPT(0xDEC0200DCD02161732B7F8BB4C9B7D31, 'masterkey', 16);
-
+SELECT AES_DECRYPT(0xDEC0200DCD02161732B7F8BB4C9B7D31, 'masterkey');
 -- Traducción final
-SELECT CONVERT(0x50727565626131 USING utf8mb4);
+SELECT CONVERT(AES_DECRYPT(0xDEC0200DCD02161732B7F8BB4C9B7D31, 'masterkey') USING utf8mb4) AS CONTRASENA;
+

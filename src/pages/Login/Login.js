@@ -23,8 +23,8 @@ function Login() {
   function IniciarSesion(e) {
     e.preventDefault();
     UsuariosService.login(usuario, contrasena)
-      .then(val => {
-        if (val.data.name != false) {
+      .then(datos => {
+        if (datos.data.nombre != false) {
           navigate('/home-analistas', {state: {nombre: "Rafa antonio"}});
         } else {
           alert('Correo/Usuario o contraseña incorrectos.');
