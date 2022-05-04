@@ -7,7 +7,7 @@ const FormularioCrear = (props) => {
   const maplabelsInputs = props.labelsInputs.map((x, i) => (
       <>
         <label forhtml={props.labelsInputs[i][0]}>{props.labelsInputs[i][1]}</label>
-        <input name={props.labelsInputs[i][0]} id={props.labelsInputs[i][0]} placeholder={props.labelsInputs[i][2]} onChange={props.funcionesHandle[i]} />
+        <input name={props.labelsInputs[i][0]} id={props.labelsInputs[i][0]} placeholder={props.labelsInputs[i][2]} onChange={props.funcionesHandle[i]} value={props.values[i]}/>
       </>
   ));
 
@@ -19,7 +19,8 @@ const FormularioCrear = (props) => {
 
 FormularioCrear.propTypes = {
   labelsInputs: PropTypes.array,
-  funcionesHandle: PropTypes.array
+  funcionesHandle: PropTypes.array,
+  values: PropTypes.array
 };
 
 FormularioCrear.defaultProps = {
@@ -32,7 +33,8 @@ FormularioCrear.defaultProps = {
     'handleResumen',
     'handleTipo',
     'handleEstimacion',
-  ]
+  ],
+  values: ['resumen', 'tipoIncidencia', 'estimacionOriginal']
 };
 
 export default FormularioCrear;

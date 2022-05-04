@@ -11,7 +11,7 @@ const HomeAnalistas = (props) => {
 
   return (
   <div className={styles.HomeAnalistas}>
-    <MenuLateral nombre={location.state ? location.state.nombre : 'Usuario'} />
+    <MenuLateral nombre={location.state ? location.state.nombre : props.nombre} correo={location.state ? location.state.correo : props.correo}/>
 
     <div className={styles.ContenedorPagina}>
       <HeaderSesiones titulo='Inicio - Analistas' />
@@ -20,11 +20,13 @@ const HomeAnalistas = (props) => {
   )};
 
 HomeAnalistas.propTypes = {
-  nombre: PropTypes.string
+  nombre: PropTypes.string,
+  correo: PropTypes.string
 };
 
 HomeAnalistas.defaultProps = {
-  nombre: "Usuario"
+  nombre: "Usuario",
+  correo: "prueba@hotmail.com"
 };
 
 export default HomeAnalistas;

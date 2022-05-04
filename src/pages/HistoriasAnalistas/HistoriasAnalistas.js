@@ -15,23 +15,23 @@ const HistoriasAnalistas = (props) => {
   let navigate = useNavigate(); 
   function clickCrear() {
     if (location.state) {
-      navigate('/historias-analistas/crear-historias', { state: { nombre: location.state.nombre }});
+      navigate('/historias-analistas/crear-historias', { state: { nombre: location.state.nombre, correo: location.state.correo }});
     } else {
-      navigate('/historias-analistas/crear-historias', { state: { nombre: props.nombre }});
+      navigate('/historias-analistas/crear-historias', { state: { nombre: props.nombre, correo: props.correo }});
     }
   }
 
   function irVerHistorias() {
     if (location.state) {
-      navigate('/historias-analistas/ver-historias', { state: { nombre: location.state.nombre }});
+      navigate('/historias-analistas/ver-historias', { state: { nombre: location.state.nombre, correo: location.state.correo }});
     } else {
-      navigate('/historias-analistas/ver-historias', { state: { nombre: props.nombre }});
+      navigate('/historias-analistas/ver-historias', { state: { nombre: props.nombre, correo: props.correo }});
     }
   }
 
   return (
   <div className={styles.HistoriasAnalistas}>
-    <MenuLateral nombre={location.state ? location.state.nombre : props.nombre } />
+    <MenuLateral nombre={location.state ? location.state.nombre : props.nombre } correo={location.state ? location.state.correo : props.correo}/>
     
     <div className={styles.ContenedorPagina}>
       <HeaderSesiones titulo={props.titulo} />
@@ -46,6 +46,7 @@ const HistoriasAnalistas = (props) => {
 
 HistoriasAnalistas.propTypes = {
   nombre: PropTypes.string,
+  correo: PropTypes.string,
   tipo: PropTypes.number,
   titulo: PropTypes.string,
   texto: PropTypes.array
@@ -53,6 +54,7 @@ HistoriasAnalistas.propTypes = {
 
 HistoriasAnalistas.defaultProps = {
   nombre: 'Usuario',
+  correo: 'prueba@hotmail.com',
 
   // Por defecto es un Analista
   tipo: 2,

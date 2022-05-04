@@ -19,8 +19,13 @@ const VerHU = (props) => {
   useEffect(() => {
     HistoriasService.obtenerHistorias()
       .then(datos => {
-        setKeys(Object.keys(datos.data[0]));
-        setHUS(datos.data);
+
+        if (datos.data.length > 0) {
+          setKeys(Object.keys(datos.data[0]));
+          setHUS(datos.data);
+        } else {
+          alert('No se encontrar Historias de usuario en la base de datos.');
+        }
       })
       .catch(err => {
         alert('Ocurrió un error al intentar obtener las historias de usuario');
@@ -30,7 +35,7 @@ const VerHU = (props) => {
 
   return (
     <div className={styles.VerHU}>
-      <MenuLateral urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre} />
+      <MenuLateral urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre} correo={location.state ? location.state.correo : props.correo} />
 
       <div className={styles.ContenedorPagina}>
         <HeaderSesiones titulo={props.titulo} />
@@ -42,22 +47,28 @@ const VerHU = (props) => {
 
 VerHU.propTypes = {
   nombre: PropTypes.string,
+  correo: PropTypes.string,
   tipo: PropTypes.number,
   titulo: PropTypes.string,
   urlImagen: PropTypes.string,
   columnasTabla: PropTypes.array,
+  filas: PropTypes.array,
+  keys: PropTypes.array
 };
 
 VerHU.defaultProps = {
   nombre: 'Usuario',
+  correo: 'prueba@hotmail.com',
 
   // Por defecto es un Analista
   tipo: 2,
   titulo: "HU/Ver HU'S",
   urlImagen: '../usuario-analista-crop.png',
   columnasTabla: [
-    'Id', 'Usuario', 'Necesidad', 'Objetivo'
-  ]
+    'Id', 'Id épica asociada', 'Id plantilla asociada', 'Usuario', 'Necesidad', 'Objetivo'
+  ],
+  filas: [],
+  keys: []
 };
 
 export default VerHU;

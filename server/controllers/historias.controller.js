@@ -24,7 +24,7 @@ exports.postHistorias = (connection, req, res) => {
 }
 
 exports.getHistorias = (connection, req, res) => {
-    connection.query('SELECT id, usuario, necesidad, objetivo FROM HUS', (err, results, fields) => {
+    connection.query('SELECT * FROM HUS', (err, results, fields) => {
         if (err) {
             res.status(500).send('Ocurrió un error');
         } else {

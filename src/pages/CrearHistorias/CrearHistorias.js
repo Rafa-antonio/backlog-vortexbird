@@ -13,29 +13,10 @@ import HistoriasService from '../../services/Historias.Service/Historias.Service
 const CrearHistorias = (props) => {
 
   const location = useLocation();
-  let navigate = useNavigate();
-  function clickCrear(){ 
-    let respuesta = HistoriasService.crearHistorias(usuario, necesidad, objetivo);
 
-    respuesta
-      .then((datos) => {
-        let seCreoHU = datos.data.hu;
-        let seCreoVersionHU = datos.data.version_hu;
-
-        if (seCreoHU && seCreoVersionHU) {
-          alert('¡Se ha creado con éxito la historia de usuario!');
-        } else {
-          alert('¡Se ha creado con éxito la historia de usuario (Sin su versión inicial)!');
-        }
-      })
-      .catch((err) => {
-        alert('Ocurrió un error al momento de intentar crear la historia de usuario.');
-      })
-  }
-
-  const [usuario, setUsuario] = useState();
-  const [necesidad, setNecesidad] = useState();
-  const [objetivo, setObjetivo] = useState();
+  const [usuario, setUsuario] = useState('');
+  const [necesidad, setNecesidad] = useState('');
+  const [objetivo, setObjetivo] = useState('');
 
   function handleUsuario(e) {
     setUsuario(e.target.value);
@@ -49,14 +30,40 @@ const CrearHistorias = (props) => {
     setObjetivo(e.target.value);
   }
 
+  let navigate = useNavigate();
+  function clickCrear(){ 
+    let respuesta = HistoriasService.crearHistorias(usuario, necesidad, objetivo);
+
+    respuesta
+      .then((datos) => {
+        let seCreoHU = datos.data.hu;
+        let seCreoVersionHU = datos.data.version_hu;
+
+        if (seCreoHU && seCreoVersionHU) {
+          alert('¡Se ha creado con éxito la historia de usuario!');
+          setUsuario('');
+          setNecesidad('');
+          setObjetivo('');
+        } else {
+          alert('¡Se ha creado con éxito la historia de usuario (Sin su versión inicial)!');
+          setUsuario('');
+          setNecesidad('');
+          setObjetivo('');
+        }
+      })
+      .catch((err) => {
+        alert('Ocurrió un error al momento de intentar crear la historia de usuario.');
+      })
+  }
+
   return (
     <div className={styles.CrearHistorias} onClick={props.onClick}>
-      <MenuLateral urlImagen={props.urlImagen}  nombre={location.state ? location.state.nombre : props.nombre} />
+      <MenuLateral urlImagen={props.urlImagen}  nombre={location.state ? location.state.nombre : props.nombre} correo={location.state ? location.state.correo : props.correo} />
 
       <div className={styles.ContenedorPagina}>
         <HeaderSesiones titulo={props.titulo} />
         <div className={styles.SegundoContenedorPagina}>
-          <FormularioCrear labelsInputs={props.labelsInputs} funcionesHandle={[handleUsuario, handleNecesidad, handleObjetivo]}/>
+          <FormularioCrear labelsInputs={props.labelsInputs} funcionesHandle={[handleUsuario, handleNecesidad, handleObjetivo]} values={[usuario, necesidad, objetivo]}/>
           <BotonCrearElemento onClick={clickCrear} />
         </div>
       </div>
@@ -66,6 +73,7 @@ const CrearHistorias = (props) => {
 
 CrearHistorias.propTypes = {
   nombre: PropTypes.string,
+  correo: PropTypes.string,
   tipo: PropTypes.number,
   titulo: PropTypes.string,
   urlImagen: PropTypes.string,
@@ -74,6 +82,7 @@ CrearHistorias.propTypes = {
 
 CrearHistorias.defaultProps = {
   nombre: 'Usuario',
+  correo: 'prueba@hotmail.com',
 
   // Por defecto es un Analista
   tipo: 2,

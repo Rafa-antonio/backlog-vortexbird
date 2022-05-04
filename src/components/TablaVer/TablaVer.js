@@ -25,9 +25,16 @@ const TablaVer = (props) => {
               <tr>
                 {
                   props.keys.map((y, n) => {
-                    return (
-                      <td>{x[y]}</td>
-                    )
+                    if (x[y] != null) {
+                      return (
+                        <td>{x[y]}</td>
+                      )
+                    } else {
+                      return (
+                        <td>{'No asociado'}</td>
+                      )
+                    }
+                    
                   })
                 }
               </tr>

@@ -7,7 +7,7 @@ const FormularioCrearPlantilla = (props) => {
   const maplabelsSelects = props.labelsSelects.map((x, i) => (
     <>
       <label forhtml={props.labelsSelects[i][0]}>{props.labelsSelects[i][1]}</label>
-      <select name={props.labelsSelects[i][0]} onChange={props.funcionesHandle[i]}>
+      <select name={props.labelsSelects[i][0]} onChange={props.funcionesHandle[i]} value={props.values[i]}>
         <option value="Sí" defaultValue>Sí</option>
         <option value="No">No</option>
       </select>
@@ -18,7 +18,7 @@ const FormularioCrearPlantilla = (props) => {
     <div className={styles.FormularioCrearPlantilla}>
       {maplabelsSelects}
       <label forhtml='tipo'>Tipo</label>
-      <select onChange={props.funcionesHandle[props.funcionesHandle.length - 1]}>
+      <select onChange={props.funcionesHandle[props.funcionesHandle.length - 1]} value={props.values[props.values.length - 1]}>
         <option value='DoD' defaultValue>DoD</option>
         <option value='DoR'>DoR</option>
         <option value='DoUI'>DoUI</option>

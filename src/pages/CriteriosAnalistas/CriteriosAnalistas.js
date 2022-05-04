@@ -15,15 +15,15 @@ const CriteriosAnalistas = (props) => {
   let navigate = useNavigate();
   function irCrear() {
     if (location.state) {
-      navigate('/criterios-analistas/crear-criterios', { state: { nombre: location.state.nombre } });
+      navigate('/criterios-analistas/crear-criterios', { state: { nombre: location.state.nombre, correo: location.state.correo } });
     } else {
-      navigate('/criterios-analistas/crear-criterios', { state: { nombre: props.nombre } });
+      navigate('/criterios-analistas/crear-criterios', { state: { nombre: props.nombre, correo: props.correo } });
     }
   }
 
   return (
     <div className={styles.CriteriosAnalistas}>
-      <MenuLateral nombre={location.state ? location.state.nombre : props.nombre} />
+      <MenuLateral nombre={location.state ? location.state.nombre : props.nombre} correo={location.state ? location.state.correo : props.correo} />
 
       <div className={styles.ContenedorPagina}>
         <HeaderSesiones titulo={props.titulo} />
@@ -38,6 +38,7 @@ const CriteriosAnalistas = (props) => {
 
 CriteriosAnalistas.propTypes = {
   nombre: PropTypes.string,
+  correo: PropTypes.string,
   tipo: PropTypes.number,
   titulo: PropTypes.string,
   texto: PropTypes.array
@@ -45,6 +46,7 @@ CriteriosAnalistas.propTypes = {
 
 CriteriosAnalistas.defaultProps = {
   nombre: 'Usuario',
+  correo: 'prueba@hotmail.com',
 
   // Por defecto es un Analista
   tipo: 2,

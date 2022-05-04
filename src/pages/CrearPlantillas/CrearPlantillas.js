@@ -52,6 +52,12 @@ const CrearPlantillas = (props) => {
         .then(datos => {
           if (datos.data.plantillas) {
             alert('¡Se ha creado la plantilla con éxito!');
+            setPruebasUnitarias('Sí');
+            setPruebasCalidadCodigo('Sí');
+            setPruebasFuncionales('Sí');
+            setRequisitosNFuncionales('Sí');
+            setDocumentacion('Sí');
+            setTipo('Sí');
           }
         })
         .catch(err => {
@@ -62,12 +68,12 @@ const CrearPlantillas = (props) => {
 
   return (
   <div className={styles.CrearPlantillas}>
-    <MenuLateral urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre } />
+    <MenuLateral urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre } correo={location.state ? location.state.correo : props.correo} />
 
     <div className={styles.ContenedorPagina}>
       <HeaderSesiones titulo={props.titulo} />
       <div className={styles.SegundoContenedorPagina}>
-        <FormularioCrearPlantilla funcionesHandle={[handlePruebasUnitarias, handlePruebasCalidadCodigo, handlePruebasFuncionales, handleRequisitosNFuncionales, handleDocumentacion, handleTipo]} />
+        <FormularioCrearPlantilla funcionesHandle={[handlePruebasUnitarias, handlePruebasCalidadCodigo, handlePruebasFuncionales, handleRequisitosNFuncionales, handleDocumentacion, handleTipo]} values={[pruebasUnitarias, pruebasCalidadCodigo, pruebasFuncionales, requisitosNFuncionales, documentacion, tipo]} />
         <BotonCrearElemento onClick={clickCrear} />
       </div>
     </div>
@@ -76,6 +82,7 @@ const CrearPlantillas = (props) => {
 
 CrearPlantillas.propTypes = {
   nombre: PropTypes.string,
+  correo: PropTypes.string,
   tipo: PropTypes.number,
   titulo: PropTypes.string,
   urlImagen: PropTypes.string
@@ -83,6 +90,7 @@ CrearPlantillas.propTypes = {
 
 CrearPlantillas.defaultProps = {
   nombre: 'Usuario',
+  correo: 'prueba@hotmail.com',
 
   // Por defecto es un Analista
   tipo: 2,

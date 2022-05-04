@@ -13,12 +13,12 @@ const CrearProyectos = (props) => {
 
   let navigate = useNavigate();
   function clickCrear(){ 
-    navigate('/proyectos-analistas/proyectos-historias');
+    
   }
 
   return (
     <div className={styles.CrearProyectos} onClick={props.onClick}>
-      <MenuLateral urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre } />
+      <MenuLateral urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre } correo={location.state ? location.state.correo : props.correo }/>
 
       <div className={styles.ContenedorPagina}>
         <HeaderSesiones titulo={props.titulo} />
@@ -33,6 +33,7 @@ const CrearProyectos = (props) => {
 
 CrearProyectos.propTypes = {
   nombre: PropTypes.string,
+  correo: PropTypes.string,
   tipo: PropTypes.number,
   titulo: PropTypes.string,
   urlImagen: PropTypes.string,
@@ -41,6 +42,7 @@ CrearProyectos.propTypes = {
 
 CrearProyectos.defaultProps = {
   nombre: 'Usuario',
+  correo: 'prueba@hotmail.com',
 
   // Por defecto es un Analista
   tipo: 2,

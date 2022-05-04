@@ -4,7 +4,7 @@ exports.logIn = (connection, req, res) => {
     let usuario = req.query.usuario;
     let contrasena = req.query.contrasena;
 
-    connection.query('SELECT nombre FROM USUARIOS WHERE (correo = ? OR usuario = ?) AND (contrasena = AES_ENCRYPT(?, "masterkey"))', 
+    connection.query('SELECT correo, nombre FROM USUARIOS WHERE (correo = ? OR usuario = ?) AND (contrasena = AES_ENCRYPT(?, "masterkey"))', 
         [
             correo, usuario, contrasena
         ],
@@ -13,8 +13,12 @@ exports.logIn = (connection, req, res) => {
             if (err) {
                 res.status(500).send('Ocurrió un error');
             } else {
+                console.log(correo);
                 if (results[0] != undefined) {
-                    res.status(200).send({nombre: results[0].nombre});
+                    res.status(200).send({
+                        nombre: results[0].nombre,
+                        correo: results[0].correo,
+                    });
                 } else {
                     res.status(200).send({nombre: false});
                 }

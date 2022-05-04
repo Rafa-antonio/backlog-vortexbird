@@ -13,8 +13,14 @@ const VerProyectos = () => {
     </div>
   )};
 
-VerProyectos.propTypes = {};
+VerProyectos.propTypes = {
+  nombre: PropTypes.string,
+  correo: PropTypes.string
+};
 
-VerProyectos.defaultProps = {};
+VerProyectos.defaultProps = {
+  nombre: 'Usuario',
+  correo: 'prueba@hotmail.com'
+};
 
 export default VerProyectos;

@@ -15,8 +15,14 @@ const HUProyecto = () => {
     </div>
   )};
 
-HUProyecto.propTypes = {};
+HUProyecto.propTypes = {
+  nombre: PropTypes.string,
+  correo: PropTypes.string
+};
 
-HUProyecto.defaultProps = {};
+HUProyecto.defaultProps = {
+  nombre: 'Usuario',
+  correo: 'prueba@hotmail.com'
+};
 
 export default HUProyecto;

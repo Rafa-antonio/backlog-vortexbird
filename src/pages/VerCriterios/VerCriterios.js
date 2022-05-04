@@ -13,8 +13,14 @@ const VerCriterios = () => {
     </div>
   )};
 
-VerCriterios.propTypes = {};
+VerCriterios.propTypes = {
+  nombre: PropTypes.string,
+  correo: PropTypes.string
+};
 
-VerCriterios.defaultProps = {};
+VerCriterios.defaultProps = {
+  nombre: 'Usuario',
+  correo: 'prueba@hotmail.com'
+};
 
 export default VerCriterios;

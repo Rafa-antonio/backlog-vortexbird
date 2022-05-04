@@ -102,6 +102,10 @@ INSERT INTO PLANTILLAS(pruebasUnitarias, pruebasCalidadCodigo, pruebasFuncionale
 INSERT INTO USUARIOS(correo, usuario, contrasena, nombre, tipo) VALUES('prueba1@hotmail.com', 'prueba1',
     AES_ENCRYPT('Prueba1', 'masterkey'), 'Prueba1', 2);
 
+-- Inserción de segundo usuario
+INSERT INTO USUARIOS(correo, usuario, contrasena, nombre, tipo) VALUES('usuariodiferente', 'usuariodiferente1',
+    AES_ENCRYPT('masterkey', 'masterkey'), 'Hola soy Juan', 2);
+
 -- Prueba de encriptación
 SELECT AES_ENCRYPT('Prueba1', 'masterkey');
 

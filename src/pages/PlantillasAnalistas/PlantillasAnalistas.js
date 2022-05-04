@@ -15,23 +15,23 @@ const PlantillasAnalistas = (props) => {
   let navigate = useNavigate();
   function irCrear() {
     if (location.state) {
-      navigate('/plantillas-analistas/crear-plantillas', {state: { nombre: location.state.nombre }} );
+      navigate('/plantillas-analistas/crear-plantillas', {state: { nombre: location.state.nombre, correo: location.state.correo }} );
     } else {
-      navigate('/plantillas-analistas/crear-plantillas', {state: { nombre: props.nombre }} );
+      navigate('/plantillas-analistas/crear-plantillas', {state: { nombre: props.nombre, correo: props.correo }} );
     }
   }
 
   function irVerPlantillas() {
     if (location.state) {
-      navigate('/plantillas-analistas/ver-plantillas', {state: { nombre: location.state.nombre }} );
+      navigate('/plantillas-analistas/ver-plantillas', {state: { nombre: location.state.nombre, correo: location.state.correo }} );
     } else {
-      navigate('/plantillas-analistas/ver-plantillas', {state: { nombre: props.nombre }} );
+      navigate('/plantillas-analistas/ver-plantillas', {state: { nombre: props.nombre, correo: props.correo }} );
     }
   }
 
   return (
     <div className={styles.PlantillasAnalistas}>
-      <MenuLateral nombre={location.state ? location.state.nombre : 'Usuario'} />
+      <MenuLateral nombre={location.state ? location.state.nombre : 'Usuario'} correo={location.state ? location.state.correo : props.correo} />
 
       <div className={styles.ContenedorPagina}>
         <HeaderSesiones titulo={props.titulo} />
@@ -47,6 +47,7 @@ const PlantillasAnalistas = (props) => {
 
 PlantillasAnalistas.propTypes = {
   nombre: PropTypes.string,
+  correo: PropTypes.string,
   tipo: PropTypes.number,
   titulo: PropTypes.string,
   texto: PropTypes.array
@@ -54,6 +55,7 @@ PlantillasAnalistas.propTypes = {
 
 PlantillasAnalistas.defaultProps = {
   nombre: 'Usuario',
+  correo: 'prueba@hotmail.com',
 
   // Por defecto es un Analista
   tipo: 2,

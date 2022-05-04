@@ -14,24 +14,24 @@ const EpicasAnalistas = (props) => {
   let navigate = useNavigate();
   function irCrear() {    
     if (location.state) {
-      navigate('/epicas-analistas/crear-epicas', { state: { nombre: location.state.nombre }});
+      navigate('/epicas-analistas/crear-epicas', { state: { nombre: location.state.nombre, correo: location.state.correo }});
     } else {
-      navigate('/epicas-analistas/crear-epicas', { state: { nombre: props.nombre }});
+      navigate('/epicas-analistas/crear-epicas', { state: { nombre: props.nombre, correo: props.correo }});
     }
   }
 
   function irVerEpicas() {
     navigate('/epicas-analistas/ver-epicas');
     if (location.state) {
-      navigate('/epicas-analistas/ver-epicas', { state: { nombre: location.state.nombre }});
+      navigate('/epicas-analistas/ver-epicas', { state: { nombre: location.state.nombre, correo: location.state.correo }});
     } else {
-      navigate('/epicas-analistas/ver-epicas', { state: { nombre: props.nombre }});
+      navigate('/epicas-analistas/ver-epicas', { state: { nombre: props.nombre, correo: props.correo }});
     }
   }
 
   return (
     <div className={styles.EpicasAnalistas}>
-      <MenuLateral nombre={location.state ? location.state.nombre : props.nombre } />
+      <MenuLateral nombre={location.state ? location.state.nombre : props.nombre } correo={location.state ? location.state.correo : props.correo} />
 
       <div className={styles.ContenedorPagina}>
         <HeaderSesiones titulo={props.titulo} />
@@ -46,6 +46,7 @@ const EpicasAnalistas = (props) => {
 
 EpicasAnalistas.propTypes = {
   nombre: PropTypes.string,
+  correo: PropTypes.string,
   tipo: PropTypes.number,
   titulo: PropTypes.string,
   texto: PropTypes.array
@@ -53,6 +54,7 @@ EpicasAnalistas.propTypes = {
 
 EpicasAnalistas.defaultProps = {
   nombre: 'Usuario',
+  correo: 'prueba@hotmail.com',
 
   // Por defecto es un Analista
   tipo: 2,

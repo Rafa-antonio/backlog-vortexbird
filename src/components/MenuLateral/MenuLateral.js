@@ -7,31 +7,31 @@ const MenuLateral = (props) => {
 
   let navigate = useNavigate();
   function cerrarSesion() {
-    navigate('/', { state: { nombre: props.nombre } });
+    navigate('/', { state: { nombre: props.nombre, correo: props.correo } });
   }
 
   function irInicio() {
-    navigate('/home-analistas', { state: { nombre: props.nombre } });
+    navigate('/home-analistas', { state: { nombre: props.nombre, correo: props.correo } });
   }
 
   function irEpicas(){
-    navigate('/epicas-analistas', { state: { nombre: props.nombre } });
+    navigate('/epicas-analistas', { state: { nombre: props.nombre, correo: props.correo } });
   }
 
   function irHistorias() {
-    navigate('/historias-analistas', { state: { nombre: props.nombre } });
+    navigate('/historias-analistas', { state: { nombre: props.nombre, correo: props.correo } });
   }
 
   function irCriterios() {
-    navigate('/criterios-analistas', { state: { nombre: props.nombre } });
+    navigate('/criterios-analistas', { state: { nombre: props.nombre, correo: props.correo } });
   }
 
   function irProyectos() {
-    navigate('/proyectos-analistas', { state: { nombre: props.nombre } });
+    navigate('/proyectos-analistas', { state: { nombre: props.nombre, correo: props.correo } });
   }
 
   function irPlantillas() {
-    navigate('/plantillas-analistas', { state: { nombre: props.nombre } });
+    navigate('/plantillas-analistas', { state: { nombre: props.nombre, correo: props.correo } });
   }
 
   return (
@@ -58,11 +58,13 @@ const MenuLateral = (props) => {
 
 MenuLateral.propTypes = {
   nombre: PropTypes.string,
+  correo: PropTypes.string,
   urlImagen: PropTypes.string
 };
 
 MenuLateral.defaultProps = {
   nombre: 'Usuario',
+  correo: 'prueba@hotmail.com',
   urlImagen: 'usuario-analista-crop.png'
 };
 
