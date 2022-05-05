@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './CrearProyectos.module.css';
 import { useNavigate, useLocation } from 'react-router-dom';
 import FormularioCrear from '../../components/FormularioCrear/FormularioCrear';
-import MenuLateral from '../../components/MenuLateral/MenuLateral';
+import MenuLateralAnalistas from '../../components/MenuLateralAnalistas/MenuLateralAnalistas';
 import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
 import BotonCrearElemento from '../../components/BotonCrearElemento/BotonCrearElemento';
 
@@ -18,7 +18,7 @@ const CrearProyectos = (props) => {
 
   return (
     <div className={styles.CrearProyectos} onClick={props.onClick}>
-      <MenuLateral urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre } correo={location.state ? location.state.correo : props.correo }/>
+      <MenuLateralAnalistas urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre } correo={location.state ? location.state.correo : props.correo }/>
 
       <div className={styles.ContenedorPagina}>
         <HeaderSesiones titulo={props.titulo} />

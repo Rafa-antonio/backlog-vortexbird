@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './MenuLateral.module.css';
+import styles from './MenuLateralAnalistas.module.css';
 import { useNavigate } from 'react-router-dom';
 
 const MenuLateral = (props) => {

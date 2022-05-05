@@ -6,6 +6,7 @@
 }
 
 .Section {
+    position: relative;
     min-height: calc(85vh);
     min-width: 100%;
     background-color: white;
@@ -20,6 +21,7 @@
     width: 100%;
     display: grid;
     grid-template-rows: 20% 20% 20% 20% 20%;
+    z-index: 2;
 }
 
 .Formulario label {
@@ -106,4 +108,47 @@
 
 .DivNotRobot button:hover {
     cursor: pointer;
+}
+
+.BordersNegros {
+    border: 1px solid black;
+}
+
+.BordesRojos {
+    border: 1px solid red;
+}
+
+.DivAdvertencias {
+    position: absolute;
+    top: 15%;
+    height: 70%;
+    width: 60%;
+    left: 20%;
+    display: grid;
+    grid-template-rows: 38% 10% 28% 10% 14%;
+    z-index: 1;
+}
+
+.DivAdvertencias p {
+    margin: 0;
+    align-self: flex-start;
+    justify-self: flex-start;
+    color: red;
+    font-family: 'Barlow-Regular';
+}
+
+.DivAdvertencias p:nth-child(1) {
+    grid-row: 2;
+}
+
+.DivAdvertencias p:nth-child(2) {
+    grid-row: 4;
+}
+
+.VisibleTrue {
+    visibility: visible;
+}
+
+.VisibleFalse {
+    visibility: hidden;
 }

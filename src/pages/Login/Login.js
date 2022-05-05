@@ -11,18 +11,26 @@ import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 function Login() {
   
-  const [usuario, setUsuario] = React.useState();
-  const [contrasena, setContrasena] = React.useState();
+  const [usuario, setUsuario] = React.useState('');
+  const [contrasena, setContrasena] = React.useState('');
   const [tipoInput, setTipoInput] = React.useState('password');
   const [iconoVerContrasena, seticonoVerContrasena] = React.useState(faEye);
   const [soyRobot, setSoyRobot] = React.useState(true);
+  const [campoUsuario, setCampoUsuario] = React.useState(styles.BordesNegros);
+  const [campoContrasena, setCampoContrasena] = React.useState(styles.BordesNegros);
+  const[visibleAdvertenciaUsuario, setVisibleAdvertenciaUsuario] = React.useState(styles.VisibleFalse);
+  const[visibleAdvertenciaContrasena, setVisibleAdvertenciaContrasena] = React.useState(styles.VisibleFalse);
 
   function handleUsuario(event) {
     setUsuario(event.target.value);
+    setCampoUsuario(styles.BordesNegros);
+    setVisibleAdvertenciaUsuario(styles.VisibleFalse);
   }
 
   function handleContrasena(event) {
     setContrasena(event.target.value);
+    setCampoContrasena(styles.BordesNegros);
+    setVisibleAdvertenciaContrasena(styles.VisibleFalse);
   }
 
   function handleVerContrasena(event) {
@@ -41,31 +49,53 @@ function Login() {
 
   let navigate = useNavigate();
   function IniciarSesion(e) {
+    e.preventDefault();
 
-    if (soyRobot == false) {
-      e.preventDefault();
-      let correo = usuario;
-      UsuariosService.login(correo, usuario, contrasena)
-        .then(datos => {
-          if (datos.data.nombre != false) {
-            console.log(datos.data);
-            navigate('/home-analistas', {
-              state: {
-                nombre: datos.data.nombre,
-                correo: datos.data.correo
-              }
-            });
-          } else {
-            alert('Correo/Usuario o contraseña incorrectos.');
-          }
-        })
-
-        .catch(err => {
-          console.log(err);
-          alert('Ocurrió un error');
-        })
+    // Verificamos que el campo usuario no esté vacío
+    if (usuario == '') {
+      setCampoUsuario(styles.BordesRojos);
+      setVisibleAdvertenciaUsuario(styles.VisibleTrue);
     } else {
-      alert('Por favor: confirme que no es un robot.');
+      setCampoUsuario(styles.BordesNegros);
+      setVisibleAdvertenciaUsuario(styles.VisibleFalse);
+    }
+
+    // Verificamos que el campo contrasena no esté vacío
+    if (contrasena == '') {
+      setCampoContrasena(styles.BordesRojos);
+      setVisibleAdvertenciaContrasena(styles.VisibleTrue);
+    } else {
+      setCampoContrasena(styles.BordesNegros);
+      setVisibleAdvertenciaContrasena(styles.VisibleFalse);
+    }
+
+    if (usuario != '' && contrasena != '') {
+      if (soyRobot == false) {
+        let correo = usuario;
+        UsuariosService.login(correo, usuario, contrasena)
+          .then(datos => {
+            if (datos.data.nombre != false) {
+              console.log(datos.data);
+              navigate('/home-analistas', {
+                state: {
+                  nombre: datos.data.nombre,
+                  correo: datos.data.correo
+                }
+              });
+            } else {
+              alert('Correo/Usuario o contraseña incorrectos.');
+            }
+          })
+  
+          .catch(err => {
+            console.log(err);
+            alert('Ocurrió un error');
+          })
+      } else {
+        alert('Por favor: confirme que no es un robot.');
+      }
+    } else {
+      alert('Por favor digite la información en ambos campos.');
     }
   }
 
@@ -74,11 +104,11 @@ function Login() {
       <Header></Header>
       <div className={styles.Section}>
         <form className={styles.Formulario} onSubmit={IniciarSesion}>
-          <label>Correo electrónico o nombre de usuario</label>
-          <input className={styles.Input1} type="text" name="email" id="email" onChange={handleUsuario} />
-          <label>Contraseña</label>
+          <label>Correo electrónico o nombre de usuario*</label>
+          <input className={styles.Input1 + ' ' + campoUsuario} type="text" name="email" id="email" onChange={handleUsuario} />
+          <label>Contraseña*</label>
           <div className={styles.DivFormulario}>
-            <input className={styles.Input2} type={tipoInput} name="password" id="password" onChange={handleContrasena}/>
+            <input className={styles.Input2 + ' ' + campoContrasena} type={tipoInput} name="password" id="password" onChange={handleContrasena}/>
             <FontAwesomeIcon className={styles.IconoOjo} icon={iconoVerContrasena} onClick={handleVerContrasena} />
           </div>
           <div className={styles.DivNotRobot}>
@@ -88,7 +118,12 @@ function Login() {
               <span>No soy un robot</span>
             </div>
           </div>
+
         </form>
+        <div className={styles.DivAdvertencias} >
+          <p className={visibleAdvertenciaUsuario} >El correo es requerido</p>
+          <p className={visibleAdvertenciaContrasena}>La contraseña es requerida</p>
+        </div>
       </div>
     </div>
   );

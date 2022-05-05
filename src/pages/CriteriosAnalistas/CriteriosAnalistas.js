@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './CriteriosAnalistas.module.css';
 import { useNavigate, useLocation } from 'react-router-dom';
-import MenuLateral from '../../components/MenuLateral/MenuLateral';
+import MenuLateralAnalistas from '../../components/MenuLateralAnalistas/MenuLateralAnalistas';
 import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
 import Boton from '../../components/Boton/Boton';
 import { faFileArrowDown } from '@fortawesome/free-solid-svg-icons';
@@ -23,7 +23,7 @@ const CriteriosAnalistas = (props) => {
 
   return (
     <div className={styles.CriteriosAnalistas}>
-      <MenuLateral nombre={location.state ? location.state.nombre : props.nombre} correo={location.state ? location.state.correo : props.correo} />
+      <MenuLateralAnalistas nombre={location.state ? location.state.nombre : props.nombre} correo={location.state ? location.state.correo : props.correo} />
 
       <div className={styles.ContenedorPagina}>
         <HeaderSesiones titulo={props.titulo} />
