@@ -14,13 +14,19 @@ const ProyectosAnalistas = (props) => {
 
   let navigate = useNavigate();
   function irCrear() {
-
     if (location.state) {
       navigate('/proyectos-analistas/crear-proyectos', { state: { nombre: location.state.nombre, correo: location.state.correo}});
     } else {
       navigate('/proyectos-analistas/crear-proyectos', { state: { nombre: props.nombre, correo: props.correo }});
     }
+  }
 
+  function irVerProyectos() {
+    if (location.state) {
+      navigate('/proyectos-analistas/ver-proyectos', { state: { nombre: location.state.nombre, correo: location.state.correo}});
+    } else {
+      navigate('/proyectos-analistas/ver-proyectos', { state: { nombre: props.nombre, correo: props.correo }});
+    }
   }
 
   return (
@@ -33,7 +39,7 @@ const ProyectosAnalistas = (props) => {
           <Boton texto={props.texto[0]} onClick={irCrear} />
           <Boton texto={props.texto[1]} icono={faFileExport} />
           <Boton texto={props.texto[2]} icono={faFileExport} />
-          <Boton texto={props.texto[3]} icono={faFolder} />
+          <Boton texto={props.texto[3]} onClick={irVerProyectos} icono={faFolder} />
         </div>
       </div>
     </div>

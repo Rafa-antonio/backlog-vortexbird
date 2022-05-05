@@ -46,11 +46,9 @@ const MenuLateral = (props) => {
     <div className={styles.Submenu}>
       <ul>
         <li><a onClick={irInicio}>Inicio</a></li>
-        <li><a onClick={irEpicas}>Épicas</a></li>
-        <li><a onClick={irHistorias}>Historias de usuario</a></li>
+        <li><a onClick={irProyectos}>Proyectos</a></li>
         <li><a onClick={irPlantillas}>Plantillas</a></li>
         <li><a onClick={irCriterios}>Criterios de aceptactión</a></li>
-        <li><a onClick={irProyectos}>Proyectos</a></li>
       </ul>
     </div>
   </div>

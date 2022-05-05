@@ -14,6 +14,7 @@ import CrearProyectos from './pages/CrearProyectos/CrearProyectos';
 import VerEpicas from './pages/VerEpicas/VerEpicas';
 import VerHU from './pages/VerHU/VerHU';
 import VerPlantillas from './pages/VerPlantillas/VerPlantillas';
+import VerProyectos from './pages/VerProyectos/VerProyectos';
 
 import './App.css';
 import {
@@ -47,6 +48,7 @@ function App() {
         <Route path="/epicas-analistas/ver-epicas" element={<VerEpicas />} />
         <Route path="/historias-analistas/ver-historias" element={<VerHU />} />
         <Route path="/plantillas-analistas/ver-plantillas" element={<VerPlantillas />} />
+        <Route path="/proyectos-analistas/ver-proyectos" element={<VerProyectos />} />
       </Routes>
     </Router>
   );
