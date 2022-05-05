@@ -7,7 +7,7 @@ import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
 import TablaVer from '../../components/TablaVer/TablaVer';
 
 // Service
-import ProyectosService from '../../services/ProyectosService/ProyectosService';
+import ProyectosService from '../../services/Proyectos.Service/Proyectos.Service';
 
 const VerProyectos = (props) => {
 

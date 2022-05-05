@@ -13,6 +13,10 @@ class UsuariosService {
       });
   }
 
+  async getAnalistas() {
+    return await axios.get('http://localhost:3001/usuarios-asignar');
+  }
+
 }
 
 export default new UsuariosService();

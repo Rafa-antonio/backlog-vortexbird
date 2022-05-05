@@ -14,15 +14,19 @@ const ProyectosGerentes = (props) => {
   const navigate = useNavigate();
 
   function irCrear() {
-    navigate('/proyectos/crear-proyectos');
+    navigate('/proyectos-gerentes/crear-proyectos', { state: { submenus: props.submenus, tipo: 1 }});
   }
 
   function irVerProyectos(){
-    navigate('/proyectos/ver-proyectos');
+    navigate('/proyectos/ver-proyectos', { state: { submenus: props.submenus, tipo: 1 }});
   }
 
-  function irAsignarAnalista() {
-    navigate('/proyectos/asignar-analista')
+  function irAsignarAnalistas() {
+    navigate('/proyectos-gerentes/asignar-analistas', { state: { submenus: props.submenus, tipo: 1 }});
+  }
+
+  function irAsignarArquitectos() {
+    navigate('/proyectos-gerentes/asignar-arquitectos', { state: { submenus: props.submenus, tipo: 1 }});
   }
 
   return (
@@ -33,8 +37,8 @@ const ProyectosGerentes = (props) => {
         <HeaderSesiones titulo={props.titulo} />
         <div className={styles.SegundoContenedorPagina}>
           <Boton texto={props.texto[0]} onClick={irCrear} tipo={1}/>
-          <Boton texto={props.texto[1]} icono={faUserPlus} tipo={1}/>
-          <Boton texto={props.texto[2]} icono={faUserPlus} tipo={1}/>
+          <Boton texto={props.texto[1]} onClick={irAsignarAnalistas} icono={faUserPlus} tipo={1}/>
+          <Boton texto={props.texto[2]} onClick={irAsignarArquitectos} icono={faUserPlus} tipo={1}/>
           <Boton texto={props.texto[3]} onClick={irVerProyectos} icono={faFolder} tipo={1}/>
         </div>
       </div>
@@ -46,15 +50,14 @@ ProyectosGerentes.propTypes = {
   correo: PropTypes.string,
   tipo: PropTypes.number,
   titulo: PropTypes.string,
-  texto:  PropTypes.array
+  texto:  PropTypes.array,
+  submenus: PropTypes.array
 };
 
 ProyectosGerentes.defaultProps = {
   nombre: 'Usuario',
   correo: 'prueba@hotmail.com',
-
-  // Por defecto es un Analista
-  tipo: 2,
+  tipo: 1,
   titulo: 'Proyectos',
   texto: [
     'Crear proyecto',

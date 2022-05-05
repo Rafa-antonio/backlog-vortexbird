@@ -5,12 +5,11 @@ import Login from './pages/Login/Login';
 import HomeAnalistas from './pages/HomeAnalistas/HomeAnalistas';
 import HomeGerentes from './pages/HomeGerentes/HomeGerentes';
 
-// Asignar analista
-import AsignarAnalistas from './pages/AsignarAnalistas/AsignarAnalistas';
-
 // Diferentes secciones
 // Gerentes
 import ProyectosGerentes from './pages/ProyectosGerentes/ProyectosGerentes';
+import AsignarAnalistas from './pages/AsignarAnalistas/AsignarAnalistas';
+import AsignarArquitectos from './pages/AsignarArquitectos/AsignarArquitectos';
 // Analistas
 import EpicasAnalistas from './pages/EpicasAnalistas/EpicasAnalistas';
 import HistoriasAnalistas from './pages/HistoriasAnalistas/HistoriasAnalistas';
@@ -50,13 +49,12 @@ function App() {
         <Route path="/home-gerentes" element={<HomeGerentes />} />
 
         {/* Asignar analitstas */}
-        <Route path='/home-gerentes/proyectos/asignar-analistas' element={<AsignarAnalistas />} />
 
         {/* Diferentes secciones */}
         {/* Gerentes */}
         <Route path='/proyectos-gerentes' element={<ProyectosGerentes />} />
-
-        {/* Diferentes secciones */}
+        <Route path='/proyectos-gerentes/asignar-analistas' element={<AsignarAnalistas />} />
+        <Route path='/proyectos-gerentes/asignar-arquitectos' element={<AsignarArquitectos />} />
         {/* Analistas */}
         <Route path="/epicas-analistas" element={<EpicasAnalistas />} />
         <Route path="/historias-analistas" element={<HistoriasAnalistas />} />
@@ -66,6 +64,12 @@ function App() {
 
 
         {/* Creaciones */}
+        {/* Gerentes */}
+        <Route path="/epicas-gerentes/crear-epicas" element={<CrearEpicas />} />
+        <Route path="/historias-gerentes/crear-historias" element={<CrearHistorias />} />
+        <Route path="/plantillas-gerentes/crear-plantillas" element={<CrearPlantillas />} />
+        <Route path="/criterios-gerentes/crear-criterios" element={<CrearCriterios />} />
+        <Route path="/proyectos-gerentes/crear-proyectos" element={<CrearProyectos />} />
         {/* Analistas */}
         <Route path="/epicas-analistas/crear-epicas" element={<CrearEpicas />} />
         <Route path="/historias-analistas/crear-historias" element={<CrearHistorias />} />
@@ -74,6 +78,11 @@ function App() {
         <Route path="/proyectos-analistas/crear-proyectos" element={<CrearProyectos />} />
 
         {/* Ver */}
+        {/* Gerentes */}
+        <Route path="/epicas-gerentes/ver-epicas" element={<VerEpicas />} />
+        <Route path="/historias-gerentes/ver-historias" element={<VerHU />} />
+        <Route path="/plantillas-gerentes/ver-plantillas" element={<VerPlantillas />} />
+        <Route path="/proyectos-gerentes/ver-proyectos" element={<VerProyectos />} />
         {/* Analistas */}
         <Route path="/epicas-analistas/ver-epicas" element={<VerEpicas />} />
         <Route path="/historias-analistas/ver-historias" element={<VerHU />} />

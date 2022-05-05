@@ -9,5 +9,15 @@ module.exports = function (app, connection) {
         // Para iniciar sesión
         .get((req, res) => {
             cUsuarios.logIn(connection, req, res);
+        });
+        
+    // Para obtener analistas y arquitectos
+    app.route('/usuarios-asignar')
+
+        .get((req, res) => {
+            cUsuarios.getAnalistas(connection, req, res);
         })
+
+
+
 }

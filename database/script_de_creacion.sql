@@ -32,6 +32,16 @@ CREATE TABLE PROYECTOS(
     id_plantillas INTEGER NULL
 );
 
+-- Creación de trabajo
+CREATE TABLE TRABAJOS(
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    id_proyecto INTEGER NOT NULL,
+    correo_usuario VARCHAR(255) NOT NULL,
+    fechaAsignacion DATE NOT NULL,
+    fechaFinalizacion DATE NULL
+    CONSTRAINT pk_1 PRIMARY KEY(id, id_proyecto, correo_usuario);
+)
+
 -- Creación de la tabla Épicas
 CREATE TABLE EPICAS(
     id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -105,6 +115,9 @@ INSERT INTO USUARIOS(correo, usuario, contrasena, nombre, tipo) VALUES('prueba1@
 -- Inserción de segundo usuario
 INSERT INTO USUARIOS(correo, usuario, contrasena, nombre, tipo) VALUES('usuariodiferente', 'usuariodiferente1',
     AES_ENCRYPT('masterkey', 'masterkey'), 'Hola soy Juan', 2);
+
+-- Inserción de proyectos
+INSERT INTO PROYECTOS(nombre, descripcion) VALUES('Prueba #2', 'Prueba #2');
 
 -- Prueba de encriptación
 SELECT AES_ENCRYPT('Prueba1', 'masterkey');
