@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './CrearPlantillas.module.css';
 import { useNavigate, useLocation } from 'react-router-dom';
 import FormularioCrearPlantilla from '../../components/FormularioCrearPlantilla/FormularioCrearPlantilla';
-import MenuLateralAnalistas from '../../components/MenuLateralAnalistas/MenuLateralAnalistas';
+import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
 import BotonCrearElemento from '../../components/BotonCrearElemento/BotonCrearElemento';
 
@@ -68,7 +68,7 @@ const CrearPlantillas = (props) => {
 
   return (
   <div className={styles.CrearPlantillas}>
-    <MenuLateralAnalistas urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre } correo={location.state ? location.state.correo : props.correo} />
+    <MenuLateral urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre } correo={location.state ? location.state.correo : props.correo} />
 
     <div className={styles.ContenedorPagina}>
       <HeaderSesiones titulo={props.titulo} />

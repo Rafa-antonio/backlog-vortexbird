@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './CrearCriterios.module.css';
 import { useNavigate, useLocation } from 'react-router-dom';
-import MenuLateralAnalistas from '../../components/MenuLateralAnalistas/MenuLateralAnalistas';
+import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
 import FormularioCrear from '../../components/FormularioCrear/FormularioCrear';
 import BotonCrearElemento from '../../components/BotonCrearElemento/BotonCrearElemento';
@@ -18,7 +18,7 @@ const CrearCriterios = (props) => {
 
   return (
     <div className={styles.CrearCriterios}>
-      <MenuLateralAnalistas urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre} correo={location.correo ? location.state.correo : props.correo} />
+      <MenuLateral urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre} correo={location.correo ? location.state.correo : props.correo} />
 
         <div className={styles.ContenedorPagina}>
           <HeaderSesiones titulo={props.titulo} />

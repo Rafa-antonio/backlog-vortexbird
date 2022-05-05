@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ProyectosAnalistas.module.css';
 import { useNavigate, useLocation } from 'react-router-dom';
-import MenuLateralAnalistas from '../../components/MenuLateralAnalistas/MenuLateralAnalistas';
+import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
 import Boton from '../../components/Boton/Boton';
 import { faFileExport } from '@fortawesome/free-solid-svg-icons';
@@ -31,7 +31,7 @@ const ProyectosAnalistas = (props) => {
 
   return (
     <div className={styles.ProyectosAnalistas}>
-      <MenuLateralAnalistas nombre={location.state ? location.state.nombre : 'Usuario'} correo={location.state ? location.state.correo : props.correo} />
+      <MenuLateral nombre={location.state ? location.state.nombre : 'Usuario'} correo={location.state ? location.state.correo : props.correo} />
 
       <div className={styles.ContenedorPagina}>
         <HeaderSesiones titulo={props.titulo} />

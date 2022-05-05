@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './VerPlantillas.module.css';
 import { useLocation } from 'react-router-dom';
 import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
-import MenuLateralAnalistas from '../../components/MenuLateralAnalistas/MenuLateralAnalistas';
+import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import PlantillasService from '../../services/Plantillas.Service/Plantillas.Service';
 import TablaVer from '../../components/TablaVer/TablaVer';
 
@@ -57,7 +57,7 @@ const VerPlantillas = (props) => {
 
   return (
     <div className={styles.VerPlantillas}>
-      <MenuLateralAnalistas urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre} correo={location.state ? location.state.correo : props.correo} />
+      <MenuLateral urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre} correo={location.state ? location.state.correo : props.correo} />
 
       <div className={styles.ContenedorPagina}>
         <HeaderSesiones titulo={props.titulo} />
