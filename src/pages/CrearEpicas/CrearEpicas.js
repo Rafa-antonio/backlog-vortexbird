@@ -46,6 +46,9 @@ const CrearEpicas = (props) => {
           setEstimacionOriginal('');
         } else {
           alert('¡Se ha creado con éxito la épica (Sin su versión inicial)!');
+          setResumen('');
+          setTipoIncidencia('');
+          setEstimacionOriginal('');
         }
       })
       .catch((err) => {
