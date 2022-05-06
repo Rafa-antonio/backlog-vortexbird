@@ -7,7 +7,7 @@ import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
 
 const HomeAnalistas = (props) => {
   const location = useLocation();
-  let nombreRecibido = "Usuario";
+  let nombreRecibido = "Usuario";  
 
   return (
   <div className={styles.HomeAnalistas}>

@@ -11,14 +11,14 @@ const CrearProyectos = (props) => {
 
   const location = useLocation();
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   function clickCrear(){ 
     
   }
 
   return (
     <div className={styles.CrearProyectos} onClick={props.onClick}>
-      <MenuLateral urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre } correo={location.state ? location.state.correo : props.correo }/>
+      <MenuLateral urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre} correo={location.state ? location.state.correo : props.correo } submenus={location.state ? location.state.submenus : props.submenus} tipo={location.state ? location.state.tipo : props.tipo}/>
 
       <div className={styles.ContenedorPagina}>
         <HeaderSesiones titulo={props.titulo} />
@@ -37,7 +37,9 @@ CrearProyectos.propTypes = {
   tipo: PropTypes.number,
   titulo: PropTypes.string,
   urlImagen: PropTypes.string,
-  labelsInputs: PropTypes.array
+  labelsInputs: PropTypes.array,
+  tipo: PropTypes.number,
+  submenus: PropTypes.array
 };
 
 CrearProyectos.defaultProps = {
@@ -51,6 +53,10 @@ CrearProyectos.defaultProps = {
   labelsInputs: [
     ['nombre', 'Nombre', 'El nombre del proyecto es'],
     ['descripcion', 'Descripción', 'Este proyecto trata acerca de...']
+  ],
+  tipo: 2,
+  submenus: [
+    'Inicio', 'Proyectos', 'Criterios', 'Plantillas'
   ]
 };
 
