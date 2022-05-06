@@ -38,7 +38,7 @@ const VerProyectos = (props) => {
       <div className={styles.ContenedorPagina}>
         <HeaderSesiones titulo={props.titulo} />
         
-        <TablaVer columnasTabla={props.columnasTabla} filas={proyectos} keys={keys} />
+        <TablaVer columnasTabla={props.columnasTabla} filas={proyectos} keys={keys} elementoVer={1}/>
       </div>
     </div>
   )};
@@ -63,7 +63,7 @@ VerProyectos.defaultProps = {
   titulo: 'Proyectos/Ver Proyectos',
   urlImagen: '../usuario-analista-crop.png',
   columnasTabla: [
-    'Id', 'Nombre', 'Descripción', 'Id de plantillas'
+    'Id', 'Nombre', 'Descripción', 'Id de plantillas', 'Acciones'
   ],
   filas: [],
   key: []

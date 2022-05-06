@@ -37,8 +37,8 @@ CREATE TABLE TRABAJOS(
     id INTEGER NOT NULL AUTO_INCREMENT,
     id_proyecto INTEGER NOT NULL,
     correo_usuario VARCHAR(255) NOT NULL,
-    fechaAsignacion DATE NOT NULL,
-    fechaFinalizacion DATE NULL,
+    fechaAsignacion DATETIME NOT NULL,
+    fechaFinalizacion DATETIME NULL,
     CONSTRAINT fk_proyectos1 FOREIGN KEY(id_proyecto) REFERENCES PROYECTOS(id),
     CONSTRAINT fk_usuarios1 FOREIGN KEY(correo_usuario) REFERENCES USUARIOS(correo),
     CONSTRAINT pk_1 PRIMARY KEY(id, id_proyecto, correo_usuario)
@@ -89,7 +89,7 @@ CREATE TABLE VERSIONES_HUS(
 -- 2 --> Analista
 --  3 --> Arquitecto
 INSERT INTO USUARIOS VALUES('rafael_antonio.gomez@uao.edu.co', 'rafa_antonio.gomez', 
-    '123456', 'Rafael Antonio', 2);
+    AES_ENCRYPT('masterkey', 'masterkey'), 'Rafael Antonio', 2);
 
 -- Prueba de búsqueda
 SELECT nombre FROM USUARIOS WHERE (correo = 'rafael_antonio.gomez@uao.edu.co' 

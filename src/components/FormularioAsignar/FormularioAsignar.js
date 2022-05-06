@@ -14,12 +14,7 @@ const FormularioAsignar = (props) => {
   const[proyectos, setProyectos] = useState([]);
   const location = useLocation();
 
-  useEffect(() => {
-
-    console.log(analistas);
-    console.log('ARQUI');
-    console.log(arquitectos);
-
+  useEffect(() => {    
     // Asginar a analistas o asignar a arquitectos?
     // Analistas --> 2
     // Arquitectos --> 3
@@ -29,9 +24,13 @@ const FormularioAsignar = (props) => {
       UsuariosService.getAnalistas()
         .then(datosAnalistas => {
 
+          // Setiamos el primer correo
+          props.funcionesSet[0](datosAnalistas.data[0].correo);
+
           ProyectosService.getProyectos()
             .then(datosProyectos => {
               if (datosProyectos.data.length > 0) {
+                props.funcionesSet[1](datosProyectos.data[0].id);
                 setProyectos(datosProyectos.data);
               } else {
                 console.log(datosProyectos.data);
@@ -58,8 +57,23 @@ const FormularioAsignar = (props) => {
     } else if (asignarCual == 3) {
       UsuariosService.getArquitectos()
         .then(datosArquitectos => {
+          // Setiamos el primer correo
+          props.funcionesSet[0](datosArquitectos.data[0].correo);
 
-          
+          ProyectosService.getProyectos()
+            .then(datosProyectos => {
+              if (datosProyectos.data.length > 0) {
+                props.funcionesSet[1](datosProyectos.data[0].id);
+                setProyectos(datosProyectos.data);
+              } else {
+                console.log(datosProyectos.data);
+                alert('Al parecer no existen proyectos en la base de datos');
+              }
+            })
+            .catch(err => {
+              console.log(err);
+              alert('Ocurrió un error al intentar obtener los proyectos.');
+            })
 
           if (datosArquitectos.data.length > 0) {
             setArquitectos(datosArquitectos.data);
@@ -124,8 +138,8 @@ const FormularioAsignar = (props) => {
 
 FormularioAsignar.propTypes = {
   asignarCual: PropTypes.number,
-  funcionesHandle: PropTypes.array
-
+  funcionesHandle: PropTypes.array,
+  funcionesSet: PropTypes.array
 };
 
 FormularioAsignar.defaultProps = {
@@ -133,6 +147,10 @@ FormularioAsignar.defaultProps = {
   funcionesHandle: [
     'handleCorreoUsuario',
     'handleIdProyecto'
+  ],
+  funcionesSet: [
+    'setCorreoUsuario',
+    'setIdProyecto'
   ]
 };
 

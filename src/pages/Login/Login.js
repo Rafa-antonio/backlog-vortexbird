@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-
 function Login() {
   
   const [usuario, setUsuario] = React.useState('');
@@ -121,7 +120,7 @@ function Login() {
 
         </form>
         <div className={styles.DivAdvertencias} >
-          <p className={visibleAdvertenciaUsuario} >El correo es requerido</p>
+          <p className={visibleAdvertenciaUsuario} >El correo o nombre de usuario es requerido</p>
           <p className={visibleAdvertenciaContrasena}>La contraseña es requerida</p>
         </div>
       </div>

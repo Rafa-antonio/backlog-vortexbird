@@ -15,11 +15,19 @@ const AsignarAnalistas = (props) => {
   const[correoUsuario, setCorreoUsuario] = useState(0);
   const[idProyecto, setIdProyecto] = useState(0);
 
-  function clickCrear() {    
-    TrabajosService.postTrabajos(idProyecto, correoUsuario)
-      .then(datos => {
-        alert('¡Analista asignado con éxito!');
-        console.log(datos);
+  function clickAsignar() {
+    // Formato para Mysql
+    let fechaAsignacion = new Date().toISOString();
+    fechaAsignacion = fechaAsignacion.replace('T', ' ');
+    fechaAsignacion = fechaAsignacion.replace('Z', '');
+
+    TrabajosService.postTrabajos(idProyecto, correoUsuario, fechaAsignacion)
+      .then(respuesta => {        
+        if (respuesta.data) {
+          alert('¡Analista asignado con éxito!');
+        } else {
+          alert('El analista ya ha sido asignado a ese proyecto');
+        }
       })
       .catch(err => {
         console.log(err);
@@ -42,9 +50,9 @@ const AsignarAnalistas = (props) => {
     <div className={styles.ContenedorPagina}>
       <HeaderSesiones titulo={props.titulo} />
       <div className={styles.SegundoContenedorPagina}>
-        <FormularioAsignar funcionesHandle={[handleCorreoUsuario, handleIdProyecto]} asignarCual={2} />
+        <FormularioAsignar funcionesSet={[setCorreoUsuario, setIdProyecto]} funcionesHandle={[handleCorreoUsuario, handleIdProyecto]} asignarCual={2} />
 
-        <button className={styles.BotonCrear} onClick={clickCrear}>Asignar</button>
+        <button className={styles.BotonCrear} onClick={clickAsignar}>Asignar</button>
       </div>
     </div>
   </div>

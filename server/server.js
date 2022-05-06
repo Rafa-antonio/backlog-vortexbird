@@ -9,12 +9,13 @@ const rVersiones = require('./routes/versiones.routes');
 const rHistorias = require('./routes/historias.routes');
 const rPlantillas = require('./routes/plantillas.routes');
 const rProyectos = require('./routes/proyectos.routes');
+const rTrabajos = require('./routes/trabajos.routes');
 
 const connection = mysql.createConnection(
     {
         host     : 'localhost',
         user     : 'root',
-        password : 'mysql',
+        password : 'masterkey',
         database: 'vortex_bird_db'
     }
 );
@@ -36,6 +37,7 @@ rVersiones(app, connection);
 rHistorias(app, connection);
 rPlantillas(app, connection);
 rProyectos(app, connection);
+rTrabajos(app, connection);
 
 app.listen(3001, () => {
   console.log('Server on port 3001');
