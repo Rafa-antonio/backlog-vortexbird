@@ -20,7 +20,11 @@ class ProyectosService {
   }
 
   async deleteProyectos(id) {
-    return await axios.delete('http://localhost:3001/proyectos')
+    return await axios.delete('http://localhost:3001/proyectos', {
+      params: {
+        id: id
+      }
+    })
   }
 
 }

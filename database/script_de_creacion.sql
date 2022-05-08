@@ -119,7 +119,9 @@ INSERT INTO USUARIOS(correo, usuario, contrasena, nombre, tipo) VALUES('usuariod
     AES_ENCRYPT('masterkey', 'masterkey'), 'Hola soy Juan', 2);
 
 -- Inserción de proyectos
+INSERT INTO PROYECTOS(id, nombre, descripcion) VALUES(1, 'Prueba #1', 'Prueba #1');
 INSERT INTO PROYECTOS(nombre, descripcion) VALUES('Prueba #2', 'Prueba #2');
+INSERT INTO PROYECTOS(nombre, descripcion) VALUES('Prueba #3', 'Prueba #3');
 
 -- Prueba de encriptación
 SELECT AES_ENCRYPT('Prueba1', 'masterkey');

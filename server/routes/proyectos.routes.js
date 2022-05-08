@@ -15,5 +15,9 @@ module.exports = function (app, connection) {
             cProyectos.postProyectos(connection, req, res);
         })
 
+        .delete((req, res) => {
+            cProyectos.deleteProyectos(connection, req, res);
+        })
+
 
 }

@@ -38,7 +38,7 @@ const VerProyectos = (props) => {
       <div className={styles.ContenedorPagina}>
         <HeaderSesiones titulo={props.titulo} />
         
-        <TablaVer columnasTabla={props.columnasTabla} filas={proyectos} keys={keys} elementoVer={1} />
+        <TablaVer columnasTabla={props.columnasTabla} filas={proyectos} keys={keys} elementoVer={1} funcionesHandle={[setProyectos]} />
       </div>
     </div>
   )};

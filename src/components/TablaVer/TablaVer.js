@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './TablaVer.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -16,11 +16,12 @@ const TablaVer = (props) => {
   function eliminarProyecto(id) {
     ProyectosService.deleteProyectos(id)
       .then(datos => {
-        
+        props.funcionesHandle[0](datos.data);
+        alert('El proyecto ha sido eliminado con éxito');
       })
       .catch(err => {
         console.log(err);
-        alert('Ocurrió un error');
+        alert('Ocurrió un error al intentar eliminar un proyecto');
       })
   }
 
@@ -62,10 +63,10 @@ const TablaVer = (props) => {
                   props.elementoVer == 1 ?
                     <td className={styles.pruebaFinal}>
                       <div className={styles.ColumnaAcciones}>
-                        <FontAwesomeIcon className={styles.IconoAcciones} onClick={eliminarProyecto(x.id)} icon={faE} />
-                        <FontAwesomeIcon className={styles.IconoAcciones} onClick={eliminarProyecto(x.id)} icon={faH} />
-                        <FontAwesomeIcon className={styles.IconoAcciones} onClick={eliminarProyecto(x.id)} icon={faTrashCan} />
-                        <FontAwesomeIcon className={styles.IconoAcciones} onClick={eliminarProyecto(x.id)} icon={faPen} />
+                        <FontAwesomeIcon className={styles.IconoAcciones} icon={faE} />
+                        <FontAwesomeIcon className={styles.IconoAcciones} icon={faH} />
+                        <FontAwesomeIcon className={styles.IconoAcciones} value={1} onClick={() => eliminarProyecto(x.id)} icon={faTrashCan} />
+                        <FontAwesomeIcon className={styles.IconoAcciones} icon={faPen} />
                       </div>
                     </td>
                   :

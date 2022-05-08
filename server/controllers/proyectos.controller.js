@@ -24,3 +24,16 @@ exports.postProyectos = (connection, req, res) => {
         }
     });
 }
+
+exports.deleteProyectos = (connection, req, res) => {
+    let id = req.query.id;
+
+    connection.query('DELETE FROM PROYECTOS WHERE id = ?', [id], (err, results, fields) => {
+        if (err) {
+            console.log(err);
+            console.log('Ocurrió un error al intentar eliminar un proyecto dado el id');
+        } else {
+            this.getProyectos(connection, req, res);
+        }
+    })
+}

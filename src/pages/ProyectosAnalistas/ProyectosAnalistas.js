@@ -37,9 +37,7 @@ const ProyectosAnalistas = (props) => {
         <HeaderSesiones titulo={props.titulo} />
         <div className={styles.SegundoContenedorPagina}>
           <Boton texto={props.texto[0]} onClick={irCrear} />
-          <Boton texto={props.texto[1]} icono={faFileExport} />
-          <Boton texto={props.texto[2]} icono={faFileExport} />
-          <Boton texto={props.texto[3]} onClick={irVerProyectos} icono={faFolder} />
+          <Boton texto={props.texto[1]} onClick={irVerProyectos} icono={faFolder} />
         </div>
       </div>
     </div>
@@ -62,8 +60,6 @@ ProyectosAnalistas.defaultProps = {
   titulo: 'Proyectos',
   texto: [
     'Crear proyecto', 
-    'Asignar HU',
-    'Asignar épica',
     'Proyectos'
     ]
 };
