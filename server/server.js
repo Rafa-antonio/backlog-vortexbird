@@ -15,7 +15,7 @@ const connection = mysql.createConnection(
     {
         host     : 'localhost',
         user     : 'root',
-        password : 'masterkey',
+        password : 'root',
         database: 'vortex_bird_db'
     }
 );

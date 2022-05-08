@@ -7,7 +7,22 @@ import { faH } from '@fortawesome/free-solid-svg-icons';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
+// Service
+import ProyectosService from '../../services/Proyectos.Service/Proyectos.Service';
+
 const TablaVer = (props) => {
+
+  // Función eliminar proyecto
+  function eliminarProyecto(id) {
+    ProyectosService.deleteProyectos(id)
+      .then(datos => {
+        
+      })
+      .catch(err => {
+        console.log(err);
+        alert('Ocurrió un error');
+      })
+  }
 
   return (
     <table>
@@ -47,10 +62,10 @@ const TablaVer = (props) => {
                   props.elementoVer == 1 ?
                     <td className={styles.pruebaFinal}>
                       <div className={styles.ColumnaAcciones}>
-                        <FontAwesomeIcon className={styles.IconoAcciones} icon={faE} />
-                        <FontAwesomeIcon className={styles.IconoAcciones} icon={faH} />
-                        <FontAwesomeIcon className={styles.IconoAcciones} icon={faTrashCan} />
-                        <FontAwesomeIcon className={styles.IconoAcciones} icon={faPen} />
+                        <FontAwesomeIcon className={styles.IconoAcciones} onClick={eliminarProyecto(x.id)} icon={faE} />
+                        <FontAwesomeIcon className={styles.IconoAcciones} onClick={eliminarProyecto(x.id)} icon={faH} />
+                        <FontAwesomeIcon className={styles.IconoAcciones} onClick={eliminarProyecto(x.id)} icon={faTrashCan} />
+                        <FontAwesomeIcon className={styles.IconoAcciones} onClick={eliminarProyecto(x.id)} icon={faPen} />
                       </div>
                     </td>
                   :

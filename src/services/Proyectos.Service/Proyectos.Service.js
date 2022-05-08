@@ -19,8 +19,8 @@ class ProyectosService {
     
   }
 
-  async deleteProyectos() {
-
+  async deleteProyectos(id) {
+    return await axios.delete('http://localhost:3001/proyectos')
   }
 
 }
