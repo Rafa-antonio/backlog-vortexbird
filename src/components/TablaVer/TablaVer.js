@@ -11,6 +11,7 @@ import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { faV } from '@fortawesome/free-solid-svg-icons';
 import { faHighlighter } from '@fortawesome/free-solid-svg-icons';
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
 
 // Service
 import ProyectosService from '../../services/Proyectos.Service/Proyectos.Service';
@@ -235,10 +236,10 @@ const TablaVer = (props) => {
                 props.elementoVer == 5 ?
                 <td>
                   <div className={styles.ColumnaAcciones}>
-                    <FontAwesomeIcon className={styles.IconoAcciones} onClick={() =>  irEpicas(x)} icon={faE} />
-                    <FontAwesomeIcon className={styles.IconoAcciones} icon={faH} />
-                    <FontAwesomeIcon className={styles.IconoAcciones} onClick={() => eliminarProyectos(x.id)} icon={faTrashCan} />
-                    <FontAwesomeIcon className={styles.IconoAcciones} onClick={() => editarProyectos(x)} icon={faPen} />
+                    <FontAwesomeIcon className={styles.IconoAcciones} icon={faDownload} />
+                    <FontAwesomeIcon className={styles.IconoAcciones} icon={faV} />
+                    <FontAwesomeIcon className={styles.IconoAcciones} icon={faTrashCan} />
+                    <FontAwesomeIcon className={styles.IconoAcciones} icon={faPen} />
                   </div>
                 </td>
                 :

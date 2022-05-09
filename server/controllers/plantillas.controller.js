@@ -85,8 +85,6 @@ exports.putPlantillas = (connection, req, res) => {
     let documentacion= req.body.documentacion == 'Sí' ? 1 : 0;
     let tipo =  req.body.tipo;
 
-    console.log(req.body);
-
     /*
         UPDATE PLANTILLAS SET pruebasUnitarias = 1, pruebasCalidadCodigo = 0, pruebasFuncionales = 0, requisitosNFuncionales = 0, documentacion = 0, tipo = 'DoR' WHERE id = 13;
     */

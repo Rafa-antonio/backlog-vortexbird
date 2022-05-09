@@ -45,7 +45,12 @@ const VerHU = (props) => {
       <div className={styles.ContenedorPagina}>
         <HeaderSesiones titulo={props.titulo} onClick={irAtras}/>
 
-        <TablaVer columnasTabla={props.columnasTabla} filas={hus} keys={keys} />
+        <TablaVer 
+          columnasTabla={props.columnasTabla} 
+          filas={hus} 
+          keys={keys} 
+          elementoVer={5}
+          />
       </div>
     </div>
   )};
@@ -68,9 +73,10 @@ VerHU.defaultProps = {
   // Por defecto es un Analista
   tipo: 2,
   titulo: ".../HU/Ver HU'S",
-  urlImagen: '../../../usuario-analista-crop.png',
+  urlImagen: '../../../../../usuario-analista-crop.png',
   columnasTabla: [
-    'Id', 'Id épica asociada', 'Id plantilla asociada', 'Usuario', 'Necesidad', 'Objetivo'
+    'Id', 'Id proyecto asociado', 'Id épica asociada', 'Id criterio asociado', 'Id plantilla asociada',
+     'Usuario', 'Necesidad', 'Objetivo', 'Acciones'
   ],
   filas: [],
   keys: []

@@ -3,11 +3,15 @@ import axios from "axios";
 class HistoriasService {
 
     // Crear historias
-    async crearHistorias(usuario, necesidad, objetivo) {
+    async crearHistorias(usuario, necesidad, objetivo, idEpica, idProyecto, idCriterio, idPlantilla) {
         return await axios.post('http://localhost:3001/historias', {
             usuario: usuario,
             necesidad: necesidad,
-            objetivo: objetivo            
+            objetivo: objetivo,
+            idEpica: idEpica,
+            idProyecto: idProyecto,
+            idCriterio: idCriterio,
+            idPlantilla: idPlantilla
         })
     }
 

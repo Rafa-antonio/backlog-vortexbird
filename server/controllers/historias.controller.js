@@ -6,18 +6,23 @@ exports.postHistorias = (connection, req, res) => {
     let usuario = req.body.usuario;
     let necesidad = req.body.necesidad;
     let objetivo = req.body.objetivo;
+    let idProyecto = req.body.idProyecto;
+    let idEpica = req.body.idEpica;
+    let idPlantilla = req.body.idPlantilla;
+    let idCriterio = req.body.idCriterio;
 
-    connection.query('INSERT INTO HUS(??, ??, ??) VALUES(?, ?, ?)', 
+    connection.query('INSERT INTO HUS(??, ??, ??, ??, ??, ??, ??) VALUES(?, ?, ?, ?, ?, ?, ?)', 
         [
-            'usuario', 'necesidad', 'objetivo',
-            usuario, necesidad, objetivo
+            'id_proyecto', 'id_epica', 'id_criterio', 'id_plantilla', 'usuario', 'necesidad', 'objetivo',
+            idProyecto, idEpica, idCriterio, idPlantilla, usuario, necesidad, objetivo
         ],
             (err, results, fields) => {
                 if (err) {
+                    console.log(err);
                     res.status(500).send('Ocurrió un error');
                 } else {
                     let id_historia = results.insertId;
-                    let seCreoVersion = cVersiones.versionParaHistorias(connection, id_historia, res);
+                    cVersiones.postVersionesHUS(connection, id_historia, res);
                 };
             }
     )

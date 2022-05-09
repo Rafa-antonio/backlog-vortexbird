@@ -29,21 +29,21 @@ const FormularioCrear = (props) => {
         props.esHUS == true ?
         <div>
           <label forhtml='criterio'>Criterio*</label>
-          <select>
+          <select onChange={props.funcionesHandle[props.funcionesHandle.length - 2]}>
             {
               props.criterios.map((x, i) => {
                 return (
-                  <option>{x.id}</option>
+                  <option value={x.id}>Criterio con id #{x.id}</option>
                 )
               })
             }
           </select>
           <label forhtml='plantilla'>Plantilla*</label>
-          <select>
+          <select onChange={props.funcionesHandle[props.funcionesHandle.length - 1]}>
             {
-              props.criterios.map((x, i) => {
+              props.plantillas.map((x, i) => {
                 return (
-                  <option>{x.id}</option>
+                  <option value={x.id}>Plantilla con id #{x.id}</option>
                 )
               })
             }

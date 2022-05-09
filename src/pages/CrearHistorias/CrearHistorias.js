@@ -48,12 +48,12 @@ const CrearHistorias = (props) => {
     setVisibleAdvertenciaObjetivo(styles.VisibleFalse);
   }
 
-  function handleElCriterio(e){
-    setElCriterio(e.target.value);
+  function handleElCriterio(event){
+    setElCriterio(event.target.value);
   }
 
-  function handleLaPlantilla(e) {
-    setLaPlantilla(e.target.value);
+  function handleLaPlantilla(event) {
+    setLaPlantilla(event.target.value);
   }
 
   function clickCrear(){ 
@@ -82,8 +82,14 @@ const CrearHistorias = (props) => {
       setVisibleAdvertenciaObjetivo(styles.VisibleFalse);
     }
 
+    let idEpica = location.state.idEpica;
+    let idProyecto = location.state.idProyecto;    
+    let idCriterio = elCriterio;
+    let idPlantilla = laPlantilla;
+
     if (usuario != '' && necesidad != '' && objetivo != '') {
-      let respuesta = HistoriasService.crearHistorias(usuario, necesidad, objetivo);
+      let respuesta = HistoriasService.crearHistorias(
+        usuario, necesidad, objetivo, idEpica, idProyecto, idCriterio, idPlantilla);
   
       respuesta
         .then((datos) => {
@@ -115,6 +121,7 @@ const CrearHistorias = (props) => {
     CriteriosService.obtenerCriterios()
     .then(datos => {
       setCriterios(datos.data);
+      setElCriterio(datos.data[0]);
     })
     .catch(err => {
       console.log(err);
@@ -124,6 +131,7 @@ const CrearHistorias = (props) => {
     PlantillasService.obtenerPlantillas()
       .then(datos => {
         setPlantillas(datos.data);
+        setLaPlantilla(datos.data[0]);
       })
       .catch(err => {
         console.log(err);
@@ -181,7 +189,7 @@ CrearHistorias.defaultProps = {
 
   // Por defecto es un Analista
   tipo: 2,
-  titulo: 'HU/Crear HU',
+  titulo: '.../HU/Crear HU',
   urlImagen: '../../../../../usuario-analista-crop.png',
   textoAdvertencia: [
     'El usuario de la HU es requerido',

@@ -7,4 +7,53 @@
     height: 100vh;
     width: 100%;
     grid-column: 2;
+    display: grid;
+    grid-template-rows: 15% 85%;
+}
+
+.SegundoContenedorPagina {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 10% 90%;
+}
+
+.SegundoContenedorPagina h1 {
+    color: #023E8A;
+    text-align: center;
+    font-family: 'Barlow-Thin';
+}
+
+.TablaTrabajos {
+    display: grid;
+    grid-template-rows: 10% 30% 60%;
+}
+
+.TablaTrabajos h1 {
+    font-family: 'Barlow-Semibold';
+    font-size: 1.5rem;
+}
+
+.TablaTrabajos div {
+    width: 90%;
+    justify-self: center;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    text-align: center;
+}
+
+.TablaTrabajos div h2{
+    color: white;
+    background-color: #023E8A;
+    border: 1px solid #023E8A;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.TablaTrabajos div:nth-child(3) h2 {
+    color: #023E8A;
+    background-color: white;
+    font-size: 1.3rem;
 }
