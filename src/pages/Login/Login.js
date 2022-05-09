@@ -42,8 +42,9 @@ function Login() {
   let navigate = useNavigate();
   function IniciarSesion(e) {
 
+    e.preventDefault();
     if (soyRobot == false) {
-      e.preventDefault();
+      
       let correo = usuario;
       UsuariosService.login(correo, usuario, contrasena)
         .then(datos => {
