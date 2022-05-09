@@ -13,7 +13,14 @@
     grid-template-rows: 25% 5% 25% 5% 25% 5%;
 }
 
-.FormularioCrear div, .FormularioAlternativo div{
+.FormularioHistorias {
+    width: 100%;
+    height: 90%;
+    display: grid;
+    grid-template-rows: 15% 10% 15% 10% 15% 10% 25%;
+}
+
+.FormularioCrear div, .FormularioAlternativo div, .FormularioHistorias div{
     height: 100%;
     width: 100%;
     display: grid;
@@ -21,14 +28,14 @@
     align-self: flex-end;
 }
 
-.FormularioCrear label, .FormularioAlternativo label {
+.FormularioCrear label, .FormularioAlternativo label, .FormularioHistorias label {
     text-align: center;
     font-size: 1.5rem;
     font-family: 'Barlow-Regular';
     align-self: center;
 }
 
-.FormularioCrear input, .FormularioAlternativo input{
+.FormularioCrear input, .FormularioAlternativo input, .FormularioHistorias input{
     font-family: 'Barlow-Regular';
     align-self: center;
     padding-left: 1rem;
@@ -37,11 +44,20 @@
     height: 80%;
 }
 
-.FormularioCrear input:focus, .FormularioAlternativo input:focus {
+.FormularioHistorias select {
+    font-family: 'Barlow-Regular';
+    align-self: center;
+    padding-left: 1rem;
+    font-size: 1.3rem;
+    width: 83%;
+    height: 80%;
+}
+
+.FormularioCrear input:focus, .FormularioAlternativo input:focus, .FormularioHistorias input:focus {
     outline: none;
 }
 
-.FormularioCrear p, .FormularioAlternativo p {
+.FormularioCrear p, .FormularioAlternativo p, .FormularioHistorias p {
     padding: 0;
     margin: 0;
     margin-left: 30%;

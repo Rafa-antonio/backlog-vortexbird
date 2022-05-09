@@ -1,4 +1,4 @@
-.CrearCriterios {
+.EditarCriterios {
     display: grid;
     grid-template-columns: 15% 85%;
 }
@@ -17,22 +17,3 @@
     align-items: center;
     height: 80%;
 }
-
-.BordersNegros {
-    border: 1px solid rgba(0,0,0,.2);
-}
-
-.BordesRojos {
-    border: 1px solid red;
-}
-
-.VisibleTrue {
-    visibility: visible;
-}
-
-.VisibleFalse {
-    visibility: hidden;
-}
-
-
-

@@ -16,12 +16,42 @@ const FormularioCrear = (props) => {
 
   return (
     <form className={
-      props.labelsInputs.length > 2 ?
-        styles.FormularioAlternativo
+      props.esHUS == true ?
+        styles.FormularioHistorias 
       :
-        styles.FormularioCrear
+        props.labelsInputs.length > 2 ?
+          styles.FormularioAlternativo
+        :
+          styles.FormularioCrear
     } >
       {maplabelsInputs}
+      {
+        props.esHUS == true ?
+        <div>
+          <label forhtml='criterio'>Criterio*</label>
+          <select>
+            {
+              props.criterios.map((x, i) => {
+                return (
+                  <option>{x.id}</option>
+                )
+              })
+            }
+          </select>
+          <label forhtml='plantilla'>Plantilla*</label>
+          <select>
+            {
+              props.criterios.map((x, i) => {
+                return (
+                  <option>{x.id}</option>
+                )
+              })
+            }
+          </select>
+        </div>
+        :
+          ""
+      }
     </form>
   )};
 
@@ -31,7 +61,8 @@ FormularioCrear.propTypes = {
   values: PropTypes.array,
   campos: PropTypes.array,
   visibles: PropTypes.array,
-  textoAdvertencia: PropTypes.array
+  textoAdvertencia: PropTypes.array,
+  esHUS: PropTypes.bool
 };
 
 FormularioCrear.defaultProps = {
@@ -57,7 +88,8 @@ FormularioCrear.defaultProps = {
   textoAdvertencia: [
     'El correo o usuario es requerido',
     'La contrasena es requerida'
-  ]
+  ],
+  esHUS: false
 };
 
 export default FormularioCrear;

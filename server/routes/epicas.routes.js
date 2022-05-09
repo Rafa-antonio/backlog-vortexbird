@@ -17,7 +17,7 @@ module.exports = function(app, connection) {
         })
 
         .put((req, res) => {
-
+            cEpicas.putEpicas(connection, req, res);
         })
 
         .delete((req, res) => {

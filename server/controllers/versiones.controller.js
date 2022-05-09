@@ -48,6 +48,37 @@ exports.postVersionesHUS = async (connection, id_historia, res) => {
     })
 }
 
+exports.postVersionesEpicasNuevaVersion = (connection, id_epica, res) => {
+    connection.query('SELECT numVersion FROM VERSIONES_EPICAS WHERE id_epica = ?', 
+    [
+        id_epica
+    ], (err, results, fields) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('Ocurrió un error al intentar insertar en las versiones épicas la nueva versión');
+        } else {
+
+
+            let nuevaVersion = results[results.length - 1].numVersion || 0;
+
+            console.log('NUEVA VERSION: ' + nuevaVersion);
+            nuevaVersion += 1;
+            
+            connection.query('INSERT INTO VERSIONES_EPICAS(id_epica, numVersion, lineaBase)' + 
+                'VALUES(?, ?, ?)', [
+                    id_epica, nuevaVersion, 0
+                ], (err, results, fields) => {
+                    if (err) {
+                        console.log(err);
+                        res.status(500).send('Ocurrió un error al intentar insertar la nueva versión épica');
+                    } else {
+                        res.status(200).send(true);
+                    }
+                })
+        }
+    })
+}
+
 exports.getVersionesEpicas =  (connection, req, res) => {
     let idEpica = req.query.idEpica;
     connection.query('SELECT * FROM VERSIONES_EPICAS WHERE id_epica = ?', [idEpica], 

@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import styles from './VerEpicas.module.css';
 import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
-import EpicasService from '../../services/Epicas.Service/Epicas.Service';
 import TablaVer from '../../components/TablaVer/TablaVer';
+
+// Service
+import EpicasService from '../../services/Epicas.Service/Epicas.Service';
 
 const VerEpicas = (props) => {
 
@@ -42,10 +44,12 @@ const VerEpicas = (props) => {
       <div className={styles.ContenedorPagina}>
         <HeaderSesiones titulo={props.titulo} onClick={irAtras}/>
 
-        <TablaVer funcionesHandle={[setEpicas]}
-        columnasTabla={props.columnasTabla} 
-        filas={epicas} 
-        keys={keys} elementoVer={4}/>
+        <TablaVer 
+          funcionesHandle={[setEpicas]}
+          columnasTabla={props.columnasTabla} 
+          filas={epicas} 
+          keys={keys} 
+          elementoVer={4}/>
       </div>
     </div>
   )};

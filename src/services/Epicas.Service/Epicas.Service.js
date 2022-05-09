@@ -22,6 +22,15 @@ class EpicasService {
         });
     }
 
+    async putEpicas(idEpica, resumen, tipoIncidencia, estimacionOriginal) {
+        return await axios.put('http://localhost:3001/epicas', {
+            idEpica: idEpica,
+            resumen: resumen,
+            tipoIncidencia: tipoIncidencia,
+            estimacionOriginal: estimacionOriginal
+        })
+    }
+
     async deleteEpicas(idEpica, idProyecto) {
         return await axios.delete('http://localhost:3001/epicas', {
             params: {
@@ -30,6 +39,7 @@ class EpicasService {
             }
         })
     }
+
 }
 
 export default new EpicasService();

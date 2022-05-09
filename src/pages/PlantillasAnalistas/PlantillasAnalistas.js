@@ -37,9 +37,7 @@ const PlantillasAnalistas = (props) => {
         <HeaderSesiones titulo={props.titulo} esSubmenu={true}/>
         <div className={styles.SegundoContenedorPagina}>
           <Boton texto={props.texto[0]} onClick={irCrear}/>
-          <Boton texto={props.texto[1]} icono={faFileArrowDown} />
-          <Boton texto={props.texto[2]} icono={faFileArrowDown} />
-          <Boton texto={props.texto[3]} onClick={irVerPlantillas}  icono={faFolder} />
+          <Boton texto={props.texto[1]} onClick={irVerPlantillas}  icono={faFolder} />
         </div>
       </div>
     </div>
@@ -62,8 +60,6 @@ PlantillasAnalistas.defaultProps = {
   titulo: 'Plantillas',
   texto: [
     'Crear plantilla',
-    'Plantilla a épica',
-    'Plantilla a HU',
     'Plantillas'
   ]
 };

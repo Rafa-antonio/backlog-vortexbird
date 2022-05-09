@@ -22,6 +22,7 @@ const VersionesEpicas = (props) => {
       .then(datos => {
           if (datos.data.length > 0) {
             setKeys(Object.keys(datos.data[0]));
+            console.log(datos.data);
             setVersionesEpicas(datos.data);
           } else {
             alert('No se encontraron versiones épicas en la base de datos.');

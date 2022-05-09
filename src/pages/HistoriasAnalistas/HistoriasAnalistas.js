@@ -1,43 +1,83 @@
 import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from './HistoriasAnalistas.module.css';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
 import Boton from '../../components/Boton/Boton';
-import { useNavigate, useLocation } from 'react-router-dom';
 import { faFileArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { faFolder } from '@fortawesome/free-solid-svg-icons';
 
 const HistoriasAnalistas = (props) => {
 
   const location = useLocation();
+  const navigate = useNavigate(); 
 
-  let navigate = useNavigate(); 
   function clickCrear() {
     if (location.state) {
-      navigate('/historias-analistas/crear-historias', { state: { nombre: location.state.nombre, correo: location.state.correo }});
+      navigate('/proyectos-analistas/ver-proyectos/epicas-analistas/ver-epicas/historias-analistas/crear-historias',
+       { 
+         state: 
+         { 
+           nombre: location.state.nombre, 
+           correo: location.state.correo, 
+           idProyecto: location.state.idProyecto, 
+           idEpica: location.state.idEpica 
+          }
+        });
+
     } else {
-      navigate('/historias-analistas/crear-historias', { state: { nombre: props.nombre, correo: props.correo }});
+      navigate('/proyectos-analistas/ver-proyectos/epicas-analistas/ver-epicas/historias-analistas/crear-historias',
+       { 
+         state: 
+         { 
+           nombre: props.nombre, 
+           correo: props.correo, 
+           idProyecto: location.state.idProyecto, 
+           idEpica: location.state.idEpica 
+          }
+        });
     }
   }
 
   function irVerHistorias() {
     if (location.state) {
-      navigate('/historias-analistas/ver-historias', { state: { nombre: location.state.nombre, correo: location.state.correo }});
+      navigate('/proyectos-analistas/ver-proyectos/epicas-analistas/ver-epicas/historias-analistas/ver-historias', 
+      { 
+        state: 
+        { 
+          nombre: location.state.nombre, 
+          correo: location.state.correo, 
+          idProyecto: location.state.idProyecto, 
+          idEpica: location.state.idEpica 
+        }
+      });
     } else {
-      navigate('/historias-analistas/ver-historias', { state: { nombre: props.nombre, correo: props.correo }});
+      navigate('/proyectos-analistas/ver-proyectos/epicas-analistas/ver-epicas/historias-analistas/ver-historias',
+       { 
+         state: 
+         { 
+           nombre: props.nombre, 
+           correo: props.correo, 
+           idProyecto: location.state.idProyecto, 
+           idEpica: location.state.idEpica 
+          }
+        });
     }
+  }
+
+  function irAtras() {
+    navigate('/proyectos-analistas/ver-proyectos/epicas-analistas/ver-epicas', { state: location.state});
   }
 
   return (
   <div className={styles.HistoriasAnalistas}>
-    <MenuLateral nombre={location.state ? location.state.nombre : props.nombre } correo={location.state ? location.state.correo : props.correo}/>
+    <MenuLateral urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre } correo={location.state ? location.state.correo : props.correo}/>
     
     <div className={styles.ContenedorPagina}>
-      <HeaderSesiones titulo={props.titulo} />
+      <HeaderSesiones titulo={props.titulo} onClick={irAtras}/>
       <div className={styles.SegundoContenedorPagina}>
-        <Boton texto={props.texto[0]} onClick={clickCrear} />
-        <Boton texto={props.texto[1]} icono={faFileArrowDown} />
+        <Boton texto={props.texto[0]} onClick={clickCrear} />        
         <Boton texto={props.texto[2]} onClick={irVerHistorias} icono={faFolder} />
       </div>
     </div>
@@ -49,6 +89,7 @@ HistoriasAnalistas.propTypes = {
   correo: PropTypes.string,
   tipo: PropTypes.number,
   titulo: PropTypes.string,
+  urlImagen: PropTypes.string,
   texto: PropTypes.array
 };
 
@@ -58,7 +99,8 @@ HistoriasAnalistas.defaultProps = {
 
   // Por defecto es un Analista
   tipo: 2,
-  titulo: 'Historias de usuario',
+  titulo: '.../HUS',
+  urlImagen: '../../../../usuario-analista-crop.png',
   texto: [
     'Crear historia',
     'HU a proyecto',

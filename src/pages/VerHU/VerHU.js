@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from './VerHU.module.css';
-import { useLocation } from 'react-router-dom';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
 import TablaVer from '../../components/TablaVer/TablaVer.js';
@@ -13,6 +13,7 @@ import HistoriasService from '../../services/Historias.Service/Historias.Service
 const VerHU = (props) => {
 
   const location = useLocation();
+  const navigate = useNavigate();
   const [hus, setHUS] = useState([]);
   const[keys, setKeys] = useState([]);
 
@@ -33,12 +34,16 @@ const VerHU = (props) => {
       })
   }, []);
 
+  function irAtras() {
+    navigate('/proyectos-analistas/ver-proyectos/epicas-analistas/ver-epicas/historias-analistas', { state: location.state});
+  }
+
   return (
     <div className={styles.VerHU}>
       <MenuLateral urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre} correo={location.state ? location.state.correo : props.correo} />
 
       <div className={styles.ContenedorPagina}>
-        <HeaderSesiones titulo={props.titulo} />
+        <HeaderSesiones titulo={props.titulo} onClick={irAtras}/>
 
         <TablaVer columnasTabla={props.columnasTabla} filas={hus} keys={keys} />
       </div>
@@ -62,8 +67,8 @@ VerHU.defaultProps = {
 
   // Por defecto es un Analista
   tipo: 2,
-  titulo: "HU/Ver HU'S",
-  urlImagen: '../usuario-analista-crop.png',
+  titulo: ".../HU/Ver HU'S",
+  urlImagen: '../../../usuario-analista-crop.png',
   columnasTabla: [
     'Id', 'Id épica asociada', 'Id plantilla asociada', 'Usuario', 'Necesidad', 'Objetivo'
   ],

@@ -41,6 +41,27 @@ exports.postEpicas = (connection, req, res) => {
     )
 }
 
+exports.putEpicas = (connection, req, res) => {
+
+    let idEpica = req.body.idEpica;
+    let resumen = req.body.resumen;
+    let tipoIncidencia = req.body.tipoIncidencia;
+    let estimacionOriginal = req.body.estimacionOriginal;
+
+    connection.query('UPDATE EPICAS SET resumen = ?, tipoIncidencia = ?, estimacionOriginal = ? WHERE id = ?', 
+    [
+        resumen, tipoIncidencia, estimacionOriginal, idEpica
+    ], 
+    (err, results, fields) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('Ocurrió un error al intentar actualizar las epicas');
+        } else {
+            cVersiones.postVersionesEpicasNuevaVersion(connection, idEpica, res);
+        }
+    })
+}
+
 exports.deleteEpicas = (connection, req, res) => {
     let idEpica = req.query.idEpica;
 

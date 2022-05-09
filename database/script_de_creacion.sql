@@ -32,6 +32,13 @@ CREATE TABLE PROYECTOS(
     id_plantillas INTEGER NULL
 );
 
+-- Creación de criterios
+CREATE TABLE CRITERIOS(
+    id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    usuario VARCHAR(100) NOT NULL,
+    objetivo VARCHAR(100) NOT NULL
+);
+
 -- Creación de trabajo
 CREATE TABLE TRABAJOS(
     id INTEGER NOT NULL AUTO_INCREMENT,
@@ -58,12 +65,17 @@ CREATE TABLE EPICAS(
 -- Creación de las historias de usuario
 CREATE TABLE HUS(
     id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    id_proyecto INTGER NULL,
-    id_epica INTEGER NULL,
-    id_plantilla INTEGER NULL,
+    id_proyecto INTEGER NOT NULL,
+    id_epica INTEGER NOT NULL,
+    id_criterio INTEGER NOT NULL,
+    id_plantilla INTEGER NOT NULL,
     usuario VARCHAR(100) NOT NULL,
     necesidad VARCHAR(100) NOT NULL,
-    objetivo VARCHAR(100) NOT NULL
+    objetivo VARCHAR(100) NOT NULL,
+    CONSTRAINT fk_proyecto_hus FOREIGN KEY (id_proyecto) REFERENCES PROYECTOS(id) ON DELETE CASCADE,
+    CONSTRAINT fk_epica_hus FOREIGN KEY (id_epica) REFERENCES EPICAS(id) ON DELETE CASCADE,
+    CONSTRAINT fk_criterio_hus FOREIGN KEY (id_criterio) REFERENCES CRITERIOS(id) ON DELETE CASCADE,
+    CONSTRAINT fk_plantilla_hus FOREIGN KEY (id_plantilla) REFERENCES PLANTILLAS(id) ON DELETE CASCADE
 );
 
 -- Creación de la tabla VersionesEpicas

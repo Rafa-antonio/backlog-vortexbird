@@ -24,3 +24,33 @@
 .FormularioEditar input:focus {
     outline: none;
 }
+
+.FormularioEditarPlantilla {
+    width: 100%;
+    height: 80%;
+    display: grid;
+    grid-template-columns: 40% 30%;
+    justify-content: center;
+    align-self: center;
+}
+
+.FormularioEditarPlantilla label {
+    text-align: left;
+    font-size: 1.5rem;
+    font-family: 'Barlow-Regular';
+    align-self: center;
+}
+
+.FormularioEditarPlantilla select {
+    font-family: 'Barlow-Regular';
+    align-self: center;
+    border: 1px solid rgba(0,0,0,.2);
+    padding-left: 1rem;
+    font-size: 1.3rem;
+    width: 80%;
+    height: 70%;
+}
+
+.FormularioEditarPlantilla select:focus {
+    outline: none;
+}

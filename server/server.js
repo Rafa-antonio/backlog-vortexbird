@@ -10,6 +10,7 @@ const rHistorias = require('./routes/historias.routes');
 const rPlantillas = require('./routes/plantillas.routes');
 const rProyectos = require('./routes/proyectos.routes');
 const rTrabajos = require('./routes/trabajos.routes');
+const rCriterios = require('./routes/criterios.routes');
 
 const connection = mysql.createConnection(
     {
@@ -36,6 +37,7 @@ rEpicas(app, connection);
 rHistorias(app, connection);
 rPlantillas(app, connection);
 rProyectos(app, connection);
+rCriterios(app, connection);
 rTrabajos(app, connection);
 rVersiones(app, connection);
 

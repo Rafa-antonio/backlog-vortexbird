@@ -114,12 +114,13 @@ const CrearEpicas = (props) => {
       <div className={styles.ContenedorPagina}>
         <HeaderSesiones titulo={props.titulo} onClick={irAtras}/>
         <div className={styles.SegundoContenedorPagina}>
-          <FormularioCrear labelsInputs={props.labelsInputs}
-          funcionesHandle={[handleResumen, handleTipo, handleEstimacion]} 
-          values={[resumen, tipoIncidencia, estimacionOriginal]} 
-          campos={[campoResumen, campoTipoIncidencia, campoEstimacionOriginal]}  
-          visibles={[visibleAdvertenciaResumen, visibleAdvertenciaTipoIncidencia, visibleAdvertenciaEstimacionOriginal]} 
-          textoAdvertencia={props.textoAdvertencia}
+          <FormularioCrear 
+            labelsInputs={props.labelsInputs}
+            funcionesHandle={[handleResumen, handleTipo, handleEstimacion]} 
+            values={[resumen, tipoIncidencia, estimacionOriginal]} 
+            campos={[campoResumen, campoTipoIncidencia, campoEstimacionOriginal]}  
+            visibles={[visibleAdvertenciaResumen, visibleAdvertenciaTipoIncidencia, visibleAdvertenciaEstimacionOriginal]} 
+            textoAdvertencia={props.textoAdvertencia}
           />
 
           <BotonCrearElemento onClick={clickCrear} />
@@ -156,7 +157,7 @@ CrearEpicas.defaultProps = {
     ['resumen', 'Resumen*', 'De manera resumida...'],
     ['tipoIncidencia', 'Tipo de incidencia*', 'El tipo de incidencia de esta épica es...'],
     ['estimacionOriginal', 'Estimación original*', 'La estimación original...']
-  ],
+  ]
 };
 
 export default CrearEpicas;

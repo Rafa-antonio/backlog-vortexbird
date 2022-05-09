@@ -1,1 +1,13 @@
-.VerCriterios {}
+.VerCriterios {
+    display: grid;
+    grid-template-columns: 15% 85%;
+    height: 100vh;
+}
+
+.ContenedorPagina {
+    grid-column: 2;
+    min-height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 15% 85%;
+}

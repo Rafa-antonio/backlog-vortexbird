@@ -15,6 +15,8 @@ import { faHighlighter } from '@fortawesome/free-solid-svg-icons';
 // Service
 import ProyectosService from '../../services/Proyectos.Service/Proyectos.Service';
 import EpicasService from '../../services/Epicas.Service/Epicas.Service';
+import CriteriosService from '../../services/Criterios.Service/Criterios.Service';
+import PlantillasService from '../../services/Plantillas.Service/Plantillas.Service';
 
 const TablaVer = (props) => {
 
@@ -56,6 +58,17 @@ const TablaVer = (props) => {
     });
   }
 
+  function irHUS(epica) {
+    navigate('/proyectos-analistas/ver-proyectos/epicas-analistas/ver-epicas/historias-analistas', {
+      state: {
+        nombre: location.state ? location.state.nombre : props.nombre,
+        correo: location.state ? location.state.correo : props.correo,
+        idProyecto: epica.id_proyecto,
+        idEpica: epica.id
+      }
+    });
+  }
+
   function irVersionesEpicas(epica) {
     navigate('/proyectos-epicas/ver-proyectos/epicas-analistas/ver-epicas/versiones-epicas', {
       state: {
@@ -81,7 +94,66 @@ const TablaVer = (props) => {
   }
 
   function editarEpicas(epica) {
+    navigate('/proyectos-analistas/ver-proyectos/epicas-analistas/ver-epicas/editar-epicas', { state: {
+        nombre: location.state.nombre, 
+        correo: location.state.correo,
+        idEpica: epica.id,
+        idProyecto: epica.id_proyecto,
+        resumen: epica.resumen,
+        tipoIncidencia: epica.tipoIncidencia,
+        estimacionOriginal: epica.estimacionOriginal
+      }
+    })
+  }
 
+  function eliminarCriterios(idCriterio) {
+    CriteriosService.deleteCriterios(idCriterio)
+      .then(datos => {
+        props.funcionesHandle[0](datos.data);
+        alert('¡Se ha eliminado el criterio con éxito!');
+      })
+      .catch(err => {
+        console.log(err);
+        alert('Ocurrió un erro al intentar eliminar los criterios');
+      })
+  }
+
+  function editarCriterios(criterio){
+    navigate('/criterios-analistas/ver-criterios/editar-criterios', { state: {
+        nombre: location.state.nombre, 
+        correo: location.state.correo,
+        idCriterio: criterio.id,
+        usuario: criterio.usuario,
+        objetivo: criterio.objetivo
+      }
+    })
+  }
+
+  function eliminarPlantillas(idPlantilla) {
+    PlantillasService.deletePlantillas(idPlantilla)
+    .then(datos => {
+      props.funcionesHandle[0](datos.data);
+      alert('¡Se ha eliminado el criterio con éxito!');
+    })
+    .catch(err => {
+      console.log(err);
+      alert('Ocurrió un erro al intentar eliminar las plantillas');
+    })
+  }
+
+  function editarPlantillas(plantilla) {
+    navigate('/plantillas-analistas/ver-plantillas/editar-plantillas', { state: {
+      nombre: location.state.nombre, 
+      correo: location.state.correo,
+      idPlantilla: plantilla.id,
+      pruebasUnitarias: plantilla.pruebasUnitarias, 
+      pruebasCalidadCodigo: plantilla.pruebasCalidadCodigo,
+      pruebasFuncionales: plantilla.pruebasFuncionales,
+      requisitosNFuncionales: plantilla.requisitosNFuncionales,
+      documentacion: plantilla.documentacion,
+      tipo: plantilla.tipo
+    }
+  })
   }
 
   return (
@@ -103,7 +175,7 @@ const TablaVer = (props) => {
           props.filas.map((x, i) => {
             return (
               <tr>
-                {
+                {                  
                   props.keys.map((y, n) => {
                     if (x[y] != null) {
                       return (
@@ -114,7 +186,7 @@ const TablaVer = (props) => {
                         <td>{'No asociado'}</td>
                       )
                     }
-                    
+                  
                   })
                 }
 
@@ -134,21 +206,17 @@ const TablaVer = (props) => {
                   props.elementoVer == 2 ?
                     <td>
                       <div className={styles.ColumnaAcciones}>
-                        <FontAwesomeIcon className={styles.IconoAcciones} onClick={() =>  irEpicas(x)} icon={faE} />
-                        <FontAwesomeIcon className={styles.IconoAcciones} icon={faH} />
-                        <FontAwesomeIcon className={styles.IconoAcciones} onClick={() => eliminarProyectos(x.id)} icon={faTrashCan} />
-                        <FontAwesomeIcon className={styles.IconoAcciones} onClick={() => editarProyectos(x)} icon={faPen} />
+                        <FontAwesomeIcon className={styles.IconoAcciones} onClick={() => eliminarCriterios(x.id)} icon={faTrashCan} />
+                        <FontAwesomeIcon className={styles.IconoAcciones} onClick={() => editarCriterios(x)} icon={faPen} />
                       </div>
                     </td>
                   :
                   // Ver Plantillas
                   props.elementoVer == 3 ?
                     <td>
-                      <div className={styles.ColumnaAcciones}>
-                        <FontAwesomeIcon className={styles.IconoAcciones} onClick={() =>  irEpicas(x)} icon={faE} />
-                        <FontAwesomeIcon className={styles.IconoAcciones} icon={faH} />
-                        <FontAwesomeIcon className={styles.IconoAcciones} onClick={() => eliminarProyectos(x.id)} icon={faTrashCan} />
-                        <FontAwesomeIcon className={styles.IconoAcciones} onClick={() => editarProyectos(x)} icon={faPen} />
+                      <div className={styles.ColumnaAcciones}>                      
+                        <FontAwesomeIcon className={styles.IconoAcciones} onClick={() => eliminarPlantillas(x.id)} icon={faTrashCan} />
+                        <FontAwesomeIcon className={styles.IconoAcciones} onClick={() => editarPlantillas(x)} icon={faPen} />
                       </div>
                     </td>
                   :
@@ -157,7 +225,7 @@ const TablaVer = (props) => {
                   <td>
                     <div className={styles.ColumnaAcciones}>
                       <FontAwesomeIcon className={styles.IconoAcciones} onClick={() =>  irVersionesEpicas(x)} icon={faV} />
-                      <FontAwesomeIcon className={styles.IconoAcciones} icon={faH} />
+                      <FontAwesomeIcon className={styles.IconoAcciones} onClick={() => irHUS(x)} icon={faH} />
                       <FontAwesomeIcon className={styles.IconoAcciones} onClick={() => eliminarEpicas(x.id, x.id_proyecto)} icon={faTrashCan} />
                       <FontAwesomeIcon className={styles.IconoAcciones} onClick={() => editarEpicas(x)} icon={faPen} />
                     </div>
@@ -177,7 +245,7 @@ const TablaVer = (props) => {
                 // Versiones Epicas
                 props.elementoVer == 6 ?
                   // Verificamos si ya es lineaBase o no
-                  x.lineaBase == 0 ?
+                  x.lineaBase == 'No' ?
                     <td>
                       <div className={styles.ColumnaAcciones1}>
                         <FontAwesomeIcon className={styles.IconoAcciones} icon={ faHighlighter } />
