@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './VerPlantillas.module.css';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import PlantillasService from '../../services/Plantillas.Service/Plantillas.Service';
@@ -11,6 +11,7 @@ import TablaVer from '../../components/TablaVer/TablaVer';
 const VerPlantillas = (props) => {
 
   const location = useLocation();
+  const navigate = useNavigate();
   const [plantillas, setPlantillas] = useState([]);
   const [keys, setKeys] = useState([]);
 
@@ -55,12 +56,17 @@ const VerPlantillas = (props) => {
     })  
   }, []);
 
+  function irAtras() {
+    navigate('/plantillas-analistas', { state: location.state });
+  }
+
+
   return (
     <div className={styles.VerPlantillas}>
       <MenuLateral urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre} correo={location.state ? location.state.correo : props.correo} />
 
       <div className={styles.ContenedorPagina}>
-        <HeaderSesiones titulo={props.titulo} />
+        <HeaderSesiones titulo={props.titulo} onClick={irAtras}/>
 
         <TablaVer columnasTabla={props.columnasTabla} filas={plantillas} keys={keys} />
       </div>

@@ -32,6 +32,12 @@ import VerHU from './pages/VerHU/VerHU';
 import VerPlantillas from './pages/VerPlantillas/VerPlantillas';
 import VerProyectos from './pages/VerProyectos/VerProyectos';
 
+// Editar
+import EditarProyectos from './pages/EditarProyectos/EditarProyectos';
+
+// Versiones épicas
+import VersionesEpicas from './pages/VersionesEpicas/VersionesEpicas';
+
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -56,7 +62,7 @@ function App() {
         <Route path='/proyectos-gerentes/asignar-analistas' element={<AsignarAnalistas />} />
         <Route path='/proyectos-gerentes/asignar-arquitectos' element={<AsignarArquitectos />} />
         {/* Analistas */}
-        <Route path="/epicas-analistas" element={<EpicasAnalistas />} />
+        <Route path="/proyectos-analistas/ver-proyectos/epicas-analistas" element={<EpicasAnalistas />} />
         <Route path="/historias-analistas" element={<HistoriasAnalistas />} />
         <Route path="/plantillas-analistas" element={<PlantillasAnalistas />} />
         <Route path="/criterios-analistas" element={<CriteriosAnalistas />} />
@@ -71,7 +77,7 @@ function App() {
         <Route path="/criterios-gerentes/crear-criterios" element={<CrearCriterios />} />
         <Route path="/proyectos-gerentes/crear-proyectos" element={<CrearProyectos />} />
         {/* Analistas */}
-        <Route path="/epicas-analistas/crear-epicas" element={<CrearEpicas />} />
+        <Route path="/proyectos-analistas/ver-proyectos/epicas-analistas/crear-epicas" element={<CrearEpicas />} />
         <Route path="/historias-analistas/crear-historias" element={<CrearHistorias />} />
         <Route path="/plantillas-analistas/crear-plantillas" element={<CrearPlantillas />} />
         <Route path="/criterios-analistas/crear-criterios" element={<CrearCriterios />} />
@@ -84,10 +90,18 @@ function App() {
         <Route path="/plantillas-gerentes/ver-plantillas" element={<VerPlantillas />} />
         <Route path="/proyectos-gerentes/ver-proyectos" element={<VerProyectos />} />
         {/* Analistas */}
-        <Route path="/epicas-analistas/ver-epicas" element={<VerEpicas />} />
+        <Route path="/proyectos-analistas/ver-proyectos/epicas-analistas/ver-epicas" element={<VerEpicas />} />
         <Route path="/historias-analistas/ver-historias" element={<VerHU />} />
         <Route path="/plantillas-analistas/ver-plantillas" element={<VerPlantillas />} />
         <Route path="/proyectos-analistas/ver-proyectos" element={<VerProyectos />} />
+
+        {/* Ediciones */}
+        <Route path="/proyectos-analistas/ver-proyectos/editar-proyectos" element={<EditarProyectos />} />
+
+        {/* Versiones */}
+        {/* '/proyectos-epicas/ver-proyectos/epicas-analistas/ver-epicas/versiones-epicas' */}
+        <Route path="/proyectos-epicas/ver-proyectos/epicas-analistas/ver-epicas/versiones-epicas" element={<VersionesEpicas />} />
+
       </Routes>
     </Router>
   );

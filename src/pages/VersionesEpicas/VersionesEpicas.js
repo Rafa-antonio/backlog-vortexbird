@@ -1,59 +1,61 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import styles from './VerEpicas.module.css';
+import styles from './VersionesEpicas.module.css';
 import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
-import EpicasService from '../../services/Epicas.Service/Epicas.Service';
 import TablaVer from '../../components/TablaVer/TablaVer';
 
-const VerEpicas = (props) => {
+// Service
+import VersionesEpicasService from '../../services/VersionesEpicasService/VersionesEpicasService';
 
+const VersionesEpicas = (props) => {
+  
   const location = useLocation();
   const navigate = useNavigate();
-  const [epicas, setEpicas] = useState([]);
+  const [versionesEpicas, setVersionesEpicas] = useState([]);
   const [keys, setKeys] = useState([]);
 
   useEffect(() => {    
-    let idProyecto = location.state.idProyecto;
-    EpicasService.obtenerEpicas(idProyecto)
+    let idEpica = location.state.idEpica;
+    VersionesEpicasService.obtenerVersionesEpicas(idEpica)
       .then(datos => {
           if (datos.data.length > 0) {
             setKeys(Object.keys(datos.data[0]));
-            setEpicas(datos.data);
+            setVersionesEpicas(datos.data);
           } else {
-            alert('No se encontraron épicas en la base de datos.');
+            alert('No se encontraron versiones épicas en la base de datos.');
           }
         })
       .catch(err => {
-        alert('Ocurrió un error');
         console.log(err);
+        alert('Ocurrió un error al intentar obtener las versiones epicas');
     })  
   }, []);
 
   function irAtras() {
-    navigate('/proyectos-analistas/ver-proyectos/epicas-analistas', { state: location.state});
+    navigate('/proyectos-analistas/ver-proyectos/epicas-analistas/ver-epicas', { state: location.state});
   }
 
   return (
-    <div className={styles.VerEpicas}>
+    <div className={styles.VersionesEpicas}>
       <MenuLateral urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre} correo={location.state ? location.state.correo : props.correo} />
 
       <div className={styles.ContenedorPagina}>
         <HeaderSesiones titulo={props.titulo} onClick={irAtras}/>
 
-        <TablaVer funcionesHandle={[setEpicas]}
+        <TablaVer 
+        funcionesHandle={[setVersionesEpicas]}
         columnasTabla={props.columnasTabla} 
-        filas={epicas} 
-        keys={keys} elementoVer={4}/>
+        filas={versionesEpicas} 
+        keys={keys} 
+        elementoVer={6}/>
       </div>
     </div>
   )};
 
-VerEpicas.propTypes = {
-  nombre: PropTypes.string,
-  correo: PropTypes.string,
-  tipo: PropTypes.number,
+VersionesEpicas.propTypes = {
+  nombre: PropTypes.string,  
   titulo: PropTypes.string,
   urlImagen: PropTypes.string,
   columnasTabla: PropTypes.array,
@@ -61,19 +63,15 @@ VerEpicas.propTypes = {
   key: PropTypes.array
 };
 
-VerEpicas.defaultProps = {
-  nombre: 'Usuario',
-  correo: 'prueba@hotmail.com',
-
-  // Por defecto es un Analista
-  tipo: 2,
-  titulo: 'Proyectos/Ver Proyectos/Épicas/Ver Épicas',
-  urlImagen: '../../../usuario-analista-crop.png',
+VersionesEpicas.defaultProps = {
+  nombre: 'Usuario',  
+  titulo: '.../Versiones Épicas',
+  urlImagen: '../../../../usuario-analista-crop.png',
   columnasTabla: [
-    'Id', 'Correo del usuario', 'Id proyecto asociado', 'Resumen', 'Tipo incidencia', 'Estimación original', 'Acciones'
+    'Id', 'Id de la épica asociada', 'Numero de versión', '¿Linea base?', 'Acciones'
   ],
   filas: [],
   key: []
 };
 
-export default VerEpicas;
+export default VersionesEpicas;

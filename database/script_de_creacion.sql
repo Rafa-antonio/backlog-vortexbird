@@ -58,6 +58,7 @@ CREATE TABLE EPICAS(
 -- Creación de las historias de usuario
 CREATE TABLE HUS(
     id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_proyecto INTGER NULL,
     id_epica INTEGER NULL,
     id_plantilla INTEGER NULL,
     usuario VARCHAR(100) NOT NULL,
@@ -71,7 +72,7 @@ CREATE TABLE VERSIONES_EPICAS(
     id_epica INTEGER NOT NULL,
     numVersion INTEGER NOT NULL,
     lineaBase INTEGER NOT NULL,
-    CONSTRAINT fk_epicas_1 FOREIGN KEY (id_epica) REFERENCES EPICAS(id)
+    CONSTRAINT fk_epicas_1 FOREIGN KEY (id_epica) REFERENCES EPICAS(id) ON DELETE CASCADE
 );
 
 -- Creación de la tabla VersionesHU

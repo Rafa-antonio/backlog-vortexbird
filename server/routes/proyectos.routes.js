@@ -19,5 +19,9 @@ module.exports = function (app, connection) {
             cProyectos.deleteProyectos(connection, req, res);
         })
 
+        .put((req, res) => {
+            cProyectos.putProyectos(connection, req, res);
+        })
+
 
 }

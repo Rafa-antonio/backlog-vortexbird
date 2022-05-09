@@ -14,7 +14,7 @@ const HomeAnalistas = (props) => {
     <MenuLateral nombre={location.state ? location.state.nombre : props.nombre} correo={location.state ? location.state.correo : props.correo}/>
 
     <div className={styles.ContenedorPagina}>
-      <HeaderSesiones titulo='Inicio - Analistas' />
+      <HeaderSesiones titulo='Inicio - Analistas' esSubmenu={true}/>
     </div>
   </div>
   )};

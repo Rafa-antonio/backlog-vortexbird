@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from './CrearProyectos.module.css';
-import { useNavigate, useLocation } from 'react-router-dom';
 import FormularioCrear from '../../components/FormularioCrear/FormularioCrear';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
@@ -13,14 +13,13 @@ import ProyectosService from '../../services/Proyectos.Service/Proyectos.Service
 const CrearProyectos = (props) => {
 
   const location = useLocation();
+  const navigate = useNavigate();
   const[nombre, setNombre] = useState('');
   const[descripcion, setDescripcion] = useState('');
   const[campoNombre, setCampoNombre] = React.useState(styles.BordesNegros);
   const[campoDescripcion, setCampoDescripcion] = React.useState(styles.BordesNegros);
   const[visibleAdvertenciaNombre, setVisibleAdvertenciaNombre] = React.useState(styles.VisibleFalse);
   const[visibleAdvertenciaDescripcion, setVisibleAdvertenciaDescripcion] = React.useState(styles.VisibleFalse);
-
-  const navigate = useNavigate();
 
   function handleNombre(event) {
     setNombre(event.target.value);
@@ -70,12 +69,16 @@ const CrearProyectos = (props) => {
     }
   }
 
+  function irAtras() {
+    navigate('/proyectos-analistas', { state: location.state });
+  }
+
   return (
     <div className={styles.CrearProyectos} onClick={props.onClick}>
       <MenuLateral urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre} correo={location.state ? location.state.correo : props.correo } submenus={location.state ? location.state.submenus : props.submenus} tipo={location.state ? location.state.tipo : props.tipo}/>
 
       <div className={styles.ContenedorPagina}>
-        <HeaderSesiones titulo={props.titulo} />
+        <HeaderSesiones titulo={props.titulo} onClick={irAtras}/>
         <div className={styles.SegundoContenedorPagina}>
           <FormularioCrear labelsInputs={props.labelsInputs} 
             funcionesHandle={[handleNombre, handleDescripcion]}
@@ -99,7 +102,6 @@ CrearProyectos.propTypes = {
   titulo: PropTypes.string,
   urlImagen: PropTypes.string,
   labelsInputs: PropTypes.array,
-  tipo: PropTypes.number,
   submenus: PropTypes.array,
   textoAdvertencia: PropTypes.array
 };
@@ -116,7 +118,6 @@ CrearProyectos.defaultProps = {
     ['nombre', 'Nombre*', 'El nombre del proyecto es'],
     ['descripcion', 'Descripción*', 'Este proyecto trata acerca de...']
   ],
-  tipo: 2,
   submenus: [
     'Inicio', 'Proyectos', 'Criterios', 'Plantillas'
   ],

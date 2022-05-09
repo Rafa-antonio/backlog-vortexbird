@@ -12,8 +12,9 @@ import PlantillasService from '../../services/Plantillas.Service/Plantillas.Serv
 
 const CrearPlantillas = (props) => {
 
+  
   const location = useLocation();
-
+  const navigate = useNavigate();
   const [pruebasUnitarias, setPruebasUnitarias] = useState('Sí');
   const [pruebasCalidadCodigo, setPruebasCalidadCodigo] = useState('Sí');
   const [pruebasFuncionales, setPruebasFuncionales] = useState('Sí');
@@ -45,7 +46,6 @@ const CrearPlantillas = (props) => {
     setTipo(e.target.value);
   }
 
-  let navigate = useNavigate();
   function clickCrear(){ 
     PlantillasService.crearPlantillas(pruebasUnitarias, pruebasCalidadCodigo, pruebasFuncionales, 
       requisitosNFuncionales, documentacion, tipo)
@@ -66,12 +66,16 @@ const CrearPlantillas = (props) => {
         })
   }
 
+  function irAtras() {
+    navigate('/plantillas-analistas', { state: location.state });
+  }
+
   return (
   <div className={styles.CrearPlantillas}>
     <MenuLateral urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre } correo={location.state ? location.state.correo : props.correo} />
 
     <div className={styles.ContenedorPagina}>
-      <HeaderSesiones titulo={props.titulo} />
+      <HeaderSesiones titulo={props.titulo} onClick={irAtras}/>
       <div className={styles.SegundoContenedorPagina}>
         <FormularioCrearPlantilla funcionesHandle={[handlePruebasUnitarias, handlePruebasCalidadCodigo, handlePruebasFuncionales, handleRequisitosNFuncionales, handleDocumentacion, handleTipo]} values={[pruebasUnitarias, pruebasCalidadCodigo, pruebasFuncionales, requisitosNFuncionales, documentacion, tipo]} />
         <BotonCrearElemento onClick={clickCrear} />

@@ -15,7 +15,12 @@ const FormularioCrear = (props) => {
   ));
 
   return (
-    <form className={styles.FormularioCrear} >
+    <form className={
+      props.labelsInputs.length > 2 ?
+        styles.FormularioAlternativo
+      :
+        styles.FormularioCrear
+    } >
       {maplabelsInputs}
     </form>
   )};

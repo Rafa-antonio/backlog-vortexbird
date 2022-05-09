@@ -34,7 +34,7 @@ const PlantillasAnalistas = (props) => {
       <MenuLateral nombre={location.state ? location.state.nombre : 'Usuario'} correo={location.state ? location.state.correo : props.correo} />
 
       <div className={styles.ContenedorPagina}>
-        <HeaderSesiones titulo={props.titulo} />
+        <HeaderSesiones titulo={props.titulo} esSubmenu={true}/>
         <div className={styles.SegundoContenedorPagina}>
           <Boton texto={props.texto[0]} onClick={irCrear}/>
           <Boton texto={props.texto[1]} icono={faFileArrowDown} />

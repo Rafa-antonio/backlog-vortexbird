@@ -26,13 +26,6 @@ const MenuLateral = (props) => {
     }
   }
 
-  function irEpicas(){
-    navigate('/epicas-analistas', { state: { nombre: props.nombre, correo: props.correo } });
-  }
-
-  function irHistorias() {
-    navigate('/historias-analistas', { state: { nombre: props.nombre, correo: props.correo } });
-  }
 
   function irCriterios() {
     navigate('/criterios-analistas', { state: { nombre: props.nombre, correo: props.correo } });
@@ -79,7 +72,8 @@ const MenuLateral = (props) => {
 MenuLateral.propTypes = {
   nombre: PropTypes.string,
   correo: PropTypes.string,
-  urlImagen: PropTypes.string
+  urlImagen: PropTypes.string,
+  tipo: PropTypes.number
 };
 
 MenuLateral.defaultProps = {

@@ -10,10 +10,14 @@ import BotonCrearElemento from '../../components/BotonCrearElemento/BotonCrearEl
 const CrearCriterios = (props) => {
 
   const location = useLocation();
+  const navigate = useNavigate();
 
-  let navigate = useNavigate();
   function clickCrear() {
     alert('Se presionó click en crear!');
+  }
+
+  function irAtras() {
+    navigate('/criterios-analistas', { state: location.state });
   }
 
   return (
@@ -21,7 +25,7 @@ const CrearCriterios = (props) => {
       <MenuLateral urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre} correo={location.correo ? location.state.correo : props.correo} />
 
         <div className={styles.ContenedorPagina}>
-          <HeaderSesiones titulo={props.titulo} />
+          <HeaderSesiones titulo={props.titulo} onClick={irAtras}/>
           <div className={styles.SegundoContenedorPagina}>
           <FormularioCrear labelsInputs={props.labelsInputs}/>
 

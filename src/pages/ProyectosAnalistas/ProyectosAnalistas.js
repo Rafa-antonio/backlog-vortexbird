@@ -12,7 +12,7 @@ const ProyectosAnalistas = (props) => {
 
   const location = useLocation();
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   function irCrear() {
     if (location.state) {
       navigate('/proyectos-analistas/crear-proyectos', { state: { nombre: location.state.nombre, correo: location.state.correo}});
@@ -27,14 +27,14 @@ const ProyectosAnalistas = (props) => {
     } else {
       navigate('/proyectos-analistas/ver-proyectos', { state: { nombre: props.nombre, correo: props.correo }});
     }
-  }
+  }  
 
   return (
     <div className={styles.ProyectosAnalistas}>
       <MenuLateral nombre={location.state ? location.state.nombre : 'Usuario'} correo={location.state ? location.state.correo : props.correo} />
 
       <div className={styles.ContenedorPagina}>
-        <HeaderSesiones titulo={props.titulo} />
+        <HeaderSesiones titulo={props.titulo} esSubmenu={true}/>
         <div className={styles.SegundoContenedorPagina}>
           <Boton texto={props.texto[0]} onClick={irCrear} />
           <Boton texto={props.texto[1]} onClick={irVerProyectos} icono={faFolder} />

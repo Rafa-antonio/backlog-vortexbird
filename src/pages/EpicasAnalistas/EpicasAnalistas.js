@@ -11,34 +11,36 @@ import { faFileArrowDown } from '@fortawesome/free-solid-svg-icons';
 const EpicasAnalistas = (props) => {
 
   const location = useLocation();
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   function irCrear() {    
     if (location.state) {
-      navigate('/epicas-analistas/crear-epicas', { state: { nombre: location.state.nombre, correo: location.state.correo }});
+      navigate('/proyectos-analistas/ver-proyectos/epicas-analistas/crear-epicas', { state: { nombre: location.state.nombre, correo: location.state.correo, idProyecto: location.state.idProyecto }});
     } else {
-      navigate('/epicas-analistas/crear-epicas', { state: { nombre: props.nombre, correo: props.correo }});
+      navigate('/proyectos-analistas/ver-proyectos/epicas-analistas/crear-epicas', { state: { nombre: props.nombre, correo: props.correo, idProyecto: location.state.idProyecto }});
     }
   }
 
   function irVerEpicas() {
-    navigate('/epicas-analistas/ver-epicas');
     if (location.state) {
-      navigate('/epicas-analistas/ver-epicas', { state: { nombre: location.state.nombre, correo: location.state.correo }});
+      navigate('/proyectos-analistas/ver-proyectos/epicas-analistas/ver-epicas', { state: { nombre: location.state.nombre, correo: location.state.correo, idProyecto: location.state.idProyecto }});
     } else {
-      navigate('/epicas-analistas/ver-epicas', { state: { nombre: props.nombre, correo: props.correo }});
+      navigate('/proyectos-analistas/ver-proyectos/epicas-analistas/ver-epicas', { state: { nombre: props.nombre, correo: props.correo, idProyecto: location.state.idProyecto }});
     }
+  }
+
+  function irAtras() {
+    navigate('/proyectos-analistas/ver-proyectos', { state: location.state });
   }
 
   return (
     <div className={styles.EpicasAnalistas}>
-      <MenuLateral nombre={location.state ? location.state.nombre : props.nombre } correo={location.state ? location.state.correo : props.correo} />
+      <MenuLateral urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre } correo={location.state ? location.state.correo : props.correo} />
 
       <div className={styles.ContenedorPagina}>
-        <HeaderSesiones titulo={props.titulo} />
+        <HeaderSesiones titulo={props.titulo} onClick={irAtras} />
         <div className={styles.SegundoContenedorPagina}>
           <Boton onClick={irCrear} texto={props.texto[0]} />
-          <Boton texto={props.texto[1]} icono={faFileArrowDown} />
-          <Boton onClick={irVerEpicas} texto={props.texto[2]} icono={faFolder} />
+          <Boton onClick={irVerEpicas} texto={props.texto[1]} icono={faFolder} />
         </div>
       </div>
     </div>
@@ -49,19 +51,20 @@ EpicasAnalistas.propTypes = {
   correo: PropTypes.string,
   tipo: PropTypes.number,
   titulo: PropTypes.string,
+  urlImagen: PropTypes.string,
   texto: PropTypes.array
 };
 
 EpicasAnalistas.defaultProps = {
   nombre: 'Usuario',
   correo: 'prueba@hotmail.com',
+  urlImagen: '../../../usuario-analista-crop.png',
 
   // Por defecto es un Analista
   tipo: 2,
-  titulo: 'Épicas',
+  titulo: 'Proyectos/Ver Proyectos/Épicas',
   texto: [
     'Crear épica',
-    'Épica a proyecto',
     'Epicas'
   ]
 };

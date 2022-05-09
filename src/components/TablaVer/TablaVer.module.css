@@ -19,11 +19,6 @@ table td {
     font-size: 1.3rem;    
 }
 
-.pruebaFinal {
-    display: table-cell;
-    vertical-align: middle;
-}
-
 .ColumnaAcciones {
     height: 100%;
     font-size: 1.5rem;
@@ -52,3 +47,12 @@ table td {
     cursor: pointer;
 }
 
+.ColumnaAcciones1 {
+    height: 100%;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Barlow-Regular';
+}

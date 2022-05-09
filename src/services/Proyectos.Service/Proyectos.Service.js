@@ -15,8 +15,12 @@ class ProyectosService {
     })
   }
 
-  async putProyectos() {
-    
+  async putProyectos(id, nombre, descripcion) {
+    return await axios.put('http://localhost:3001/proyectos', {
+      id: id,
+      nombre: nombre,
+      descripcion: descripcion
+    })
   }
 
   async deleteProyectos(id) {
