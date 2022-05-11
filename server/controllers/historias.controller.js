@@ -8,8 +8,8 @@ exports.postHistorias = (connection, req, res) => {
     let objetivo = req.body.objetivo;
     let idProyecto = req.body.idProyecto;
     let idEpica = req.body.idEpica;
-    let idPlantilla = req.body.idPlantilla;
-    let idCriterio = req.body.idCriterio;
+    let idPlantilla = req.body.idPlantilla.id;
+    let idCriterio = req.body.idCriterio.id;
 
     connection.query('INSERT INTO HUS(??, ??, ??, ??, ??, ??, ??) VALUES(?, ?, ?, ?, ?, ?, ?)', 
         [

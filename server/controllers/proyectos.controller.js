@@ -1,6 +1,6 @@
 
 exports.getProyectos = (connection, req, res) => {
-    connection.query('SELECT * FROM PROYECTOS', (err, results, fields) => {
+    connection.query('SELECT * FROM proyectos', (err, results, fields) => {
         if (err) {
             res.status(500).send('Ocurrió un error en getProyectos');
         } else {
@@ -10,13 +10,13 @@ exports.getProyectos = (connection, req, res) => {
 }
 
 exports.postProyectos = (connection, req, res) => {
-
     let nombre = req.body.nombre;
     let descripcion = req.body.descripcion;
 
-    connection.query('INSERT INTO PROYECTOS(nombre, descripcion) VALUES(?, ?)', [
+    connection.query('INSERT INTO proyectos(nombre, descripcion) VALUES(?, ?)', [
         nombre, descripcion
     ], (err, results, fields) => {
+        
         if (err) {
             res.status(500).send('Ocurrió un error en postProyectos');
         } else {
@@ -27,6 +27,7 @@ exports.postProyectos = (connection, req, res) => {
 }
 
 exports.deleteProyectos = (connection, req, res) => {
+    console.log(req.query);
     let id = req.query.id;
 
     connection.query('DELETE FROM PROYECTOS WHERE id = ?', [id], (err, results, fields) => {

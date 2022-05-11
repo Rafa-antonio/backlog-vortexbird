@@ -46,8 +46,8 @@ CREATE TABLE TRABAJOS(
     correo_usuario VARCHAR(255) NOT NULL,
     fechaAsignacion DATETIME NOT NULL,
     fechaFinalizacion DATETIME NULL,
-    CONSTRAINT fk_proyectos1 FOREIGN KEY(id_proyecto) REFERENCES PROYECTOS(id),
-    CONSTRAINT fk_usuarios1 FOREIGN KEY(correo_usuario) REFERENCES USUARIOS(correo),
+    CONSTRAINT fk_proyectos1 FOREIGN KEY(id_proyecto) REFERENCES PROYECTOS(id) ON DELETE CASCADE ,
+    CONSTRAINT fk_usuarios1 FOREIGN KEY(correo_usuario) REFERENCES USUARIOS(correo) ON DELETE CASCADE,
     CONSTRAINT pk_1 PRIMARY KEY(id, id_proyecto, correo_usuario)
 );
 

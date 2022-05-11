@@ -48,7 +48,7 @@ const HomeAnalistas = (props) => {
             </h2>
 
             <h2>
-              Correo del usuario asginado
+              Correo del usuario asignado
             </h2>
 
             <h2>
