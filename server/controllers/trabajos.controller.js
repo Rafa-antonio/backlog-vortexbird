@@ -1,5 +1,9 @@
 exports.getTrabajos = (connection, req, res) => {
-    connection.query('SELECT * FROM TRABAJOS', (err, results, fields) => {
+    let correo = req.query.correo;
+
+    connection.query('SELECT * FROM TRABAJOS WHERE correo_usuario = ?', [
+        correo
+    ], (err, results, fields) => {
         if (err) {
             res.status(500).send('Ocurrió un error en getTrabajos');
         } else {

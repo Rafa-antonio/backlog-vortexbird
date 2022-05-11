@@ -38,11 +38,11 @@ import EditarProyectos from './pages/EditarProyectos/EditarProyectos';
 import EditarEpicas from './pages/EditarEpicas/EditarEpicas';
 import EditarCriterios from './pages/EditarCriterios/EditarCriterios';
 import EditarPlantillas from './pages/EditarPlantillas/EditarPlantillas';
-
-import Download from './pages/Prueba';
+import EditarHUS from './pages/EditarHUS/EditarHUS';
 
 // Versiones épicas
 import VersionesEpicas from './pages/VersionesEpicas/VersionesEpicas';
+import VersionesHUS from './pages/VersionesHUS/VersionesHUS';
 
 import './App.css';
 import {
@@ -55,8 +55,6 @@ function App() {
   return (
     <Router>
       <Routes>
-      {/* Prueba */}
-      <Route path="/prueba" element={<Download />} />
 
         {/* Homes */}
         <Route path="/" element={<Login />} />
@@ -110,9 +108,11 @@ function App() {
         <Route path="/proyectos-analistas/ver-proyectos/epicas-analistas/ver-epicas/editar-epicas" element={<EditarEpicas />} />
         <Route path="/criterios-analistas/ver-criterios/editar-criterios" element={<EditarCriterios />} />
         <Route path="/plantillas-analistas/ver-plantillas/editar-plantillas" element={<EditarPlantillas />} />
+        <Route path="/proyectos-analistas/ver-proyectos/epicas-analistas/ver-epicas/historias-analistas/ver-historias/editar-historias" element={<EditarHUS />} />
 
         {/* Versiones */}
-        <Route path="/proyectos-epicas/ver-proyectos/epicas-analistas/ver-epicas/versiones-epicas" element={<VersionesEpicas />} />
+        <Route path="/proyectos-analistas/ver-proyectos/epicas-analistas/ver-epicas/versiones-epicas" element={<VersionesEpicas />} />
+        <Route path="/proyectos-analistas/ver-proyectos/epicas-analistas/ver-epicas/historias-analistas/ver-historias/versiones-historias" element={<VersionesHUS />} />
 
       </Routes>
     </Router>

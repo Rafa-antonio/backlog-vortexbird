@@ -74,13 +74,25 @@ function Login() {
         UsuariosService.login(correo, usuario, contrasena)
           .then(datos => {
             if (datos.data.nombre != false) {
+              
               console.log(datos.data);
-              navigate('/home-analistas', {
-                state: {
-                  nombre: datos.data.nombre,
-                  correo: datos.data.correo
-                }
-              });
+
+              if (datos.data.tipo == 1) {
+                navigate('/home-gerentes', {
+                  state: {
+                    nombre: datos.data.nombre,
+                    correo: datos.data.correo
+                  }
+                })
+              } else {
+                navigate('/home-analistas', {
+                  state: {
+                    nombre: datos.data.nombre,
+                    correo: datos.data.correo
+                  }
+                });
+              }
+
             } else {
               alert('Correo/Usuario o contraseña incorrectos.');
             }

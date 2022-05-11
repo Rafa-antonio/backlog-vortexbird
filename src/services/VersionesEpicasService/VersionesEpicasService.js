@@ -2,11 +2,10 @@ import axios from "axios";
 
 class VersionesEpicasService {
 
-  async obtenerVersionesEpicas (idEpica, idProyecto) {
+  async obtenerVersionesEpicas (idEpica) {
     return await axios.get('http://localhost:3001/versiones-epicas', {
       params: {
-        idEpica: idEpica,
-        idProyecto: idProyecto
+        idEpica: idEpica
       }
     })
   }

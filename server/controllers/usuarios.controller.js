@@ -4,7 +4,7 @@ exports.logIn = (connection, req, res) => {
     let usuario = req.query.usuario;
     let contrasena = req.query.contrasena;
 
-    connection.query('SELECT correo, nombre FROM USUARIOS WHERE (correo = ? OR usuario = ?) AND (contrasena = AES_ENCRYPT(?, "masterkey"))', 
+    connection.query('SELECT correo, nombre, tipo FROM USUARIOS WHERE (correo = ? OR usuario = ?) AND (contrasena = AES_ENCRYPT(?, "masterkey"))', 
         [
             correo, usuario, contrasena
         ],
@@ -18,6 +18,7 @@ exports.logIn = (connection, req, res) => {
                     res.status(200).send({
                         nombre: results[0].nombre,
                         correo: results[0].correo,
+                        tipo: results[0].tipo
                     });
                 } else {
                     res.status(200).send({nombre: false});

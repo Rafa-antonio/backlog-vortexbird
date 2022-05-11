@@ -20,11 +20,30 @@ class HistoriasService {
         return await axios.get('http://localhost:3001/historias');
     }
 
+    async obtenerHistoriasEpica(idEpica) {
+        return await axios.get('http://localhost:3001/historias-epica', {
+            params: {
+                idEpica: idEpica
+            }
+        })
+    }
+
     async deleteHistorias(idHU) {
         return await axios.delete('http://localhost:3001/historias', {
             params: {
                 idHU: idHU
             }
+        })
+    }
+
+    async putHistorias(id, usuario, necesidad, objetivo, elCriterio, laPlantilla) {
+        return await axios.put('http://localhost:3001/historias', {
+            id: id, 
+            usuario: usuario, 
+            necesidad: necesidad,
+            objetivo: objetivo,
+            elCriterio: elCriterio,
+            laPlantilla: laPlantilla
         })
     }
 }

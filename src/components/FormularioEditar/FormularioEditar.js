@@ -53,6 +53,44 @@ const FormularioEditar = (props) => {
             </select>
           </>
         :
+        // Si el elemento a editar es 5 es porque es Historia de usuario
+        props.elementoEditar == 5 ?
+              <>
+                {
+                  props.labelsInputs.map((x, i) => (
+                    <>
+                      <label forhtml={props.labelsInputs[i][0]}>{props.labelsInputs[i][1]}</label>
+                      <input name={props.labelsInputs[i][0]} id={props.labelsInputs[i][0]} placeholder={props.labelsInputs[i][2]} onChange={props.funcionesHandle[i]} value={props.values[i]}/>
+                    </>
+                  ))
+                }
+
+                <label forhtml='criterio'>Nuevo criterio</label>
+                <select onChange={props.funcionesHandle[props.funcionesHandle.length - 2]} >
+                  {
+                    
+                    props.values[props.values.length - 4].map((y, j) => (
+                        y == props.values[props.values.length - 3] ?
+                          <option selected='selected'>{y}</option>
+                        :
+                          <option>{y}</option>
+                    ))
+                  }
+                </select>
+                <label forhtml='plantilla'>Nueva plantilla</label>
+                <select onChange={props.funcionesHandle[props.funcionesHandle.length - 1]} >
+                {
+                    
+                    props.values[props.values.length - 2].map((y, j) => (
+                        y == props.values[props.values.length - 1] ?
+                          <option selected='selected'>{y}</option>
+                        :
+                          <option>{y}</option>
+                    ))
+                  }
+                </select>
+              </>
+        :
         maplabelsInputs
       }
     </form>

@@ -79,6 +79,33 @@ exports.postVersionesEpicasNuevaVersion = (connection, id_epica, res) => {
     })
 }
 
+exports.postVersionesHUSNuevaVersion = (connection, id_hu, res) => {
+    connection.query('SELECT numVersion FROM VERSIONES_HUS WHERE id_hu = ?', 
+    [
+        id_hu
+    ], (err, results, fields) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('Ocurrió un error al intentar insertar en las versiones épicas la nueva versión');
+        } else {
+            let nuevaVersion = results[results.length - 1].numVersion || 0;            
+            nuevaVersion += 1;
+            
+            connection.query('INSERT INTO VERSIONES_HUS(id_hu, numVersion, lineaBase)' + 
+                'VALUES(?, ?, ?)', [
+                    id_hu, nuevaVersion, 0
+                ], (err, results, fields) => {
+                    if (err) {
+                        console.log(err);
+                        res.status(500).send('Ocurrió un error al intentar insertar la nueva versión épica');
+                    } else {
+                        res.status(200).send(true);
+                    }
+                })
+        }
+    })
+}
+
 exports.getVersionesEpicas =  (connection, req, res) => {
     let idEpica = req.query.idEpica;
     connection.query('SELECT * FROM VERSIONES_EPICAS WHERE id_epica = ?', [idEpica], 
@@ -104,12 +131,26 @@ exports.getVersionesEpicas =  (connection, req, res) => {
 }
 
 exports.getVersionesHUS = (connection, req, res) => {
-    connection.query('SELECT * FROM VERSIONES', (err, results, fields) => {
-        if (err) res.status(500).send({error: 'Ocurrió un error'});
 
-        let tamanoResultados = Object.keys(results).length;
-        if (tamanoResultados == 0) res.status(200).send({respuesta: 'No existen versiones en la base de datos.'});
+    let idHU = req.query.idHU;
 
-        res.status(200).send(results);
+    connection.query('SELECT * FROM VERSIONES_HUS WHERE id_hu = ?', [
+        idHU
+    ], (err, results, fields) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('Ocurrió un error al intentar crear la versión HU');
+        } else {
+            // Hacemos que para cada results se ponga como línea base un si o un no
+            for (let i = 0; i < results.length; i++) {
+                if (results[i].lineaBase == 1) {
+                    results[i].lineaBase = 'Sí';
+                } else {
+                    results[i].lineaBase = 'No';
+                }
+            }
+
+            res.status(200).send(results);
+        }        
     })
 }

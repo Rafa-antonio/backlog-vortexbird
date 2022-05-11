@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useLocation, UNSAFE_NavigationContext } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from './EditarEpicas.module.css';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';

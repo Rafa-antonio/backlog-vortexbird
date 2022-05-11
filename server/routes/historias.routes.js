@@ -17,11 +17,17 @@ module.exports = function(app, connection) {
         })
 
         .put((req, res) => {
-
+            cHistorias.putHistorias(connection, req, res);
         })
 
         .delete((req, res) => {
             cHistorias.deleteHistorias(connection, req, res);
         });
+    
+    app.route('/historias-epica')
+        
+        .get((req, res) => {
+            cHistorias.getHistoriasEpica(connection, req, res);
+        })
 
 }

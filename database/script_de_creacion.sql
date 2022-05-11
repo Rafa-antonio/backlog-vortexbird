@@ -59,7 +59,7 @@ CREATE TABLE EPICAS(
     resumen VARCHAR(80) NOT NULL,
     tipoIncidencia VARCHAR(40) NOT NULL,
     estimacionOriginal VARCHAR(60) NOT NULL,
-    CONSTRAINT fk_usuarios_1 FOREIGN KEY (correo_usuario) REFERENCES USUARIOS(correo)
+    CONSTRAINT fk_usuarios_1 FOREIGN KEY (correo_usuario) REFERENCES USUARIOS(correo) ON DELETE CASCADE
 );
 
 -- Creación de las historias de usuario
@@ -103,6 +103,9 @@ CREATE TABLE VERSIONES_HUS(
 --  3 --> Arquitecto
 INSERT INTO USUARIOS VALUES('rafael_antonio.gomez@uao.edu.co', 'rafa_antonio.gomez', 
     AES_ENCRYPT('masterkey', 'masterkey'), 'Rafael Antonio', 2);
+
+INSERT INTO USUARIOS VALUES('gerente', 'Gerente', 
+    AES_ENCRYPT('masterkey', 'masterkey'), 'Gerente', 1);
 
 -- Prueba de búsqueda
 SELECT nombre FROM USUARIOS WHERE (correo = 'rafael_antonio.gomez@uao.edu.co' 
