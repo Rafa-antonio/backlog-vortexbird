@@ -45,14 +45,14 @@
     cursor: pointer;
 }
 
-.Submenu {
+.Submenu, .Submenu1 {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
 }
 
-.Submenu ul {
+.Submenu ul, .Submenu1 ul {
     list-style-type: none;
     width: 100%;
     height: 80%;
@@ -61,12 +61,12 @@
     padding: 0;
 }
 
-.Submenu li {
+.Submenu li, .Submenu1 li {
     width: 100%;
     display: flex;
 }
 
-.Submenu ul li a {
+.Submenu ul li a, .Submenu1 ul li a{
     width: 100%;
     height: 100%;
     display: flex;
@@ -81,7 +81,7 @@
     font-weight: 100;
 }
 
-.Submenu ul li a:hover {
+.Submenu ul li a:hover, .Submenu1 ul li a:hover {
     background-color: rgba(0, 36, 74);
     cursor: pointer;
 }

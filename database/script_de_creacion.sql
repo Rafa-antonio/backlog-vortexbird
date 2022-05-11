@@ -32,6 +32,25 @@ CREATE TABLE PROYECTOS(
     id_plantillas INTEGER NULL
 );
 
+-- Creación de criterios
+CREATE TABLE CRITERIOS(
+    id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    usuario VARCHAR(100) NOT NULL,
+    objetivo VARCHAR(100) NOT NULL
+);
+
+-- Creación de trabajo
+CREATE TABLE TRABAJOS(
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    id_proyecto INTEGER NOT NULL,
+    correo_usuario VARCHAR(255) NOT NULL,
+    fechaAsignacion DATETIME NOT NULL,
+    fechaFinalizacion DATETIME NULL,
+    CONSTRAINT fk_proyectos1 FOREIGN KEY(id_proyecto) REFERENCES PROYECTOS(id) ON DELETE CASCADE ,
+    CONSTRAINT fk_usuarios1 FOREIGN KEY(correo_usuario) REFERENCES USUARIOS(correo) ON DELETE CASCADE,
+    CONSTRAINT pk_1 PRIMARY KEY(id, id_proyecto, correo_usuario)
+);
+
 -- Creación de la tabla Épicas
 CREATE TABLE EPICAS(
     id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -46,11 +65,17 @@ CREATE TABLE EPICAS(
 -- Creación de las historias de usuario
 CREATE TABLE HUS(
     id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    id_epica INTEGER NULL,
-    id_plantilla INTEGER NULL,
+    id_proyecto INTEGER NOT NULL,
+    id_epica INTEGER NOT NULL,
+    id_criterio INTEGER NOT NULL,
+    id_plantilla INTEGER NOT NULL,
     usuario VARCHAR(100) NOT NULL,
     necesidad VARCHAR(100) NOT NULL,
-    objetivo VARCHAR(100) NOT NULL
+    objetivo VARCHAR(100) NOT NULL,
+    CONSTRAINT fk_proyecto_hus FOREIGN KEY (id_proyecto) REFERENCES PROYECTOS(id) ON DELETE CASCADE,
+    CONSTRAINT fk_epica_hus FOREIGN KEY (id_epica) REFERENCES EPICAS(id) ON DELETE CASCADE,
+    CONSTRAINT fk_criterio_hus FOREIGN KEY (id_criterio) REFERENCES CRITERIOS(id) ON DELETE CASCADE,
+    CONSTRAINT fk_plantilla_hus FOREIGN KEY (id_plantilla) REFERENCES PLANTILLAS(id) ON DELETE CASCADE
 );
 
 -- Creación de la tabla VersionesEpicas
@@ -59,7 +84,7 @@ CREATE TABLE VERSIONES_EPICAS(
     id_epica INTEGER NOT NULL,
     numVersion INTEGER NOT NULL,
     lineaBase INTEGER NOT NULL,
-    CONSTRAINT fk_epicas_1 FOREIGN KEY (id_epica) REFERENCES EPICAS(id)
+    CONSTRAINT fk_epicas_1 FOREIGN KEY (id_epica) REFERENCES EPICAS(id) ON DELETE CASCADE
 );
 
 -- Creación de la tabla VersionesHU
@@ -68,7 +93,7 @@ CREATE TABLE VERSIONES_HUS(
     id_hu INTEGER NOT NULL,
     numVersion INTEGER NOT NULL,
     lineaBase INTEGER NOT NULL,
-    CONSTRAINT fk_hus_1 FOREIGN KEY (id_hu) REFERENCES HUS(id)
+    CONSTRAINT fk_hus_1 FOREIGN KEY (id_hu) REFERENCES HUS(id) ON DELETE CASCADE
 );
 
 -- Inserción de un usuario
@@ -77,7 +102,7 @@ CREATE TABLE VERSIONES_HUS(
 -- 2 --> Analista
 --  3 --> Arquitecto
 INSERT INTO USUARIOS VALUES('rafael_antonio.gomez@uao.edu.co', 'rafa_antonio.gomez', 
-    '123456', 'Rafael Antonio', 2);
+    AES_ENCRYPT('masterkey', 'masterkey'), 'Rafael Antonio', 2);
 
 -- Prueba de búsqueda
 SELECT nombre FROM USUARIOS WHERE (correo = 'rafael_antonio.gomez@uao.edu.co' 
@@ -105,6 +130,11 @@ INSERT INTO USUARIOS(correo, usuario, contrasena, nombre, tipo) VALUES('prueba1@
 -- Inserción de segundo usuario
 INSERT INTO USUARIOS(correo, usuario, contrasena, nombre, tipo) VALUES('usuariodiferente', 'usuariodiferente1',
     AES_ENCRYPT('masterkey', 'masterkey'), 'Hola soy Juan', 2);
+
+-- Inserción de proyectos
+INSERT INTO PROYECTOS(id, nombre, descripcion) VALUES(1, 'Prueba #1', 'Prueba #1');
+INSERT INTO PROYECTOS(nombre, descripcion) VALUES('Prueba #2', 'Prueba #2');
+INSERT INTO PROYECTOS(nombre, descripcion) VALUES('Prueba #3', 'Prueba #3');
 
 -- Prueba de encriptación
 SELECT AES_ENCRYPT('Prueba1', 'masterkey');

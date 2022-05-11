@@ -26,3 +26,23 @@ exports.logIn = (connection, req, res) => {
         }
     );
 }
+
+exports.getAnalistas = (connection, req, res) => {
+    connection.query('SELECT nombre, correo FROM USUARIOS WHERE tipo = 2', (err, results, fields) => {
+        if (err) {
+            res.status(500).send(false);
+        } else {
+            res.status(200).send(results);
+        }
+    })
+}
+
+exports.getArquitectos = (connection, req, res) => {
+    connection.query('SELECT nombre, correo FROM USUARIOS WHERE tipo = 3', (err, results, fields) => {
+        if (err) {
+            res.status(500).send(false);
+        } else {
+            res.status(200).send(results);
+        }
+    })
+}

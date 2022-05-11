@@ -8,6 +8,9 @@ const rEpicas = require('./routes/epicas.routes');
 const rVersiones = require('./routes/versiones.routes');
 const rHistorias = require('./routes/historias.routes');
 const rPlantillas = require('./routes/plantillas.routes');
+const rProyectos = require('./routes/proyectos.routes');
+const rTrabajos = require('./routes/trabajos.routes');
+const rCriterios = require('./routes/criterios.routes');
 
 const connection = mysql.createConnection(
     {
@@ -31,9 +34,12 @@ app.use(express.json());
 // Se establece el uso de las rutas
 rUsuarios(app, connection);
 rEpicas(app, connection);
-rVersiones(app, connection);
 rHistorias(app, connection);
 rPlantillas(app, connection);
+rProyectos(app, connection);
+rCriterios(app, connection);
+rTrabajos(app, connection);
+rVersiones(app, connection);
 
 app.listen(3001, () => {
   console.log('Server on port 3001');

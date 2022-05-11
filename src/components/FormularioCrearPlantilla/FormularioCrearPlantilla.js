@@ -17,7 +17,7 @@ const FormularioCrearPlantilla = (props) => {
   return (
     <div className={styles.FormularioCrearPlantilla}>
       {maplabelsSelects}
-      <label forhtml='tipo'>Tipo</label>
+      <label forhtml='tipo'>Tipo*</label>
       <select onChange={props.funcionesHandle[props.funcionesHandle.length - 1]} value={props.values[props.values.length - 1]}>
         <option value='DoD' defaultValue>DoD</option>
         <option value='DoR'>DoR</option>
@@ -33,11 +33,11 @@ FormularioCrearPlantilla.propTypes = {
 
 FormularioCrearPlantilla.defaultProps = {
   labelsSelects: [
-    ['pruebasUnitarias', '¿Pruebas unitarias finalizadas?'],
-    ['pruebasCalidadCodigo', '¿Pruebas de calidad de código finalizadas?'],
-    ['pruebasFuncionales', '¿Pruebas funcionales finalizadas?'],
-    ['requisitosNFuncionales', '¿Requisitos no funcionales finalizadas?'],
-    ['documentacion', '¿Documentación finalizada?']
+    ['pruebasUnitarias', '¿Pruebas unitarias finalizadas?*'],
+    ['pruebasCalidadCodigo', '¿Pruebas de calidad de código finalizadas?*'],
+    ['pruebasFuncionales', '¿Pruebas funcionales finalizadas?*'],
+    ['requisitosNFuncionales', '¿Requisitos no funcionales finalizadas?*'],
+    ['documentacion', '¿Documentación finalizada?*']
   ]
 };
 

@@ -13,9 +13,46 @@ table th, table td{
     text-align: center;
     border: 1px solid rgba(0,0,0,.3);
     font-family: 'Barlow-Regular';
-    padding: 1rem;
 }
 
 table td {
-    font-size: 1.3rem;
+    font-size: 1.3rem;    
+}
+
+.ColumnaAcciones {
+    height: 100%;
+    font-size: 1.5rem;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+    text-align: center;
+    font-family: 'Barlow-Regular';
+}
+
+.IconoAcciones {
+    justify-self: center;
+    color: #023E8A;
+}
+
+.IconoAcciones:nth-child(1), .IconoAcciones:nth-child(2) {
+    align-self: flex-start;
+    padding-bottom: .5rem;
+}
+
+.IconoAcciones:nth-child(3), .IconoAcciones:nth-child(4) {
+    align-self: flex-end;
+}
+
+.IconoAcciones:hover {
+    cursor: pointer;
+}
+
+.ColumnaAcciones1 {
+    height: 100%;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Barlow-Regular';
 }

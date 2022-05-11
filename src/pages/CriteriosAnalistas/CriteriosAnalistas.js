@@ -21,16 +21,23 @@ const CriteriosAnalistas = (props) => {
     }
   }
 
+  function irVer() {
+    if (location.state) {
+      navigate('/criterios-analistas/ver-criterios', { state: { nombre: location.state.nombre, correo: location.state.correo } });
+    } else {
+      navigate('/criterios-analistas/ver-criterios', { state: { nombre: props.nombre, correo: props.correo } });
+    }
+  }
+
   return (
     <div className={styles.CriteriosAnalistas}>
       <MenuLateral nombre={location.state ? location.state.nombre : props.nombre} correo={location.state ? location.state.correo : props.correo} />
 
       <div className={styles.ContenedorPagina}>
-        <HeaderSesiones titulo={props.titulo} />
+        <HeaderSesiones titulo={props.titulo} esSubmenu={true}/>
         <div className={styles.SegundoContenedorPagina}>
           <Boton texto={props.texto[0]} onClick={irCrear}/>
-          <Boton texto={props.texto[1]} icono={faFileArrowDown} />
-          <Boton texto={props.texto[2]} icono={faFolder} />
+          <Boton texto={props.texto[2]} onClick={irVer} icono={faFolder} />
         </div>
       </div>
     </div>

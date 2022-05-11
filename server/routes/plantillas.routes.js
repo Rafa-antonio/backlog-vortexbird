@@ -13,4 +13,12 @@ module.exports = function (app, connection) {
             .post((req, res) => {
                 cPlantillas.postPlantillas(connection, req, res);
             })
+
+            .delete((req, res) => {
+                cPlantillas.deletePlantillas(connection, req, res);
+            })
+
+            .put((req, res) => {
+                cPlantillas.putPlantillas(connection, req, res);
+            })
 }

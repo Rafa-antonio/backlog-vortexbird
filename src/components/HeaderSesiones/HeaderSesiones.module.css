@@ -1,4 +1,5 @@
 .HeaderSesiones {
+    position: relative;
     background-color: #023E8A;
     color: white;
     font-family: 'Barlow-Regular';
@@ -9,4 +10,14 @@
     align-items: center;
     min-height: 15vh;
     border-left: 2px solid white;
+}
+
+.FlechaIcono {
+    position: absolute;
+    left: 5%;
+    font-size: 2.5rem;
+}
+
+.FlechaIcono:hover {
+    cursor: pointer;
 }

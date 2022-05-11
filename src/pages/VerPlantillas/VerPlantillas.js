@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from './VerPlantillas.module.css';
-import { useLocation } from 'react-router-dom';
 import HeaderSesiones from '../../components/HeaderSesiones/HeaderSesiones';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import PlantillasService from '../../services/Plantillas.Service/Plantillas.Service';
@@ -11,58 +11,45 @@ import TablaVer from '../../components/TablaVer/TablaVer';
 const VerPlantillas = (props) => {
 
   const location = useLocation();
+  const navigate = useNavigate();
   const [plantillas, setPlantillas] = useState([]);
   const [keys, setKeys] = useState([]);
 
   useEffect(() => {
     PlantillasService.obtenerPlantillas()
       .then(datos => {
-          setKeys(Object.keys(datos.data[0]));
-
-          let dataTexto = [];
-
-          for (let i = 0; i < datos.data.length; i++) {
-            let dataI = datos.data[i];
-            console.log(dataI);
-            let id = dataI.id;
-            let pruebasUnitarias = dataI.pruebasUnitarias == 1 ? 'Sí' : 'No';
-            let pruebasCalidadCodigo = dataI.pruebasCalidadCodigo == 1 ? 'Sí' : 'No';
-            let pruebasFuncionales = dataI.pruebasFuncionales == 1 ? 'Sí' : 'No';
-            let requisitosNFuncionales = dataI.requisitosNFuncionales == 1 ? 'Sí' : 'No';
-            let documentacion = dataI.documentacion == 1 ? 'Sí' : 'No';
-            let tipo = dataI.tipo;
-
-            dataTexto.push(
-              {
-                id: id,
-                pruebasUnitarias: pruebasUnitarias, 
-                pruebasCalidadCodigo: pruebasCalidadCodigo, 
-                pruebasFuncionales: pruebasFuncionales, 
-                requisitosNFuncionales: requisitosNFuncionales, 
-                documentacion: documentacion, 
-                tipo: tipo
-              }
-            );
+          if (datos.data.length > 0) {
+            setKeys(Object.keys(datos.data[0]));
+            setPlantillas(datos.data);
+          } else {
+            alert('No existen plantillas en la base de datos');
           }
-
-          console.log(dataTexto);
-
-          setPlantillas(dataTexto);
         })
       .catch(err => {
-        alert('Ocurrió un error al intentar obtener las plantillas');
         console.log(err);
+        alert('Ocurrió un error al intentar obtener las plantillas');
     })  
   }, []);
+
+  function irAtras() {
+    navigate('/plantillas-analistas', { state: location.state });
+  }
+
 
   return (
     <div className={styles.VerPlantillas}>
       <MenuLateral urlImagen={props.urlImagen} nombre={location.state ? location.state.nombre : props.nombre} correo={location.state ? location.state.correo : props.correo} />
 
       <div className={styles.ContenedorPagina}>
-        <HeaderSesiones titulo={props.titulo} />
+        <HeaderSesiones titulo={props.titulo} onClick={irAtras}/>
 
-        <TablaVer columnasTabla={props.columnasTabla} filas={plantillas} keys={keys} />
+        <TablaVer 
+          funcionesHandle={[setPlantillas]}
+          columnasTabla={props.columnasTabla} 
+          filas={plantillas} 
+          keys={keys} 
+          elementoVer={3}
+          />
       </div>
     </div>
   )};
@@ -86,7 +73,7 @@ VerPlantillas.defaultProps = {
   urlImagen: '../usuario-analista-crop.png',
   columnasTabla: [
     'Id', 'Pruebas unitarias', 'Pruebas de calidad de código', 'Pruebas funcionales', 'Requisitos no funcionales',
-    'Documentación', 'Tipo'
+    'Documentación', 'Tipo', 'Acciones'
   ]
 };
 

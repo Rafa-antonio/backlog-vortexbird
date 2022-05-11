@@ -15,5 +15,22 @@
     display: grid;
     grid-template-rows: 80% 20%;    
     align-items: center;
-    height: 80%;
+    height: 100%;
 }
+
+.BordersNegros {
+    border: 1px solid rgba(0,0,0,.2);
+}
+
+.BordesRojos {
+    border: 1px solid red;
+}
+
+.VisibleTrue {
+    visibility: visible;
+}
+
+.VisibleFalse {
+    visibility: hidden;
+}
+
