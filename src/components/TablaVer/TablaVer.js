@@ -18,11 +18,19 @@ import ProyectosService from '../../services/Proyectos.Service/Proyectos.Service
 import EpicasService from '../../services/Epicas.Service/Epicas.Service';
 import CriteriosService from '../../services/Criterios.Service/Criterios.Service';
 import PlantillasService from '../../services/Plantillas.Service/Plantillas.Service';
+import HistoriasService from '../../services/Historias.Service/Historias.Service';
+
+// Excel
+import ReactExport from 'react-export-excel';
+import Download from '../../pages/Prueba';
 
 const TablaVer = (props) => {
 
   const location = useLocation();
   const navigate = useNavigate();
+  const ExcelFile = ReactExport.ExcelFile;
+  const ExcelSheet = ExcelFile.ExcelSheet;
+  const ExcelColumn = ExcelFile.ExcelColumn;
 
   // Función eliminar proyecto
   function eliminarProyectos(id) {
@@ -157,6 +165,34 @@ const TablaVer = (props) => {
   })
   }
 
+  function eliminarHUS(hu) {
+    let idHU = hu.id;
+
+    HistoriasService.deleteHistorias(idHU)
+      .then(datos => {
+          props.funcionesHandle[0](datos.data);
+          alert('¡Se ha eliminado la historia de usuario con éxito!');
+      })
+      .catch(err => {
+        console.log(err);
+        alert('Ocurrió un error al intentar eliminar la historia de usuario');
+      })
+  }
+
+  function descargarHUS(hu) {
+
+    console.log(hu);
+    navigate('/prueba');
+  }
+
+  function versionesHUS() {
+
+  }
+
+  function editarHUS() {
+
+  }
+
   return (
     <table>
       <thead>
@@ -236,10 +272,10 @@ const TablaVer = (props) => {
                 props.elementoVer == 5 ?
                 <td>
                   <div className={styles.ColumnaAcciones}>
-                    <FontAwesomeIcon className={styles.IconoAcciones} icon={faDownload} />
-                    <FontAwesomeIcon className={styles.IconoAcciones} icon={faV} />
-                    <FontAwesomeIcon className={styles.IconoAcciones} icon={faTrashCan} />
-                    <FontAwesomeIcon className={styles.IconoAcciones} icon={faPen} />
+                    <FontAwesomeIcon className={styles.IconoAcciones} onClick={() => descargarHUS(x)} icon={faDownload} />
+                    <FontAwesomeIcon className={styles.IconoAcciones} onClick={() => versionesHUS(x)} icon={faV} />
+                    <FontAwesomeIcon className={styles.IconoAcciones} onClick={() => eliminarHUS(x)} icon={faTrashCan} />
+                    <FontAwesomeIcon className={styles.IconoAcciones} onClick={() => editarHUS(x)} icon={faPen} />
                   </div>
                 </td>
                 :

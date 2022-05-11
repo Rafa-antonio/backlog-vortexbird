@@ -21,7 +21,7 @@ module.exports = function(app, connection) {
         })
 
         .delete((req, res) => {
-
+            cHistorias.deleteHistorias(connection, req, res);
         });
 
 }

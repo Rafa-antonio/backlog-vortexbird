@@ -45,7 +45,8 @@ const VerHU = (props) => {
       <div className={styles.ContenedorPagina}>
         <HeaderSesiones titulo={props.titulo} onClick={irAtras}/>
 
-        <TablaVer 
+        <TablaVer
+          funcionesHandle={[setHUS]}
           columnasTabla={props.columnasTabla} 
           filas={hus} 
           keys={keys} 

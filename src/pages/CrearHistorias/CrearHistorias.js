@@ -121,7 +121,7 @@ const CrearHistorias = (props) => {
     CriteriosService.obtenerCriterios()
     .then(datos => {
       setCriterios(datos.data);
-      setElCriterio(datos.data[0]);
+      setElCriterio(datos.data[0].id);
     })
     .catch(err => {
       console.log(err);
@@ -131,7 +131,7 @@ const CrearHistorias = (props) => {
     PlantillasService.obtenerPlantillas()
       .then(datos => {
         setPlantillas(datos.data);
-        setLaPlantilla(datos.data[0]);
+        setLaPlantilla(datos.data[0].id);
       })
       .catch(err => {
         console.log(err);

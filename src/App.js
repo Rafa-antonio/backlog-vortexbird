@@ -39,6 +39,8 @@ import EditarEpicas from './pages/EditarEpicas/EditarEpicas';
 import EditarCriterios from './pages/EditarCriterios/EditarCriterios';
 import EditarPlantillas from './pages/EditarPlantillas/EditarPlantillas';
 
+import Download from './pages/Prueba';
+
 // Versiones épicas
 import VersionesEpicas from './pages/VersionesEpicas/VersionesEpicas';
 
@@ -53,6 +55,9 @@ function App() {
   return (
     <Router>
       <Routes>
+      {/* Prueba */}
+      <Route path="/prueba" element={<Download />} />
+
         {/* Homes */}
         <Route path="/" element={<Login />} />
         <Route path="/home-analistas" element={<HomeAnalistas />} />

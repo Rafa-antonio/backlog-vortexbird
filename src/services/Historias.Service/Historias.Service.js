@@ -19,6 +19,14 @@ class HistoriasService {
     async obtenerHistorias() {
         return await axios.get('http://localhost:3001/historias');
     }
+
+    async deleteHistorias(idHU) {
+        return await axios.delete('http://localhost:3001/historias', {
+            params: {
+                idHU: idHU
+            }
+        })
+    }
 }
 
 export default new HistoriasService();

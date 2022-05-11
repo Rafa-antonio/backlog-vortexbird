@@ -93,7 +93,7 @@ CREATE TABLE VERSIONES_HUS(
     id_hu INTEGER NOT NULL,
     numVersion INTEGER NOT NULL,
     lineaBase INTEGER NOT NULL,
-    CONSTRAINT fk_hus_1 FOREIGN KEY (id_hu) REFERENCES HUS(id)
+    CONSTRAINT fk_hus_1 FOREIGN KEY (id_hu) REFERENCES HUS(id) ON DELETE CASCADE
 );
 
 -- Inserción de un usuario

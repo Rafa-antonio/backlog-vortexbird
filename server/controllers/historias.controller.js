@@ -1,7 +1,7 @@
 const cVersiones = require('./versiones.controller');
 
 // Crear épicas
-exports.postHistorias = (connection, req, res) => {
+exports.postHistorias = (connection, req, res) => {    
 
     let usuario = req.body.usuario;
     let necesidad = req.body.necesidad;
@@ -34,6 +34,21 @@ exports.getHistorias = (connection, req, res) => {
             res.status(500).send('Ocurrió un error');
         } else {
             res.status(200).send(results);
+        }
+    })
+}
+
+exports.deleteHistorias = (connection, req, res) => {
+    let idHU = req.query.idHU;
+    
+    connection.query('DELETE FROM HUS WHERE id = ?', [
+        idHU
+    ], (err, results, fields) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('Ocurrió un error al intentar eliminar la HU');
+        } else {
+            this.getHistorias(connection, req, res);
         }
     })
 }
