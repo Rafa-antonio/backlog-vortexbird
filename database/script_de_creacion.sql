@@ -27,16 +27,16 @@ CREATE TABLE PLANTILLAS(
 -- Creación de proyectos
 CREATE TABLE PROYECTOS(
     id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(60) NOT NULL,
-    descripcion VARCHAR(100) NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion VARCHAR(300) NOT NULL,
     id_plantillas INTEGER NULL
 );
 
 -- Creación de criterios
 CREATE TABLE CRITERIOS(
     id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    usuario VARCHAR(100) NOT NULL,
-    objetivo VARCHAR(100) NOT NULL
+    usuario VARCHAR(300) NOT NULL,
+    objetivo VARCHAR(300) NOT NULL
 );
 
 -- Creación de trabajo
@@ -56,9 +56,9 @@ CREATE TABLE EPICAS(
     id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
     correo_usuario VARCHAR(255) NOT NULL,
     id_proyecto INTEGER NULL,
-    resumen VARCHAR(80) NOT NULL,
-    tipoIncidencia VARCHAR(40) NOT NULL,
-    estimacionOriginal VARCHAR(60) NOT NULL,
+    resumen VARCHAR(350) NOT NULL,
+    tipoIncidencia VARCHAR(350) NOT NULL,
+    estimacionOriginal VARCHAR(300) NOT NULL,
     CONSTRAINT fk_usuarios_1 FOREIGN KEY (correo_usuario) REFERENCES USUARIOS(correo) ON DELETE CASCADE
 );
 
@@ -69,14 +69,14 @@ CREATE TABLE HUS(
     id_epica INTEGER NOT NULL,
     id_criterio INTEGER NOT NULL,
     id_plantilla INTEGER NOT NULL,
-    usuario VARCHAR(100) NOT NULL,
-    necesidad VARCHAR(100) NOT NULL,
-    objetivo VARCHAR(100) NOT NULL,
+    usuario VARCHAR(300) NOT NULL,
+    necesidad VARCHAR(300) NOT NULL,
+    objetivo VARCHAR(300) NOT NULL,
     CONSTRAINT fk_proyecto_hus FOREIGN KEY (id_proyecto) REFERENCES PROYECTOS(id) ON DELETE CASCADE,
     CONSTRAINT fk_epica_hus FOREIGN KEY (id_epica) REFERENCES EPICAS(id) ON DELETE CASCADE,
     CONSTRAINT fk_criterio_hus FOREIGN KEY (id_criterio) REFERENCES CRITERIOS(id) ON DELETE CASCADE,
     CONSTRAINT fk_plantilla_hus FOREIGN KEY (id_plantilla) REFERENCES PLANTILLAS(id) ON DELETE CASCADE
-);
+z);
 
 -- Creación de la tabla VersionesEpicas
 CREATE TABLE VERSIONES_EPICAS(
