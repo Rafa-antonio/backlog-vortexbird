@@ -73,7 +73,7 @@ function App() {
         <Route path="/proyectos-analistas/ver-proyectos/epicas-analistas/ver-epicas/historias-analistas" element={<HistoriasAnalistas />} />
         <Route path="/plantillas-analistas" element={<PlantillasAnalistas />} />
         <Route path="/criterios-analistas" element={<CriteriosAnalistas />} />
-        <Route path="/proyectos-analistas" element={<ProyectosAnalistas />} />
+        <Route path="/proyectos-analistas" element={<VerProyectos/>} />
 
 
         {/* Creaciones */}
